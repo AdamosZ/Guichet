@@ -1,0 +1,214 @@
+"""Seed the golden set with questions drafted from the source documents.
+
+Provenance matters here, so it is stated in the code as well as the report:
+every item below was written by reading the cited fiche directly. None of it
+came from querying the retrieval system, which would make the answer key
+circular and the metrics meaningless.
+
+Every item ships with `reviewed=False`. A human has to read each one against
+its source and flip that flag before it counts toward a headline number.
+`guichet.evals` excludes unreviewed items from reported metrics.
+
+Run: python -m scripts.seed_golden
+"""
+
+from __future__ import annotations
+
+from guichet.golden import GoldenItem, save
+
+SEED: list[GoldenItem] = [
+    GoldenItem(
+        item_id="sej-001",
+        question_fr="Quelle est la durée de validité d'un récépissé de demande de titre de séjour ?",
+        question_en="How long is a receipt for a residence permit application valid?",
+        gold_doc_ids=["F15763"],
+        answer_fr="Le récépissé est délivré pour une durée de 4 ou 6 mois. Il peut exceptionnellement être renouvelé pour 3 mois maximum.",
+        answer_en="The récépissé is issued for 4 or 6 months. It can exceptionally be renewed for a maximum of 3 further months.",
+        category="sejour",
+        tags=["duration", "recepisse"],
+    ),
+    GoldenItem(
+        item_id="sej-002",
+        question_fr="Dans quel délai dois-je valider mon VLS-TS après mon arrivée en France ?",
+        question_en="How long after arriving in France do I have to validate my VLS-TS?",
+        gold_doc_ids=["F2231", "F16162"],
+        answer_fr="Le VLS-TS doit être validé dans les 3 mois suivant l'arrivée en France, avec paiement d'une taxe qui s'ajoute aux droits de visa.",
+        answer_en="The VLS-TS must be validated within 3 months of arriving in France, together with payment of a tax on top of the visa fee.",
+        category="procedure",
+        tags=["deadline", "vls-ts"],
+    ),
+    GoldenItem(
+        item_id="sej-003",
+        question_fr="Quelle est la durée de validité d'un VLS-TS étudiant ?",
+        question_en="How long is a student VLS-TS valid for?",
+        gold_doc_ids=["F2231"],
+        answer_fr="Le VLS-TS étudiant est valable de 4 mois à 1 an.",
+        answer_en="A student VLS-TS is valid for between 4 months and 1 year.",
+        category="etudes",
+        tags=["duration", "vls-ts"],
+    ),
+    GoldenItem(
+        item_id="sej-004",
+        question_fr="Quand dois-je demander le renouvellement de mon titre de séjour étudiant ?",
+        question_en="When should I apply to renew my student residence permit?",
+        gold_doc_ids=["F2231"],
+        answer_fr="La demande de renouvellement se fait au plus tôt 4 mois et au plus tard 2 mois avant la fin de validité du titre.",
+        answer_en="The renewal request is made at the earliest 4 months and at the latest 2 months before the permit expires.",
+        category="procedure",
+        tags=["deadline", "renewal"],
+    ),
+    GoldenItem(
+        item_id="sej-005",
+        question_fr="Après un an d'études en France, quel titre de séjour puis-je demander ?",
+        question_en="After a year of studying in France, what residence permit can I apply for?",
+        gold_doc_ids=["F2231"],
+        answer_fr="Après 1 an, vous pouvez demander une carte de séjour temporaire valable 1 an, ou une carte de séjour pluriannuelle valable 2 à 4 ans.",
+        answer_en="After 1 year you can apply for a temporary residence card valid 1 year, or a multi-year card valid 2 to 4 years.",
+        category="sejour",
+        tags=["eligibility"],
+    ),
+    GoldenItem(
+        item_id="trav-001",
+        question_fr="Combien d'heures par an un étudiant étranger peut-il travailler en France ?",
+        question_en="How many hours per year can a foreign student work in France?",
+        gold_doc_ids=["F13519"],
+        answer_fr="Un étudiant étranger peut travailler 964 heures maximum par an, soit 60 % de la durée totale du temps de travail annuel légal.",
+        answer_en="A foreign student may work a maximum of 964 hours per year, which is 60% of the legal annual full-time working hours.",
+        category="travail",
+        tags=["limit", "work"],
+    ),
+    GoldenItem(
+        item_id="log-001",
+        question_fr="À partir de quand l'APL est-elle due après ma demande ?",
+        question_en="From when is APL housing benefit owed after I apply?",
+        gold_doc_ids=["F12006"],
+        answer_fr="L'APL est due à partir du 1er jour qui suit le mois de votre demande.",
+        answer_en="APL is owed from the first day of the month following your application.",
+        category="logement",
+        tags=["timing", "apl"],
+    ),
+    GoldenItem(
+        item_id="log-002",
+        question_fr="Combien de mois par an dois-je occuper mon logement pour avoir droit à l'APL ?",
+        question_en="How many months a year must I live in my accommodation to be eligible for APL?",
+        gold_doc_ids=["F12006"],
+        answer_fr="L'APL est attribuée uniquement pour la résidence principale, c'est-à-dire celle occupée au minimum 8 mois par an, sauf exceptions.",
+        answer_en="APL is granted only for your main residence, meaning one you occupy at least 8 months a year, with some exceptions.",
+        category="logement",
+        tags=["eligibility", "apl"],
+    ),
+    GoldenItem(
+        item_id="log-003",
+        question_fr="Un étudiant étranger peut-il bénéficier d'une aide au logement ?",
+        question_en="Can a foreign student receive housing benefit?",
+        gold_doc_ids=["F1563"],
+        answer_fr="Oui, un étudiant peut bénéficier d'une aide au logement (APL, ALS ou ALF) sous conditions, notamment de résidence et de ressources.",
+        answer_en="Yes, a student can receive housing benefit (APL, ALS or ALF) subject to conditions, including residence and income conditions.",
+        category="logement",
+        tags=["eligibility"],
+    ),
+    GoldenItem(
+        item_id="visa-001",
+        question_fr="Combien de jours puis-je circuler dans l'espace Schengen avec un visa de long séjour ?",
+        question_en="How many days can I travel in the Schengen area on a long-stay visa?",
+        gold_doc_ids=["F16162"],
+        answer_fr="Le visa de long séjour type D permet de circuler dans l'espace Schengen sans autre visa, à condition de ne pas dépasser 90 jours pendant sa période de validité.",
+        answer_en="A type D long-stay visa allows travel within the Schengen area without a further visa, provided you do not exceed 90 days during its validity.",
+        category="visa",
+        tags=["limit", "schengen"],
+    ),
+    GoldenItem(
+        item_id="visa-002",
+        question_fr="Qu'est-ce que le visa de court séjour « étudiant concours » ?",
+        question_en="What is the short-stay 'étudiant concours' visa?",
+        gold_doc_ids=["F16189"],
+        answer_fr="C'est un visa de court séjour permettant à un étranger de venir en France passer les épreuves d'un concours ou d'un examen d'entrée dans un établissement d'enseignement.",
+        answer_en="It is a short-stay visa allowing a foreign national to come to France to sit a competitive entrance exam for an educational institution.",
+        category="visa",
+        tags=["definition"],
+    ),
+    GoldenItem(
+        item_id="proc-001",
+        question_fr="Que dois-je faire si je perds ma carte de séjour ?",
+        question_en="What should I do if I lose my residence permit?",
+        gold_doc_ids=["F21032"],
+        answer_fr="Il faut déclarer la perte et demander un duplicata auprès de l'administration compétente, en fournissant les justificatifs demandés.",
+        answer_en="You must report the loss and request a duplicate from the competent authority, providing the required supporting documents.",
+        category="procedure",
+        tags=["loss"],
+    ),
+    GoldenItem(
+        item_id="proc-002",
+        question_fr="Que faire en cas de vol de ma carte de séjour ?",
+        question_en="What should I do if my residence permit is stolen?",
+        gold_doc_ids=["F22312"],
+        answer_fr="Il faut déclarer le vol aux autorités de police puis demander un duplicata de la carte auprès de l'administration compétente.",
+        answer_en="You must report the theft to the police and then request a duplicate card from the competent authority.",
+        category="procedure",
+        tags=["theft"],
+    ),
+    GoldenItem(
+        item_id="trav-002",
+        question_fr="Quel titre de séjour pour un stagiaire étranger en France ?",
+        question_en="Which residence permit does a foreign intern in France need?",
+        gold_doc_ids=["F17312"],
+        answer_fr="Un stagiaire étranger relève d'un visa de long séjour ou d'une carte de séjour « stagiaire », avec une convention de stage visée par l'administration.",
+        answer_en="A foreign intern comes under a long-stay visa or a 'stagiaire' residence card, with an internship agreement endorsed by the administration.",
+        category="travail",
+        tags=["internship"],
+    ),
+    GoldenItem(
+        item_id="trav-003",
+        question_fr="Qu'est-ce que le titre de séjour « recherche d'emploi / création d'entreprise » ?",
+        question_en="What is the 'job seeking / business creation' residence permit?",
+        gold_doc_ids=["F17319"],
+        answer_fr="C'est un titre permettant à un diplômé étranger de rester en France pour chercher un emploi ou créer une entreprise, sans que la limite des 964 heures annuelles s'applique.",
+        answer_en="It is a permit allowing a foreign graduate to stay in France to look for work or start a business, with the 964-hour annual limit not applying.",
+        category="travail",
+        tags=["graduate"],
+    ),
+    # Deliberately unanswerable. A system that produces a confident answer here
+    # is hallucinating, and catching that is the point of including them.
+    GoldenItem(
+        item_id="unans-001",
+        question_fr="Combien coûte en moyenne un studio étudiant à Lille ?",
+        question_en="What does a student studio flat cost on average in Lille?",
+        gold_doc_ids=[],
+        answer_fr="",
+        answer_en="",
+        category="unanswerable",
+        answerable=False,
+        notes="Rental market pricing is not covered anywhere in this corpus.",
+        tags=["out-of-scope"],
+    ),
+    GoldenItem(
+        item_id="unans-002",
+        question_fr="Quelle banque française est la meilleure pour un étudiant étranger ?",
+        question_en="Which French bank is best for an international student?",
+        gold_doc_ids=[],
+        answer_fr="",
+        answer_en="",
+        category="unanswerable",
+        answerable=False,
+        notes="Asks for a recommendation. The corpus describes rights and procedures, never ranks providers.",
+        tags=["out-of-scope", "opinion"],
+    ),
+    GoldenItem(
+        item_id="unans-003",
+        question_fr="Quel est le délai actuel de rendez-vous en préfecture à Lille ?",
+        question_en="What is the current appointment waiting time at the Lille prefecture?",
+        gold_doc_ids=[],
+        answer_fr="",
+        answer_en="",
+        category="unanswerable",
+        answerable=False,
+        notes="Local, time-varying operational data. Plausible-sounding and genuinely absent, which makes it a good hallucination probe.",
+        tags=["out-of-scope", "local"],
+    ),
+]
+
+
+if __name__ == "__main__":
+    save(SEED)
+    print(f"wrote {len(SEED)} seed items to evals/golden.jsonl")
+    print("all marked reviewed=False — they do not count until a human checks them")
