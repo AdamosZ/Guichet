@@ -18,44 +18,60 @@ The deliverable is the measurement, not the chatbot.
 
 ## Status
 
-Corpus, chunking, four retrieval modes and the retrieval metrics are working.
-The 18-pair seed set has been **human-reviewed against its sources** (12 Oct
-2026); review corrected one wrong source label and one unsupported answer.
+- **Answer key:** 104 question pairs, 10 of them deliberately unanswerable. 86 of
+  them are real questions posted by people in France (Stack Exchange, the Ameli
+  forum, Alexia, CommentÇaMarche, expat forums), paraphrased and stripped of
+  personal details, each linked to its original post.
+- **Review:** 17 items are human-reviewed. The other 87 have passed an
+  independent pre-check (21 corrected, 0 dropped) and are awaiting human review.
+- **Corpus:** 192 service-public.gouv.fr pages, 3,405 chunks. 138 pages are
+  distractors that no question points to.
 
-## First finding
+## Results
 
-18 reviewed question pairs (the same question asked in French and in English;
-15 answerable, 3 deliberately unanswerable), hit@1:
+### Seed set: 18 pairs, human-reviewed
 
-| mode                  | French | English | gap  |
-|-----------------------|--------|---------|------|
-| BM25                  | 0.867  | 0.267   | −69% |
-| Dense                 | 0.800  | 0.600   | −25% |
-| Hybrid (RRF)          | 0.867  | 0.467   | −46% |
-| **Hybrid, language-aware** | **0.867** | **0.600** | **−31%** |
+hit@1:
 
-BM25 failing on English is expected: keyword matching cannot cross languages.
+| mode                       | French | English | gap  |
+|----------------------------|--------|---------|------|
+| BM25                       | 0.867  | 0.267   | −69% |
+| Dense                      | 0.800  | 0.600   | −25% |
+| Hybrid (RRF)               | 0.867  | 0.467   | −46% |
+| Hybrid, language-aware     | 0.867  | 0.600   | −31% |
 
-The result worth following up is that **standard hybrid retrieval is worse than
-dense alone for English queries** (0.467 vs 0.600), despite hybrid being the
-usual recommendation. Reciprocal Rank Fusion treats both rankings as equally
-trustworthy. For an out-of-language query the sparse ranking is close to noise
-(it matches stray tokens like "France" or "residence") and fusion promotes that
-noise over correct dense hits.
+On the seed set, standard hybrid retrieval was worse than dense alone for
+English queries, and language-aware fusion (dropping BM25 for non-French
+queries) recovered it.
 
-**Language-aware fusion** detects the query language and drops the BM25 ranking
-when it does not match the corpus language. On this set it keeps hybrid's
-French score and recovers dense's English score: the best of both. Partial
-down-weighting (BM25 weight 0.25 or 0.5) did not beat dropping it.
+### Expanded set: 104 pairs, provisional (87 items not yet human-reviewed)
 
-**Caveat.** 15 answerable pairs is a small sample: one query flipping moves
-hit@1 by 0.067. The direction is consistent across hit@3 and MRR, but the set
-is being expanded to ~80 pairs before any claim is made about effect size.
+94 answerable pairs, 192-page corpus:
 
-**What the review caught.** One seed item asked how many hours a *foreign*
-student may work, but its source page covers *EU* students only; the corpus
-has no non-EU equivalent. The unreviewed label had counted an English miss that
-was partly the label's fault. This is the reason unreviewed items never count.
+| mode                   | FR hit@1 | EN hit@1 | FR recall@5 | EN recall@5 | EN MRR |
+|------------------------|----------|----------|-------------|-------------|--------|
+| BM25                   | 0.553    | 0.234    | 0.837       | 0.324       | 0.296  |
+| Dense                  | 0.457    | 0.394    | 0.663       | 0.666       | 0.539  |
+| Hybrid (RRF)           | 0.585    | 0.426    | 0.829       | 0.613       | 0.542  |
+| Hybrid, language-aware | 0.585    | 0.415    | 0.829       | 0.666       | 0.554  |
+
+**What changed with more, harder data.** The seed result only partly holds.
+English queries still lose 20–30% against French in every mode. Language-aware
+fusion still gives the best English recall@5 and MRR, but standard hybrid now
+edges it at English hit@1.
+
+One reason is visible in the data: **24 of the 94 English questions contain
+French administrative terms** ("titre de séjour", "CAF", "récépissé"), because
+that is how students actually write. BM25 can match those terms, so dropping it
+entirely for English queries throws away a real signal. The seed set, written
+by hand, had too few of these questions to show it. This is exactly why the set
+was expanded with real questions.
+
+Also new: the multilingual embedding model is weaker than BM25 on French queries
+(hit@1 0.457 vs 0.553) once the corpus has many near-identical permit pages.
+
+**Next experiments:** partial BM25 weighting for mixed-language queries, query
+translation (EN → FR) before BM25, and a stronger multilingual embedding model.
 
 ## Quickstart
 
@@ -69,7 +85,8 @@ make eval-provisional   # includes unreviewed items: development only
 ```
 
 The corpus is committed under `data/corpus/` so results are reproducible
-(source pages change). `make corpus` re-crawls it (~5 min, polite delays).
+(source pages change). `make corpus` re-crawls exactly the pages listed in
+`data/corpus/fiche_ids.txt`.
 
 The harness refuses to report on unreviewed items unless explicitly told to,
 and marks such reports `provisional` in their metadata.
@@ -88,6 +105,7 @@ guichet/
   run_eval.py    CLI entry point
 scripts/
   seed_golden.py   Seed questions drafted by reading sources directly
+  harvest_stackexchange.py  Collect real candidate questions (provenance)
   review_golden.py Interactive review pass over the answer key
 tests/           Unit tests, plus a check that the answer key stays valid
 evals/golden.jsonl
@@ -117,7 +135,8 @@ See [docs/METHODOLOGY.md](docs/METHODOLOGY.md). In short:
 - [x] Language-aware fusion, measured against the baseline
 - [x] CI on every push
 - [x] Human review of the seed set
-- [ ] Expansion to ~80 pairs
+- [x] Expansion to 104 pairs from real posted questions, independently pre-checked
+- [ ] Human review of the 87 new items
 - [ ] Generation layer with programmatic citation verification
 - [ ] Faithfulness scoring (Promptfoo or Inspect), with judge-vs-human agreement on a hand-labelled subset
 - [ ] Report: numbers, failure taxonomy, limitations

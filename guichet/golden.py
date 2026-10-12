@@ -45,6 +45,16 @@ class GoldenItem:
     reviewed: bool = False
     notes: str = ""
     tags: list[str] = field(default_factory=list)
+    # Where the question came from: a real post by a real person, paraphrased
+    # and stripped of personal details. Empty for the original seed items.
+    source_url: str = ""
+    source_site: str = ""
+    # Verbatim sentences from the gold documents that support the answer, so a
+    # reviewer can check the label without reading the whole page.
+    evidence: list[dict] = field(default_factory=list)
+    # Result of the independent pre-check (a second pass by someone who did not
+    # write the item). Advisory only: it never replaces human review.
+    check: dict = field(default_factory=dict)
 
 
 CATEGORIES = (

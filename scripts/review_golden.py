@@ -2,8 +2,9 @@
 
     python -m scripts.review_golden
 
-For each item it prints both questions, both answers and the source URLs of
-the gold documents. Open the URL, check the answer against the page, then:
+For each item it prints both questions, both answers, the gold documents'
+URLs, the supporting sentences from those pages, the independent pre-check's
+verdict, and the real post the question came from. Open the URL, check the answer against the page, then:
 
     a  accept as-is (sets reviewed: true)
     n  add a note, then accept
@@ -52,6 +53,12 @@ def main() -> None:
                 print(f"  source    {doc_id}  {doc.title}\n            {doc.url}")
             else:
                 print(f"  source    {doc_id}  (NOT IN CORPUS)")
+        for ev in item.evidence:
+            print(_wrap("page says", f"[{ev.get('doc_id')}] « {ev.get('quote', '')} »"))
+        if item.check:
+            print(_wrap("pre-check", f"{item.check.get('verdict')}: {item.check.get('reason', '')}"))
+        if item.source_url:
+            print(f"  asked at  {item.source_url}")
         if item.notes:
             print(_wrap("notes", item.notes))
 

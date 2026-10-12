@@ -205,5 +205,36 @@ def load_corpus(path: Path) -> list[Document]:
         return [Document(**json.loads(line)) for line in handle if line.strip()]
 
 
+def fetch_ids(ids_path: Path, out_path: Path, pause: float = 0.4) -> list[Document]:
+    """Re-crawl exactly the fiches listed in ids_path (one Fxxxx per line)."""
+    refs = [line.strip() for line in ids_path.read_text().splitlines() if line.strip()]
+    documents: list[Document] = []
+    with _client() as client:
+        for ref in refs:
+            try:
+                response = client.get(FICHE_URL.format(ref=ref))
+                response.raise_for_status()
+            except httpx.HTTPError as exc:
+                print(f"  ! {ref}: {type(exc).__name__}")
+                continue
+            document = extract(response.text, ref, str(response.url))
+            if document:
+                documents.append(document)
+                print(f"  {len(documents):>3}. {ref}  {document.title[:60]}")
+            time.sleep(pause)
+    with out_path.open("w", encoding="utf-8") as handle:
+        for document in documents:
+            handle.write(json.dumps(asdict(document), ensure_ascii=False) + "\n")
+    print(f"\nwrote {len(documents)} documents to {out_path}")
+    return documents
+
+
 if __name__ == "__main__":
-    fetch_corpus(Path("data/corpus/documents.jsonl"))
+    import sys
+
+    ids = Path("data/corpus/fiche_ids.txt")
+    if "--discover" in sys.argv or not ids.exists():
+        fetch_corpus(Path("data/corpus/documents.jsonl"))
+    else:
+        # Default: rebuild the exact published corpus, so results stay comparable.
+        fetch_ids(ids, Path("data/corpus/documents.jsonl"))

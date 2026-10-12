@@ -9,6 +9,24 @@ Candidate questions and draft answers are written by reading the source
 documents directly. The retriever and any generator are never queried while
 labelling. An answer key the system wrote for itself measures nothing.
 
+## 1b. Questions are real, answers are not taken from where the questions came from
+
+Beyond the 18 seed items, questions come from real posts by people dealing with
+French administration: Stack Exchange (Expatriates, Travel; CC BY-SA), the Ameli
+assurés forum, Alexia, CommentÇaMarche, expat forums, and the government's own
+Services Publics+ feedback site. Each is paraphrased into one clear question,
+stripped of personal details, and keeps a `source_url` to the original post.
+
+Only the question is taken from the post. Forum replies are often wrong, so
+answers are written from the service-public page alone, with the supporting
+sentences stored verbatim in `evidence`.
+
+Each new item then gets an **independent pre-check** by a reviewer who did not
+draft it. The reviewer reads the full page, not just the quoted sentence: a
+quote cut short ("vous pouvez bénéficier d'une aide au logement uniquement dans
+l'un des 3 cas suivants") can reverse the meaning. The pre-check is advisory;
+human review is still required before an item counts.
+
 ## 2. Unreviewed labels never count
 
 Every golden item ships with `reviewed: false`. A human checks it against its
