@@ -15,7 +15,6 @@ sum(1 / (k + rank)) across the rankings it appears in, k=60 by convention.
 from __future__ import annotations
 
 import hashlib
-import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
@@ -24,12 +23,18 @@ import numpy as np
 from rank_bm25 import BM25Okapi
 
 from .chunk import Chunk
+from .langid import detect
 from .normalize import tokenize
 
 DEFAULT_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 RRF_K = 60
 
-Mode = Literal["dense", "bm25", "hybrid"]
+Mode = Literal["dense", "bm25", "hybrid", "hybrid-lang"]
+
+# Weight given to the sparse ranking in "hybrid-lang" mode when the query is
+# not in the corpus language. 0.0 drops BM25 entirely for those queries.
+FOREIGN_SPARSE_WEIGHT = 0.0
+CORPUS_LANGUAGE = "fr"
 
 
 @dataclass
@@ -103,12 +108,17 @@ class BM25Index:
 
 
 def reciprocal_rank_fusion(
-    rankings: list[list[tuple[int, float]]], k: int = RRF_K
+    rankings: list[list[tuple[int, float]]], k: int = RRF_K,
+    weights: list[float] | None = None,
 ) -> list[tuple[int, float]]:
+    """Weighted RRF. With no weights every ranking counts equally (plain RRF)."""
+    weights = weights or [1.0] * len(rankings)
     fused: dict[int, float] = {}
-    for ranking in rankings:
+    for ranking, weight in zip(rankings, weights, strict=True):
+        if weight == 0:
+            continue
         for rank, (index, _score) in enumerate(ranking, start=1):
-            fused[index] = fused.get(index, 0.0) + 1.0 / (k + rank)
+            fused[index] = fused.get(index, 0.0) + weight / (k + rank)
     return sorted(fused.items(), key=lambda pair: -pair[1])
 
 
@@ -116,11 +126,15 @@ class Retriever:
     """The thing under test. Mode is swappable so the eval can compare them."""
 
     def __init__(self, chunks: list[Chunk], mode: Mode = "hybrid",
-                 model_name: str = DEFAULT_MODEL):
+                 model_name: str = DEFAULT_MODEL,
+                 foreign_sparse_weight: float = FOREIGN_SPARSE_WEIGHT):
         self.chunks = chunks
         self.mode = mode
-        self.dense = DenseIndex(chunks, model_name) if mode in ("dense", "hybrid") else None
-        self.sparse = BM25Index(chunks) if mode in ("bm25", "hybrid") else None
+        self.foreign_sparse_weight = foreign_sparse_weight
+        uses_dense = mode in ("dense", "hybrid", "hybrid-lang")
+        uses_sparse = mode in ("bm25", "hybrid", "hybrid-lang")
+        self.dense = DenseIndex(chunks, model_name) if uses_dense else None
+        self.sparse = BM25Index(chunks) if uses_sparse else None
 
     def search(self, query: str, top_k: int = 10, pool: int = 50) -> list[Hit]:
         if self.mode == "dense":
@@ -130,7 +144,13 @@ class Retriever:
         else:
             dense_hits = self.dense.search(query, pool)
             sparse_hits = self.sparse.search(query, pool)
-            ranked = reciprocal_rank_fusion([dense_hits, sparse_hits])[:top_k]
+            weights = [1.0, 1.0]
+            if self.mode == "hybrid-lang" and detect(query) != CORPUS_LANGUAGE:
+                # Out-of-language query: BM25 matches stray tokens ("France",
+                # "residence") and plain RRF would promote that noise.
+                weights = [1.0, self.foreign_sparse_weight]
+            ranked = reciprocal_rank_fusion([dense_hits, sparse_hits],
+                                            weights=weights)[:top_k]
 
         return [
             Hit(chunk=self.chunks[index], score=score, rank=rank)

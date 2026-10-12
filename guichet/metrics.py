@@ -117,7 +117,8 @@ def gap_report(per_language: dict[str, dict[str, float]],
 
 def format_table(per_language: dict[str, dict[str, float]],
                  metrics: tuple[str, ...] = ("hit@1", "hit@3", "recall@5", "mrr", "ndcg@10")) -> str:
-    languages = list(per_language)
+    # Corpus language first, so the gap reads "how much worse is English".
+    languages = sorted(per_language, key=lambda lang: (lang != "fr", lang))
     header = f"{'metric':<12}" + "".join(f"{lang:>10}" for lang in languages)
     if len(languages) == 2:
         header += f"{'gap':>10}"

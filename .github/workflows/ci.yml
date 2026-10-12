@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Validate answer key
+        run: python -m guichet.golden
+
+  retrieval-eval:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Cache embedding model and vectors
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/fastembed
+            /tmp/fastembed_cache
+            data/cache
+          key: emb-${{ hashFiles('data/corpus/chunks.jsonl') }}
+      - name: Reviewed items (reportable)
+        run: |
+          # Exits non-zero while no item is reviewed yet; that is expected.
+          python -m guichet.run_eval --mode all > eval.txt 2>&1 || true
+          cat eval.txt
+      - name: All items (provisional regression check)
+        run: |
+          python -m guichet.run_eval --mode all --include-unreviewed \
+            --out reports/retrieval-provisional.json | tee eval-provisional.txt
+      - name: Job summary
+        run: |
+          {
+            echo "## Retrieval eval — reviewed items"; echo '```'; cat eval.txt; echo '```'
+            echo "## Provisional (includes unreviewed labels — not a result)"
+            echo '```'; cat eval-provisional.txt; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-reports
+          path: reports/

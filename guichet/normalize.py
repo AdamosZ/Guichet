@@ -52,7 +52,6 @@ ACRONYMS: dict[str, str] = {
     "crous": "centre regional oeuvres universitaires scolaires",
     "cpam": "caisse primaire assurance maladie",
     "urssaf": "union recouvrement securite sociale allocations familiales",
-    "cesedа": "code entree sejour etrangers droit asile",
     "ceseda": "code entree sejour etrangers droit asile",
     "rib": "releve identite bancaire",
     "caf.fr": "caisse allocations familiales",

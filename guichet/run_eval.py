@@ -19,7 +19,8 @@ from .metrics import QueryResult, _doc_sequence, aggregate, by_language, format_
 
 
 def run(mode: str, include_unreviewed: bool, top_k: int,
-        chunks_path: Path, golden_path: Path) -> list[QueryResult]:
+        chunks_path: Path, golden_path: Path,
+        foreign_sparse_weight: float = 0.0) -> list[QueryResult]:
     items = load_golden(golden_path)
     if not include_unreviewed:
         items = [i for i in items if i.reviewed]
@@ -29,7 +30,8 @@ def run(mode: str, include_unreviewed: bool, top_k: int,
             "--include-unreviewed to see provisional numbers."
         )
 
-    retriever = Retriever(load_chunks(chunks_path), mode=mode)
+    retriever = Retriever(load_chunks(chunks_path), mode=mode,
+                          foreign_sparse_weight=foreign_sparse_weight)
 
     results: list[QueryResult] = []
     for item in items:
@@ -57,7 +59,9 @@ def failures(results: list[QueryResult], k: int = 5) -> list[QueryResult]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", default="all",
-                        choices=["dense", "bm25", "hybrid", "all"])
+                        choices=["dense", "bm25", "hybrid", "hybrid-lang", "all"])
+    parser.add_argument("--foreign-sparse-weight", type=float, default=0.0,
+                        help="BM25 weight for non-French queries in hybrid-lang mode")
     parser.add_argument("--include-unreviewed", action="store_true")
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--chunks", type=Path, default=Path("data/corpus/chunks.jsonl"))
@@ -65,12 +69,16 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=Path("reports/retrieval.json"))
     args = parser.parse_args()
 
-    modes = ["bm25", "dense", "hybrid"] if args.mode == "all" else [args.mode]
-    report: dict[str, dict] = {}
+    modes = ["bm25", "dense", "hybrid", "hybrid-lang"] if args.mode == "all" else [args.mode]
+    report: dict[str, dict] = {"_meta": {
+        "include_unreviewed": args.include_unreviewed,
+        "provisional": args.include_unreviewed,
+        "foreign_sparse_weight": args.foreign_sparse_weight,
+    }}
 
     for mode in modes:
         results = run(mode, args.include_unreviewed, args.top_k,
-                      args.chunks, args.golden)
+                      args.chunks, args.golden, args.foreign_sparse_weight)
         per_language = by_language(results)
         overall = aggregate(results)
 
