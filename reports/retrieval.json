@@ -1,0 +1,369 @@
+{
+  "_meta": {
+    "include_unreviewed": false,
+    "provisional": false,
+    "foreign_sparse_weight": 0.0
+  },
+  "bm25": {
+    "overall": {
+      "recall@1": 0.5333333333333333,
+      "hit@1": 0.5666666666666667,
+      "recall@3": 0.7,
+      "hit@3": 0.7,
+      "recall@5": 0.7,
+      "hit@5": 0.7,
+      "recall@10": 0.7,
+      "hit@10": 0.7,
+      "mrr": 0.6222222222222222,
+      "ndcg@10": 0.6367100361813096
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.23333333333333334,
+        "hit@1": 0.26666666666666666,
+        "recall@3": 0.4,
+        "hit@3": 0.4,
+        "recall@5": 0.4,
+        "hit@5": 0.4,
+        "recall@10": 0.4,
+        "hit@10": 0.4,
+        "mrr": 0.3333333333333333,
+        "ndcg@10": 0.34543868641940684
+      },
+      "fr": {
+        "recall@1": 0.8333333333333334,
+        "hit@1": 0.8666666666666667,
+        "recall@3": 1.0,
+        "hit@3": 1.0,
+        "recall@5": 1.0,
+        "hit@5": 1.0,
+        "recall@10": 1.0,
+        "hit@10": 1.0,
+        "mrr": 0.9111111111111111,
+        "ndcg@10": 0.9279813859432124
+      }
+    },
+    "n_queries": 36,
+    "n_missed_at_5": 9,
+    "misses": [
+      {
+        "item_id": "sej-001",
+        "language": "en",
+        "query": "How long is a receipt for a residence permit application valid?",
+        "gold": [
+          "F15763"
+        ],
+        "got": [
+          "F16162",
+          "F17319",
+          "F17904",
+          "F16123",
+          "F2215"
+        ]
+      },
+      {
+        "item_id": "sej-004",
+        "language": "en",
+        "query": "When should I apply to renew my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F2215",
+          "F2257"
+        ]
+      },
+      {
+        "item_id": "sej-005",
+        "language": "en",
+        "query": "After a year of studying in France, what residence permit can I apply for?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F2215",
+          "F12136",
+          "F2257"
+        ]
+      },
+      {
+        "item_id": "trav-001",
+        "language": "en",
+        "query": "How many hours per year can an EU student work in France?",
+        "gold": [
+          "F13519"
+        ],
+        "got": [
+          "F22118",
+          "F2209",
+          "F16507",
+          "F2208",
+          "F22312"
+        ]
+      },
+      {
+        "item_id": "log-003",
+        "language": "en",
+        "query": "Can a foreign student receive housing benefit?",
+        "gold": [
+          "F1563"
+        ],
+        "got": []
+      },
+      {
+        "item_id": "visa-001",
+        "language": "en",
+        "query": "How many days can I travel in the Schengen area on a long-stay visa?",
+        "gold": [
+          "F16162"
+        ],
+        "got": [
+          "F16146",
+          "F1765",
+          "F10610"
+        ]
+      },
+      {
+        "item_id": "proc-001",
+        "language": "en",
+        "query": "What should I do if I lose my residence permit?",
+        "gold": [
+          "F21032"
+        ],
+        "got": [
+          "F2215",
+          "F2257"
+        ]
+      },
+      {
+        "item_id": "proc-002",
+        "language": "en",
+        "query": "What should I do if my residence permit is stolen?",
+        "gold": [
+          "F22312"
+        ],
+        "got": [
+          "F2215",
+          "F2257"
+        ]
+      },
+      {
+        "item_id": "trav-002",
+        "language": "en",
+        "query": "Which residence permit does a foreign intern in France need?",
+        "gold": [
+          "F17312"
+        ],
+        "got": [
+          "F2215",
+          "F12136",
+          "F2257"
+        ]
+      }
+    ]
+  },
+  "dense": {
+    "overall": {
+      "recall@1": 0.6666666666666666,
+      "hit@1": 0.7,
+      "recall@3": 0.9333333333333333,
+      "hit@3": 0.9666666666666667,
+      "recall@5": 0.95,
+      "hit@5": 0.9666666666666667,
+      "recall@10": 0.95,
+      "hit@10": 0.9666666666666667,
+      "mrr": 0.8166666666666667,
+      "ndcg@10": 0.83727136220525
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.5666666666666667,
+        "hit@1": 0.6,
+        "recall@3": 0.9,
+        "hit@3": 0.9333333333333333,
+        "recall@5": 0.9,
+        "hit@5": 0.9333333333333333,
+        "recall@10": 0.9,
+        "hit@10": 0.9333333333333333,
+        "mrr": 0.7444444444444444,
+        "ndcg@10": 0.7670624302319887
+      },
+      "fr": {
+        "recall@1": 0.7666666666666667,
+        "hit@1": 0.8,
+        "recall@3": 0.9666666666666667,
+        "hit@3": 1.0,
+        "recall@5": 1.0,
+        "hit@5": 1.0,
+        "recall@10": 1.0,
+        "hit@10": 1.0,
+        "mrr": 0.888888888888889,
+        "ndcg@10": 0.9074802941785113
+      }
+    },
+    "n_queries": 36,
+    "n_missed_at_5": 1,
+    "misses": [
+      {
+        "item_id": "sej-004",
+        "language": "en",
+        "query": "When should I apply to renew my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F15763",
+          "F2208",
+          "F17336",
+          "F2215",
+          "F17359"
+        ]
+      }
+    ]
+  },
+  "hybrid": {
+    "overall": {
+      "recall@1": 0.6333333333333333,
+      "hit@1": 0.6666666666666666,
+      "recall@3": 0.8666666666666667,
+      "hit@3": 0.8666666666666667,
+      "recall@5": 0.9,
+      "hit@5": 0.9,
+      "recall@10": 0.9,
+      "hit@10": 0.9,
+      "mrr": 0.7622222222222222,
+      "ndcg@10": 0.791667113327225
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.43333333333333335,
+        "hit@1": 0.4666666666666667,
+        "recall@3": 0.7333333333333333,
+        "hit@3": 0.7333333333333333,
+        "recall@5": 0.8,
+        "hit@5": 0.8,
+        "recall@10": 0.8,
+        "hit@10": 0.8,
+        "mrr": 0.5911111111111111,
+        "ndcg@10": 0.6378955402350429
+      },
+      "fr": {
+        "recall@1": 0.8333333333333334,
+        "hit@1": 0.8666666666666667,
+        "recall@3": 1.0,
+        "hit@3": 1.0,
+        "recall@5": 1.0,
+        "hit@5": 1.0,
+        "recall@10": 1.0,
+        "hit@10": 1.0,
+        "mrr": 0.9333333333333333,
+        "ndcg@10": 0.9454386864194068
+      }
+    },
+    "n_queries": 36,
+    "n_missed_at_5": 3,
+    "misses": [
+      {
+        "item_id": "sej-004",
+        "language": "en",
+        "query": "When should I apply to renew my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F2215",
+          "F2257",
+          "F15763",
+          "F2208"
+        ]
+      },
+      {
+        "item_id": "proc-001",
+        "language": "en",
+        "query": "What should I do if I lose my residence permit?",
+        "gold": [
+          "F21032"
+        ],
+        "got": [
+          "F2215",
+          "F2257",
+          "F14128",
+          "F2208"
+        ]
+      },
+      {
+        "item_id": "proc-002",
+        "language": "en",
+        "query": "What should I do if my residence permit is stolen?",
+        "gold": [
+          "F22312"
+        ],
+        "got": [
+          "F2215",
+          "F2257",
+          "F21032",
+          "F14128"
+        ]
+      }
+    ]
+  },
+  "hybrid-lang": {
+    "overall": {
+      "recall@1": 0.7,
+      "hit@1": 0.7333333333333333,
+      "recall@3": 0.95,
+      "hit@3": 0.9666666666666667,
+      "recall@5": 0.95,
+      "hit@5": 0.9666666666666667,
+      "recall@10": 0.95,
+      "hit@10": 0.9666666666666667,
+      "mrr": 0.8388888888888889,
+      "ndcg@10": 0.8562505583256977
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.5666666666666667,
+        "hit@1": 0.6,
+        "recall@3": 0.9,
+        "hit@3": 0.9333333333333333,
+        "recall@5": 0.9,
+        "hit@5": 0.9333333333333333,
+        "recall@10": 0.9,
+        "hit@10": 0.9333333333333333,
+        "mrr": 0.7444444444444444,
+        "ndcg@10": 0.7670624302319887
+      },
+      "fr": {
+        "recall@1": 0.8333333333333334,
+        "hit@1": 0.8666666666666667,
+        "recall@3": 1.0,
+        "hit@3": 1.0,
+        "recall@5": 1.0,
+        "hit@5": 1.0,
+        "recall@10": 1.0,
+        "hit@10": 1.0,
+        "mrr": 0.9333333333333333,
+        "ndcg@10": 0.9454386864194068
+      }
+    },
+    "n_queries": 36,
+    "n_missed_at_5": 1,
+    "misses": [
+      {
+        "item_id": "sej-004",
+        "language": "en",
+        "query": "When should I apply to renew my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F15763",
+          "F2208",
+          "F17336",
+          "F2215",
+          "F17359"
+        ]
+      }
+    ]
+  }
+}

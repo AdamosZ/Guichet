@@ -19,16 +19,17 @@ The deliverable is the measurement, not the chatbot.
 ## Status
 
 Corpus, chunking, four retrieval modes and the retrieval metrics are working.
-The golden set is seeded but **not yet human-reviewed**, so every figure below
-is provisional.
+The 18-pair seed set has been **human-reviewed against its sources** (12 Oct
+2026); review corrected one wrong source label and one unsupported answer.
 
-## Provisional finding
+## First finding
 
-18 question pairs (the same question asked in French and in English), hit@1:
+18 reviewed question pairs (the same question asked in French and in English;
+15 answerable, 3 deliberately unanswerable), hit@1:
 
 | mode                  | French | English | gap  |
 |-----------------------|--------|---------|------|
-| BM25                  | 0.867  | 0.333   | −62% |
+| BM25                  | 0.867  | 0.267   | −69% |
 | Dense                 | 0.800  | 0.600   | −25% |
 | Hybrid (RRF)          | 0.867  | 0.467   | −46% |
 | **Hybrid, language-aware** | **0.867** | **0.600** | **−31%** |
@@ -47,8 +48,14 @@ when it does not match the corpus language. On this set it keeps hybrid's
 French score and recovers dense's English score: the best of both. Partial
 down-weighting (BM25 weight 0.25 or 0.5) did not beat dropping it.
 
-**Caveat.** n=18 with unreviewed labels. This is evidence the method works, not
-a result.
+**Caveat.** 15 answerable pairs is a small sample: one query flipping moves
+hit@1 by 0.067. The direction is consistent across hit@3 and MRR, but the set
+is being expanded to ~80 pairs before any claim is made about effect size.
+
+**What the review caught.** One seed item asked how many hours a *foreign*
+student may work, but its source page covers *EU* students only; the corpus
+has no non-EU equivalent. The unreviewed label had counted an English miss that
+was partly the label's fault. This is the reason unreviewed items never count.
 
 ## Quickstart
 
@@ -109,7 +116,8 @@ See [docs/METHODOLOGY.md](docs/METHODOLOGY.md). In short:
 - [x] Corpus, chunking, BM25 / dense / hybrid retrieval, per-language metrics
 - [x] Language-aware fusion, measured against the baseline
 - [x] CI on every push
-- [ ] Human review of the seed set, expansion to ~80 pairs
+- [x] Human review of the seed set
+- [ ] Expansion to ~80 pairs
 - [ ] Generation layer with programmatic citation verification
 - [ ] Faithfulness scoring (Promptfoo or Inspect), with judge-vs-human agreement on a hand-labelled subset
 - [ ] Report: numbers, failure taxonomy, limitations
