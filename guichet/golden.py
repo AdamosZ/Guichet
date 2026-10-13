@@ -43,6 +43,9 @@ class GoldenItem:
     # measure, so they are deliberately included.
     answerable: bool = True
     reviewed: bool = False
+    # Who signed the item off: "adam" (human) or "claude" (verified against the
+    # source page by Claude at Adam's request). Reported separately.
+    reviewed_by: str = ""
     notes: str = ""
     tags: list[str] = field(default_factory=list)
     # Where the question came from: a real post by a real person, paraphrased
