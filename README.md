@@ -66,7 +66,12 @@ English minus French on the same questions, paired-bootstrap 95% CIs
    were themselves translated from French forum posts, so translating them back
    could just recover the original wording. On the 38 questions originally
    posted in English, the gain holds (recall@5 +0.17, CI [+0.07, +0.29]).
-4. **Simply dropping BM25 for English queries is not enough.** Language-aware
+4. **A better translator has little room left.** Giving BM25 the *perfect*
+   translation (the human-reviewed French version of each question) as an
+   upper bound reaches English recall@5 0.808 vs 0.743 with opus-mt
+   (+0.065, CI [0.00, +0.13]) and no gain at hit@1. A small free MT model
+   captures most of what translation can offer here.
+5. **Simply dropping BM25 for English queries is not enough.** Language-aware
    fusion narrows the recall gap a little, but its edge over plain hybrid isn't
    significant at n=94. Real English questions often contain French terms
    ("titre de séjour", "CAF", 24 of 94), which BM25 can use. Translation keeps
@@ -79,9 +84,24 @@ win. With 104 real, reviewed questions and a harder corpus, it shrank inside
 the noise, and a more robust finding came out: the gap comes from the sparse
 side, and query translation fixes it. The seed numbers are kept in git history.
 
-**Next:** an LLM as the translator (does a better translation help further?),
-a stronger multilingual embedding model, then the generation half: answers
-with checked citations, and faithfulness scoring.
+## Generation (in progress)
+
+The model answers from the top 5 retrieved passages (`hybrid-trans`), in the
+question's language, and must return a verbatim quote for every citation.
+Citations are then checked by code, with no LLM judge: was the cited passage
+actually retrieved, does the quote really appear in it, does the answer cite a
+gold page, and does it say "not found" on the unanswerable questions (and only
+on those)?
+
+```bash
+pip install -e ".[generate]"
+python -m guichet.generate contexts   # retrieval only (already committed)
+python -m guichet.generate run        # needs ANTHROPIC_API_KEY in .env
+python -m guichet.generate score
+```
+
+**Next:** faithfulness scoring with an LLM judge (Promptfoo/Inspect),
+calibrated against hand labels, and a stronger multilingual embedding model.
 
 ## Quickstart
 
