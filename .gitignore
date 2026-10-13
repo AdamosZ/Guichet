@@ -7,3 +7,7 @@ build/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+
+# Full-page contexts are large and rebuildable: python -m guichet.generate contexts --context pages3
+data/runs/contexts__pages*.jsonl
+_to_delete/

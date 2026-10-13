@@ -84,24 +84,48 @@ win. With 104 real, reviewed questions and a harder corpus, it shrank inside
 the noise, and a more robust finding came out: the gap comes from the sparse
 side, and query translation fixes it. The seed numbers are kept in git history.
 
-## Generation (in progress)
+## Generation
 
-The model answers from the top 5 retrieved passages (`hybrid-trans`), in the
-question's language, and must return a verbatim quote for every citation.
-Citations are then checked by code, with no LLM judge: was the cited passage
-actually retrieved, does the quote really appear in it, does the answer cite a
-gold page, and does it say "not found" on the unanswerable questions (and only
-on those)?
+Claude Haiku 5.5 answers from what `hybrid-trans` retrieved, in the question's
+language, and must quote the passage behind every citation. Citations are
+checked by code, with no LLM judge.
 
-```bash
-pip install -e ".[generate]"
-python -m guichet.generate contexts   # retrieval only (already committed)
-python -m guichet.generate run        # needs ANTHROPIC_API_KEY in .env
-python -m guichet.generate score
-```
+### How much context should the model see?
 
-**Next:** faithfulness scoring with an LLM judge (Promptfoo/Inspect),
-calibrated against hand labels, and a stronger multilingual embedding model.
+End to end: the share of answerable questions answered **and** citing a correct
+page (94 per language), against the top-5-passage baseline:
+
+| context given to the model | FR    | EN    | Δ vs top 5 (FR / EN, 95% CI)                      | cost / 208 answers |
+|----------------------------|-------|-------|---------------------------------------------------|--------------------|
+| top 5 passages             | 0.713 | 0.638 | —                                                 | ≈ $0.14            |
+| top 10 passages            | 0.734 | 0.766 | +0.02 [−0.03, +0.07] / +0.13 [+0.05, +0.21]       | ≈ $0.15            |
+| top 3 full pages           | 0.862 | 0.777 | +0.15 [+0.06, +0.23] / +0.14 [+0.06, +0.22]       | ≈ $0.60            |
+| **top 5 full pages**       | **0.926** | **0.809** | **+0.21 [+0.13, +0.30] / +0.17 [+0.10, +0.26]** | ≈ $1.25        |
+
+Constant across all four runs:
+
+- **Citations:** 100% point at a passage the model was actually given.
+- **Quotes:** 99–100% are exact word sequences from the cited page. The rare
+  exceptions are a reordered or swapped word, never invented content.
+- **Unanswerable questions:** all 20 (10 × 2 languages) correctly answered "not
+  found" in every run. More context did not make the model start guessing.
+
+**What this shows**
+
+1. **The bottleneck was the paragraph, not the model.** With 5 passages, the
+   model often had the right page but not the paragraph holding the answer, and
+   correctly refused. Giving it whole pages lifts end-to-end accuracy by 17–21
+   points, at no cost in faithfulness or refusals.
+2. **Accuracy costs tokens.** The best setting uses about 9× the input tokens
+   of the baseline. At this scale that is still about a cent per 2 answers.
+3. **Once generation stops being the bottleneck, the language gap reappears.**
+   With full pages, English trails French by 12 points (−0.12, CI [−0.19,
+   −0.04]), up from a non-significant 7 points. The remaining gap is the
+   retrieval gap from the first half: French queries simply bring back the
+   right pages more often. Fixing retrieval for English is still the lever.
+
+**Next:** an LLM judge for answer *correctness* (not just citation validity),
+calibrated against hand-graded answers, and the final report.
 
 ## Quickstart
 

@@ -34,3 +34,12 @@ def test_abstention_recorded():
 def test_wrong_answer_language_is_caught():
     gen = {"found": True, "answer": "Le récépissé est valable 4 mois.", "citations": []}
     assert score_row(gen, CTX)["answer_language_ok"] is False  # CTX question is English
+
+
+def test_quote_check_ignores_spacing_but_not_wording():
+    from guichet.generate import quote_in
+
+    page = "Il permet de circuler dans l'espace Schengen , à condition de ne pas dépasser 90 jours."
+    assert quote_in("dans l'espace Schengen, à condition", page)
+    assert not quote_in("dans l'espace Schengen, sous condition", page)
+    assert not quote_in("à condition dans l'espace Schengen", page)
