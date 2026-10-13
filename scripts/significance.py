@@ -15,7 +15,7 @@ from guichet.run_eval import run
 
 CHUNKS = Path("data/corpus/chunks.jsonl")
 GOLDEN = Path("evals/golden.jsonl")
-MODES = ("bm25", "dense", "hybrid", "hybrid-lang")
+MODES = ("bm25", "bm25-trans", "dense", "hybrid", "hybrid-lang", "hybrid-trans")
 
 
 def per_item(results, language: str, metric: str) -> dict[str, float]:
@@ -44,7 +44,7 @@ def main() -> None:
                                      per_item(results[mode], "fr", metric))
             print(f"  {mode:<12} {metric:<9} {mean:+.3f}  [{lo:+.3f}, {hi:+.3f}]")
     print("\nEnglish queries, mode vs mode")
-    for a, b in (("hybrid-lang", "hybrid"), ("hybrid", "dense")):
+    for a, b in (("hybrid-trans", "hybrid"), ("hybrid-lang", "hybrid"), ("hybrid", "dense")):
         for metric in ("hit@1", "recall@5", "mrr"):
             mean, lo, hi = bootstrap(per_item(results[a], "en", metric),
                                      per_item(results[b], "en", metric))

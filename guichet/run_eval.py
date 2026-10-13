@@ -59,7 +59,7 @@ def failures(results: list[QueryResult], k: int = 5) -> list[QueryResult]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", default="all",
-                        choices=["dense", "bm25", "hybrid", "hybrid-lang", "all"])
+                        choices=["dense", "bm25", "bm25-trans", "hybrid", "hybrid-lang", "hybrid-trans", "all"])
     parser.add_argument("--foreign-sparse-weight", type=float, default=0.0,
                         help="BM25 weight for non-French queries in hybrid-lang mode")
     parser.add_argument("--include-unreviewed", action="store_true")
@@ -69,7 +69,7 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=Path("reports/retrieval.json"))
     args = parser.parse_args()
 
-    modes = ["bm25", "dense", "hybrid", "hybrid-lang"] if args.mode == "all" else [args.mode]
+    modes = ["bm25", "bm25-trans", "dense", "hybrid", "hybrid-lang", "hybrid-trans"] if args.mode == "all" else [args.mode]
     report: dict[str, dict] = {"_meta": {
         "include_unreviewed": args.include_unreviewed,
         "provisional": args.include_unreviewed,

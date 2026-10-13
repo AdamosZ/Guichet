@@ -30,48 +30,58 @@ The deliverable is the measurement, not the chatbot.
 
 94 answerable pairs, the same question asked in French and in English.
 
-| mode                   | FR hit@1 | EN hit@1 | FR recall@5 | EN recall@5 |
-|------------------------|----------|----------|-------------|-------------|
-| BM25                   | 0.553    | 0.234    | 0.842       | 0.324       |
-| Dense (multilingual)   | 0.457    | 0.372    | 0.663       | 0.666       |
-| Hybrid (RRF)           | 0.596    | 0.426    | 0.829       | 0.602       |
-| Hybrid, language-aware | 0.596    | 0.394    | 0.829       | 0.666       |
+| mode                          | FR hit@1 | EN hit@1 | FR recall@5 | EN recall@5 |
+|-------------------------------|----------|----------|-------------|-------------|
+| BM25                          | 0.553    | 0.234    | 0.842       | 0.324       |
+| Dense (multilingual)          | 0.457    | 0.372    | 0.663       | 0.666       |
+| Hybrid (RRF)                  | 0.596    | 0.426    | 0.829       | 0.602       |
+| Hybrid, language-aware        | 0.596    | 0.394    | 0.829       | 0.666       |
+| **Hybrid, translated BM25**   | **0.596**| **0.585**| **0.829**   | **0.738**   |
 
-English minus French on the same questions, with paired-bootstrap 95% CIs
+English minus French on the same questions, paired-bootstrap 95% CIs
 (`python -m scripts.significance`):
 
-| mode                   | recall@5 gap                 |
-|------------------------|------------------------------|
-| BM25                   | −0.52  [−0.61, −0.42]        |
-| Dense                  | +0.00  [−0.07, +0.07]        |
-| Hybrid (RRF)           | −0.23  [−0.31, −0.15]        |
-| Hybrid, language-aware | −0.16  [−0.23, −0.10]        |
+| mode                     | hit@1 gap               | recall@5 gap            |
+|--------------------------|-------------------------|-------------------------|
+| BM25                     | −0.32 [−0.44, −0.20]    | −0.52 [−0.62, −0.43]    |
+| Dense                    | −0.09 [−0.19, +0.02]    | +0.00 [−0.07, +0.07]    |
+| Hybrid (RRF)             | −0.17 [−0.29, −0.05]    | −0.23 [−0.31, −0.15]    |
+| Hybrid, language-aware   | −0.20 [−0.31, −0.10]    | −0.16 [−0.24, −0.10]    |
+| Hybrid, translated BM25  | **−0.01 [−0.11, +0.09]**| −0.09 [−0.17, −0.02]    |
 
 ### What this shows
 
 1. **Hybrid search's advantage is French-only.** Dense retrieval is
-   language-neutral (no measurable gap) but weaker overall. BM25 is what makes
-   hybrid the best French system, and BM25 does not cross languages. So the
-   standard recommendation, hybrid, builds in a cross-lingual gap of about 23
-   recall points that the dense model alone does not have.
-2. **Language-aware fusion narrows that gap but doesn't close it.** Dropping
-   BM25 for English queries cuts the gap from −0.23 to −0.16. Compared directly
-   with plain hybrid on English queries, its +0.06 recall@5 has a CI that
-   crosses zero ([−0.02, +0.14]) at n=94. That's suggestive, not established.
-3. **Real questions are mixed-language.** 24 of the 94 English questions use
-   French terms ("titre de séjour", "CAF", "récépissé"). BM25 can match those,
-   which is why switching it off entirely costs some hit@1.
+   language-neutral but weaker. BM25 is what makes hybrid the best French
+   system, and BM25 can't match "residence permit" to "titre de séjour". So
+   standard hybrid retrieval builds in a cross-lingual gap of about 23 recall
+   points.
+2. **Translating the query for BM25 closes most of it.** Translating English
+   questions to French (Helsinki-NLP opus-mt-en-fr, a small free model) before
+   BM25, while dense keeps the original query, lifts English hit@1 from 0.426
+   to 0.585 (+0.16, CI [+0.07, +0.26]) and English recall@5 from 0.602 to 0.738
+   (+0.14, CI [+0.06, +0.22]). The hit@1 gap with French becomes
+   indistinguishable from zero. French results are untouched.
+3. **It isn't a back-translation artefact.** About half the English questions
+   were themselves translated from French forum posts, so translating them back
+   could just recover the original wording. On the 38 questions originally
+   posted in English, the gain holds (recall@5 +0.17, CI [+0.07, +0.29]).
+4. **Simply dropping BM25 for English queries is not enough.** Language-aware
+   fusion narrows the recall gap a little, but its edge over plain hybrid isn't
+   significant at n=94. Real English questions often contain French terms
+   ("titre de séjour", "CAF", 24 of 94), which BM25 can use. Translation keeps
+   those terms *and* fixes the rest.
 
 ### How the result changed as the data got real
 
 On the first 18 hand-written pairs, language-aware fusion looked like a clean
-win (English hit@1 0.467 → 0.600). With 104 real, reviewed questions and a
-harder corpus, that effect shrank inside the noise, and the more robust finding
-turned out to be point 1. The seed numbers are kept in git history.
+win. With 104 real, reviewed questions and a harder corpus, it shrank inside
+the noise, and a more robust finding came out: the gap comes from the sparse
+side, and query translation fixes it. The seed numbers are kept in git history.
 
-**Next experiments:** translate English queries to French before BM25 (gives
-BM25 a query it can match), partial BM25 weighting for mixed-language queries,
-and a stronger multilingual embedding model.
+**Next:** an LLM as the translator (does a better translation help further?),
+a stronger multilingual embedding model, then the generation half: answers
+with checked citations, and faithfulness scoring.
 
 ## Quickstart
 
@@ -99,6 +109,7 @@ guichet/
   corpus.py      Crawl and clean service-public.gouv.fr fiches
   chunk.py       Paragraph-boundary chunking, title carried into embed text
   langid.py      One-bit query language detector (French or not)
+  translate.py   EN→FR query translation for BM25, cached in data/translations/
   index.py       Dense (fastembed) + BM25 + weighted RRF, mode-swappable
   metrics.py     recall@k, hit@k, MRR, nDCG, split by query language
   golden.py      Answer-key schema and validation
@@ -139,6 +150,7 @@ See [docs/METHODOLOGY.md](docs/METHODOLOGY.md). In short:
 - [x] Expansion to 104 pairs from real posted questions, independently pre-checked
 - [x] Human review of all 104 items
 - [x] Paired-bootstrap confidence intervals
+- [x] Query translation (EN→FR) for the sparse side
 - [ ] Generation layer with programmatic citation verification
 - [ ] Faithfulness scoring (Promptfoo or Inspect), with judge-vs-human agreement on a hand-labelled subset
 - [ ] Report: numbers, failure taxonomy, limitations

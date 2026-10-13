@@ -1000,6 +1000,557 @@
       }
     ]
   },
+  "bm25-trans": {
+    "overall": {
+      "recall@1": 0.3962765957446808,
+      "hit@1": 0.4946808510638298,
+      "recall@3": 0.6830673758865248,
+      "hit@3": 0.7606382978723404,
+      "recall@5": 0.7544326241134752,
+      "hit@5": 0.8191489361702128,
+      "recall@10": 0.7703900709219859,
+      "hit@10": 0.8297872340425532,
+      "mrr": 0.6240311550151976,
+      "ndcg@10": 0.6420255436724072
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.3439716312056738,
+        "hit@1": 0.43617021276595747,
+        "recall@3": 0.5975177304964538,
+        "hit@3": 0.648936170212766,
+        "recall@5": 0.6666666666666666,
+        "hit@5": 0.723404255319149,
+        "recall@10": 0.6932624113475178,
+        "hit@10": 0.7446808510638298,
+        "mrr": 0.5477077001013171,
+        "ndcg@10": 0.5692748041760293
+      },
+      "fr": {
+        "recall@1": 0.4485815602836879,
+        "hit@1": 0.5531914893617021,
+        "recall@3": 0.7686170212765957,
+        "hit@3": 0.8723404255319149,
+        "recall@5": 0.8421985815602837,
+        "hit@5": 0.9148936170212766,
+        "recall@10": 0.847517730496454,
+        "hit@10": 0.9148936170212766,
+        "mrr": 0.7003546099290779,
+        "ndcg@10": 0.714776283168785
+      }
+    },
+    "n_queries": 208,
+    "n_missed_at_5": 34,
+    "misses": [
+      {
+        "item_id": "sej-001",
+        "language": "en",
+        "query": "How long is a receipt for a residence permit application valid?",
+        "gold": [
+          "F15763"
+        ],
+        "got": [
+          "F10027",
+          "F11534",
+          "F2384",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "proc-001",
+        "language": "fr",
+        "query": "Que dois-je faire si je perds ma carte de séjour ?",
+        "gold": [
+          "F21032"
+        ],
+        "got": [
+          "F36401",
+          "F16507",
+          "F22118",
+          "F22312",
+          "F2728"
+        ]
+      },
+      {
+        "item_id": "proc-001",
+        "language": "en",
+        "query": "What should I do if I lose my residence permit?",
+        "gold": [
+          "F21032"
+        ],
+        "got": [
+          "F36401",
+          "F31057",
+          "F1460",
+          "F1757",
+          "F1459"
+        ]
+      },
+      {
+        "item_id": "trav-002",
+        "language": "en",
+        "query": "Which residence permit does a foreign intern in France need?",
+        "gold": [
+          "F17312"
+        ],
+        "got": [
+          "F1460",
+          "F21921",
+          "F11534",
+          "F1757",
+          "F10610"
+        ]
+      },
+      {
+        "item_id": "sej-103",
+        "language": "en",
+        "query": "I just moved flats. Do I have to update the address on my residence permit, and how long do I have to do it?",
+        "gold": [
+          "F14128",
+          "F35807"
+        ],
+        "got": [
+          "F36401",
+          "F265",
+          "F18910",
+          "F16507",
+          "F33307"
+        ]
+      },
+      {
+        "item_id": "sej-104",
+        "language": "fr",
+        "query": "Après avoir déclaré ma nouvelle adresse, est-ce que je dois faire refaire ma carte de séjour, et combien ça coûte ?",
+        "gold": [
+          "F35807"
+        ],
+        "got": [
+          "F14128",
+          "F20634",
+          "F1383",
+          "F15402"
+        ]
+      },
+      {
+        "item_id": "sej-104",
+        "language": "en",
+        "query": "After declaring my new address, do I need a new residence card printed, and how much would it cost?",
+        "gold": [
+          "F35807"
+        ],
+        "got": [
+          "F20634",
+          "F1383",
+          "F11534",
+          "F12118",
+          "F14128"
+        ]
+      },
+      {
+        "item_id": "sej-105",
+        "language": "en",
+        "query": "What happens if I submit my student residence permit renewal late?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1460",
+          "F1459",
+          "F31269",
+          "F1757",
+          "F1168"
+        ]
+      },
+      {
+        "item_id": "sej-106",
+        "language": "en",
+        "query": "The prefecture still hasn't answered my student permit renewal. When does the silence count as a refusal, and what can I do then?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1460",
+          "F11534",
+          "F35792",
+          "F1459",
+          "F2208"
+        ]
+      },
+      {
+        "item_id": "sej-107",
+        "language": "en",
+        "query": "How much does it cost to renew a student residence permit?",
+        "gold": [
+          "F2231",
+          "F35799"
+        ],
+        "got": [
+          "F1460",
+          "F1459",
+          "F1757",
+          "F11534"
+        ]
+      },
+      {
+        "item_id": "sej-109",
+        "language": "en",
+        "query": "I was let go during my trial period. Can my 'salarié' residence permit be taken away because I'm now unemployed?",
+        "gold": [
+          "F11892"
+        ],
+        "got": [
+          "F17556",
+          "F14128",
+          "F1459",
+          "F33453",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "sej-113",
+        "language": "fr",
+        "query": "Que se passe-t-il si mon titre de séjour expire avant que la préfecture ait traité ma demande de renouvellement ?",
+        "gold": [
+          "F15763"
+        ],
+        "got": [
+          "F33307",
+          "F17359",
+          "F35032",
+          "F302",
+          "F17336"
+        ]
+      },
+      {
+        "item_id": "sej-113",
+        "language": "en",
+        "query": "What happens if my residence permit runs out before the prefecture has processed my renewal application?",
+        "gold": [
+          "F15763"
+        ],
+        "got": [
+          "F2733",
+          "F17359",
+          "F35032",
+          "F17336",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "sej-114",
+        "language": "en",
+        "query": "The prefecture won't even register my residence permit renewal, though I think I meet the conditions. What can I do?",
+        "gold": [
+          "F31969"
+        ],
+        "got": [
+          "F11534",
+          "F17359",
+          "F1460",
+          "F15898",
+          "F33307"
+        ]
+      },
+      {
+        "item_id": "sej-116",
+        "language": "en",
+        "query": "As an EU citizen moving to France long-term, do I have to get a residence permit?",
+        "gold": [
+          "F12136",
+          "F16003",
+          "F2651",
+          "F39"
+        ],
+        "got": [
+          "F1757",
+          "F16162",
+          "F1460",
+          "F302"
+        ]
+      },
+      {
+        "item_id": "visa-103",
+        "language": "fr",
+        "query": "Quel montant de ressources faut-il justifier par jour de séjour pour entrer en France pour un court séjour ?",
+        "gold": [
+          "F1765",
+          "F21921"
+        ],
+        "got": [
+          "F16162",
+          "F2651",
+          "F1764",
+          "F16146",
+          "F33974"
+        ]
+      },
+      {
+        "item_id": "visa-103",
+        "language": "en",
+        "query": "How much money do I need to show per day of my stay to enter France for a short stay?",
+        "gold": [
+          "F1765",
+          "F21921"
+        ],
+        "got": [
+          "F16146",
+          "F16162",
+          "F13842",
+          "F36401",
+          "F1764"
+        ]
+      },
+      {
+        "item_id": "visa-109",
+        "language": "fr",
+        "query": "Avec un PVT (visa vacances-travail), est-ce que je peux demander une autre carte de séjour, par exemple vie privée et familiale après un PACS ?",
+        "gold": [
+          "F16162"
+        ],
+        "got": [
+          "F2653",
+          "F31039",
+          "F2209",
+          "F19315",
+          "F2215"
+        ]
+      },
+      {
+        "item_id": "visa-109",
+        "language": "en",
+        "query": "Can I switch from a working holiday visa to another residence permit, like 'vie privée et familiale' after a PACS?",
+        "gold": [
+          "F16162"
+        ],
+        "got": [
+          "F2209",
+          "F2728",
+          "F1764",
+          "F35799"
+        ]
+      },
+      {
+        "item_id": "trav-113",
+        "language": "en",
+        "query": "I'm on the post-study job-seeker permit. What's the minimum salary I need to switch to a salarié (employee) permit?",
+        "gold": [
+          "F16922",
+          "F17319",
+          "F2728"
+        ],
+        "got": [
+          "F2890",
+          "F17556",
+          "F11534",
+          "F16507",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "trav-114",
+        "language": "en",
+        "query": "I'm an international student in France and I've landed a permanent job (CDI). How do I switch from a student permit to a salarié permit?",
+        "gold": [
+          "F15898"
+        ],
+        "got": [
+          "F1460",
+          "F1459",
+          "F11534",
+          "F1757"
+        ]
+      },
+      {
+        "item_id": "etu-102",
+        "language": "en",
+        "query": "If I switch to a different degree programme, could I lose my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1459",
+          "F35799",
+          "F17319",
+          "F1460",
+          "F2728"
+        ]
+      },
+      {
+        "item_id": "etu-104",
+        "language": "en",
+        "query": "I'm in France without a residence permit. Can I enrol at university and apply for a student residence permit from inside France?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1459",
+          "F1460",
+          "F1757",
+          "F14128"
+        ]
+      },
+      {
+        "item_id": "etu-105",
+        "language": "en",
+        "query": "I applied online to renew my student titre de séjour — do I get any proof of the application while I wait?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F17556",
+          "F14128",
+          "F2417",
+          "F33307"
+        ]
+      },
+      {
+        "item_id": "etu-106",
+        "language": "fr",
+        "query": "Quelles conditions faut-il remplir pour renouveler son titre de séjour en gardant le statut étudiant ?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F35799",
+          "F35795",
+          "F1459",
+          "F11167",
+          "F1375"
+        ]
+      },
+      {
+        "item_id": "etu-106",
+        "language": "en",
+        "query": "What do I need to meet to renew my residence permit and stay on student status?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1757",
+          "F1460",
+          "F1459"
+        ]
+      },
+      {
+        "item_id": "etu-107",
+        "language": "en",
+        "query": "If I graduate from a French university, does that shorten how long I have to live in France before applying for citizenship?",
+        "gold": [
+          "F2213"
+        ],
+        "got": [
+          "F14128",
+          "F17556",
+          "F2214",
+          "F2863"
+        ]
+      },
+      {
+        "item_id": "arg-106",
+        "language": "en",
+        "query": "If I give up my flat and spend a few months abroad while still being paid by my French employer, do I stay a French tax resident?",
+        "gold": [
+          "F36401",
+          "F62"
+        ],
+        "got": [
+          "F2208",
+          "F17556",
+          "F2728",
+          "F14128"
+        ]
+      },
+      {
+        "item_id": "arg-108",
+        "language": "en",
+        "query": "I'm an international student with no taxable income but I need an avis d'impôt for paperwork. How do I get one?",
+        "gold": [
+          "F358",
+          "F36401",
+          "F369"
+        ],
+        "got": [
+          "F15913",
+          "F17556",
+          "F34328",
+          "F11534"
+        ]
+      },
+      {
+        "item_id": "sante-101",
+        "language": "fr",
+        "query": "Je suis étudiant international hors UE, comment je m'inscris à l'Assurance maladie en France ?",
+        "gold": [
+          "F12859",
+          "F675"
+        ],
+        "got": [
+          "F34441",
+          "F17556",
+          "F407",
+          "F32824",
+          "F34047"
+        ]
+      },
+      {
+        "item_id": "sante-104",
+        "language": "en",
+        "query": "My residence permit is being renewed and all I have is the récépissé. Is that enough to prove to Assurance maladie that I'm legally resident?",
+        "gold": [
+          "F13842"
+        ],
+        "got": [
+          "F15763",
+          "F14128",
+          "F2209",
+          "F1460",
+          "F34047"
+        ]
+      },
+      {
+        "item_id": "sante-106",
+        "language": "en",
+        "query": "What documents do I need to apply for the C2S as a foreign student who arrived recently?",
+        "gold": [
+          "F10027"
+        ],
+        "got": [
+          "F36401",
+          "F2231",
+          "F16162",
+          "F1757",
+          "F38579"
+        ]
+      },
+      {
+        "item_id": "sante-109",
+        "language": "fr",
+        "query": "Si je m'installe en France sans travailler (en suivant mon conjoint), au bout de combien de temps j'ai droit à l'Assurance maladie ?",
+        "gold": [
+          "F34047"
+        ],
+        "got": [
+          "F12859",
+          "F17556"
+        ]
+      },
+      {
+        "item_id": "sante-109",
+        "language": "en",
+        "query": "If I move to France without a job (following my partner), how long before I'm covered by French health insurance?",
+        "gold": [
+          "F34047"
+        ],
+        "got": [
+          "F407",
+          "F12859",
+          "F675",
+          "F14128",
+          "F16507"
+        ]
+      }
+    ]
+  },
   "dense": {
     "overall": {
       "recall@1": 0.32845744680851063,
@@ -2842,6 +3393,435 @@
           "F32824",
           "F12859",
           "F407"
+        ]
+      }
+    ]
+  },
+  "hybrid-trans": {
+    "overall": {
+      "recall@1": 0.45345744680851063,
+      "hit@1": 0.5904255319148937,
+      "recall@3": 0.7362588652482269,
+      "hit@3": 0.824468085106383,
+      "recall@5": 0.7832446808510638,
+      "hit@5": 0.8617021276595744,
+      "recall@10": 0.8045212765957447,
+      "hit@10": 0.8829787234042553,
+      "mrr": 0.7071069739952718,
+      "ndcg@10": 0.6939295008197596
+    },
+    "by_language": {
+      "en": {
+        "recall@1": 0.43617021276595747,
+        "hit@1": 0.5851063829787234,
+        "recall@3": 0.6897163120567376,
+        "hit@3": 0.7872340425531915,
+        "recall@5": 0.7375886524822695,
+        "hit@5": 0.8297872340425532,
+        "recall@10": 0.7641843971631205,
+        "hit@10": 0.8617021276595744,
+        "mrr": 0.688741134751773,
+        "ndcg@10": 0.6610742023085522
+      },
+      "fr": {
+        "recall@1": 0.47074468085106386,
+        "hit@1": 0.5957446808510638,
+        "recall@3": 0.7828014184397163,
+        "hit@3": 0.8617021276595744,
+        "recall@5": 0.8289007092198583,
+        "hit@5": 0.8936170212765957,
+        "recall@10": 0.8448581560283689,
+        "hit@10": 0.9042553191489362,
+        "mrr": 0.7254728132387707,
+        "ndcg@10": 0.7267847993309668
+      }
+    },
+    "n_queries": 208,
+    "n_missed_at_5": 26,
+    "misses": [
+      {
+        "item_id": "proc-001",
+        "language": "en",
+        "query": "What should I do if I lose my residence permit?",
+        "gold": [
+          "F21032"
+        ],
+        "got": [
+          "F14128",
+          "F1213",
+          "F36401",
+          "F31057",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "sej-105",
+        "language": "en",
+        "query": "What happens if I submit my student residence permit renewal late?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1168",
+          "F15763",
+          "F1460",
+          "F16507",
+          "F1459"
+        ]
+      },
+      {
+        "item_id": "sej-106",
+        "language": "fr",
+        "query": "J'ai demandé le renouvellement de mon titre de séjour étudiant et la préfecture ne répond pas : au bout de combien de temps c'est un refus, et que puis-je faire ?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F35792",
+          "F17359",
+          "F22116",
+          "F15813",
+          "F21516"
+        ]
+      },
+      {
+        "item_id": "sej-106",
+        "language": "en",
+        "query": "The prefecture still hasn't answered my student permit renewal. When does the silence count as a refusal, and what can I do then?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F35792",
+          "F15813",
+          "F2191",
+          "F2208",
+          "F17336"
+        ]
+      },
+      {
+        "item_id": "sej-114",
+        "language": "fr",
+        "query": "La préfecture refuse d'enregistrer ma demande de renouvellement de titre de séjour alors que je pense remplir les conditions : quels recours ai-je ?",
+        "gold": [
+          "F31969"
+        ],
+        "got": [
+          "F35792",
+          "F35799",
+          "F17336",
+          "F17359",
+          "F2209"
+        ]
+      },
+      {
+        "item_id": "sej-114",
+        "language": "en",
+        "query": "The prefecture won't even register my residence permit renewal, though I think I meet the conditions. What can I do?",
+        "gold": [
+          "F31969"
+        ],
+        "got": [
+          "F17359",
+          "F17336",
+          "F15763",
+          "F15813",
+          "F11534"
+        ]
+      },
+      {
+        "item_id": "visa-103",
+        "language": "fr",
+        "query": "Quel montant de ressources faut-il justifier par jour de séjour pour entrer en France pour un court séjour ?",
+        "gold": [
+          "F1765",
+          "F21921"
+        ],
+        "got": [
+          "F16162",
+          "F2651",
+          "F16146",
+          "F2231",
+          "F17312"
+        ]
+      },
+      {
+        "item_id": "visa-109",
+        "language": "fr",
+        "query": "Avec un PVT (visa vacances-travail), est-ce que je peux demander une autre carte de séjour, par exemple vie privée et familiale après un PACS ?",
+        "gold": [
+          "F16162"
+        ],
+        "got": [
+          "F35799",
+          "F2653",
+          "F31039",
+          "F2209",
+          "F19315"
+        ]
+      },
+      {
+        "item_id": "visa-109",
+        "language": "en",
+        "query": "Can I switch from a working holiday visa to another residence permit, like 'vie privée et familiale' after a PACS?",
+        "gold": [
+          "F16162"
+        ],
+        "got": [
+          "F2728",
+          "F2209",
+          "F1764"
+        ]
+      },
+      {
+        "item_id": "trav-109",
+        "language": "fr",
+        "query": "J'ai fait un stage de 3 mois en France avec une gratification : est-ce que cette somme est soumise à l'impôt sur le revenu ?",
+        "gold": [
+          "F1228",
+          "F32131"
+        ],
+        "got": [
+          "F36401",
+          "F62",
+          "F31442",
+          "F358"
+        ]
+      },
+      {
+        "item_id": "trav-110",
+        "language": "fr",
+        "query": "J'ai fait mon master en France mais je suis reparti à l'étranger après : est-ce que je peux encore demander le titre recherche d'emploi pour revenir chercher du travail ?",
+        "gold": [
+          "F17319"
+        ],
+        "got": [
+          "F17556",
+          "F12136",
+          "F2728"
+        ]
+      },
+      {
+        "item_id": "etu-102",
+        "language": "en",
+        "query": "If I switch to a different degree programme, could I lose my student residence permit?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F2713",
+          "F675",
+          "F1459",
+          "F33453",
+          "F2650"
+        ]
+      },
+      {
+        "item_id": "etu-104",
+        "language": "en",
+        "query": "I'm in France without a residence permit. Can I enrol at university and apply for a student residence permit from inside France?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1459",
+          "F11534",
+          "F32776",
+          "F1453"
+        ]
+      },
+      {
+        "item_id": "etu-105",
+        "language": "en",
+        "query": "I applied online to renew my student titre de séjour — do I get any proof of the application while I wait?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F22117",
+          "F15763",
+          "F22116",
+          "F34441",
+          "F16189"
+        ]
+      },
+      {
+        "item_id": "etu-106",
+        "language": "en",
+        "query": "What do I need to meet to renew my residence permit and stay on student status?",
+        "gold": [
+          "F2231"
+        ],
+        "got": [
+          "F1563",
+          "F35799",
+          "F1757",
+          "F33453",
+          "F1460"
+        ]
+      },
+      {
+        "item_id": "log-109",
+        "language": "en",
+        "query": "My guarantor lives abroad and doesn't pay tax in France. What proof of income can the landlord ask them for?",
+        "gold": [
+          "F1169",
+          "F31267"
+        ],
+        "got": [
+          "F31442",
+          "F36401",
+          "F62",
+          "F358",
+          "F2209"
+        ]
+      },
+      {
+        "item_id": "arg-104",
+        "language": "en",
+        "query": "I did a paid internship in France. Do I have to declare my internship stipend for income tax?",
+        "gold": [
+          "F1228",
+          "F32131"
+        ],
+        "got": [
+          "F36401",
+          "F358",
+          "F31442",
+          "F17312",
+          "F2728"
+        ]
+      },
+      {
+        "item_id": "arg-105",
+        "language": "fr",
+        "query": "Je pars en VIE (volontariat international en entreprise) : dois-je déclarer mon indemnité aux impôts en France ?",
+        "gold": [
+          "F1228"
+        ],
+        "got": [
+          "F31442",
+          "F36401"
+        ]
+      },
+      {
+        "item_id": "arg-108",
+        "language": "fr",
+        "query": "Étudiant étranger sans revenus imposables, j'ai besoin d'un avis d'impôt pour mes démarches : comment l'obtenir ?",
+        "gold": [
+          "F358",
+          "F36401",
+          "F369"
+        ],
+        "got": [
+          "F31442",
+          "F34328",
+          "F1228",
+          "F1225"
+        ]
+      },
+      {
+        "item_id": "arg-108",
+        "language": "en",
+        "query": "I'm an international student with no taxable income but I need an avis d'impôt for paperwork. How do I get one?",
+        "gold": [
+          "F358",
+          "F36401",
+          "F369"
+        ],
+        "got": [
+          "F34328",
+          "F200",
+          "F15913",
+          "F2208",
+          "F17556"
+        ]
+      },
+      {
+        "item_id": "sante-103",
+        "language": "en",
+        "query": "How do I apply for my carte Vitale as a foreign student, and how long does it take to arrive?",
+        "gold": [
+          "F265"
+        ],
+        "got": [
+          "F2231",
+          "F2863",
+          "F15913",
+          "F12214",
+          "F16922"
+        ]
+      },
+      {
+        "item_id": "sante-104",
+        "language": "en",
+        "query": "My residence permit is being renewed and all I have is the récépissé. Is that enough to prove to Assurance maladie that I'm legally resident?",
+        "gold": [
+          "F13842"
+        ],
+        "got": [
+          "F1460",
+          "F15763",
+          "F31057",
+          "F16507",
+          "F33453"
+        ]
+      },
+      {
+        "item_id": "sante-106",
+        "language": "en",
+        "query": "What documents do I need to apply for the C2S as a foreign student who arrived recently?",
+        "gold": [
+          "F10027"
+        ],
+        "got": [
+          "F15402",
+          "F17319",
+          "F36401",
+          "F2231",
+          "F16162"
+        ]
+      },
+      {
+        "item_id": "sante-107",
+        "language": "fr",
+        "query": "C'est obligatoire de prendre une mutuelle quand on est étudiant en France, et quelles sont mes options ?",
+        "gold": [
+          "F12859",
+          "F675"
+        ],
+        "got": [
+          "F2231",
+          "F1459",
+          "F2713",
+          "F20744",
+          "F17312"
+        ]
+      },
+      {
+        "item_id": "sante-109",
+        "language": "fr",
+        "query": "Si je m'installe en France sans travailler (en suivant mon conjoint), au bout de combien de temps j'ai droit à l'Assurance maladie ?",
+        "gold": [
+          "F34047"
+        ],
+        "got": [
+          "F12859",
+          "F32824",
+          "F407"
+        ]
+      },
+      {
+        "item_id": "sante-109",
+        "language": "en",
+        "query": "If I move to France without a job (following my partner), how long before I'm covered by French health insurance?",
+        "gold": [
+          "F34047"
+        ],
+        "got": [
+          "F12859",
+          "F407",
+          "F32824"
         ]
       }
     ]

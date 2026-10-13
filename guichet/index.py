@@ -29,7 +29,7 @@ from .normalize import tokenize
 DEFAULT_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 RRF_K = 60
 
-Mode = Literal["dense", "bm25", "hybrid", "hybrid-lang"]
+Mode = Literal["dense", "bm25", "bm25-trans", "hybrid", "hybrid-lang", "hybrid-trans"]
 
 # Weight given to the sparse ranking in "hybrid-lang" mode when the query is
 # not in the corpus language. 0.0 drops BM25 entirely for those queries.
@@ -131,19 +131,32 @@ class Retriever:
         self.chunks = chunks
         self.mode = mode
         self.foreign_sparse_weight = foreign_sparse_weight
-        uses_dense = mode in ("dense", "hybrid", "hybrid-lang")
-        uses_sparse = mode in ("bm25", "hybrid", "hybrid-lang")
+        uses_dense = mode in ("dense", "hybrid", "hybrid-lang", "hybrid-trans")
+        uses_sparse = mode in ("bm25", "bm25-trans", "hybrid", "hybrid-lang", "hybrid-trans")
+        self.translations: dict[str, str] = {}
+        if mode in ("bm25-trans", "hybrid-trans"):
+            from .translate import load_cache
+
+            self.translations = load_cache()
         self.dense = DenseIndex(chunks, model_name) if uses_dense else None
         self.sparse = BM25Index(chunks) if uses_sparse else None
+
+    def _sparse_query(self, query: str) -> str:
+        """For *-trans modes, BM25 sees the French translation of a non-French query."""
+        if self.mode in ("bm25-trans", "hybrid-trans") and detect(query) != CORPUS_LANGUAGE:
+            if query not in self.translations:
+                raise KeyError(f"no cached translation for: {query!r} (run python -m guichet.translate)")
+            return self.translations[query]
+        return query
 
     def search(self, query: str, top_k: int = 10, pool: int = 50) -> list[Hit]:
         if self.mode == "dense":
             ranked = self.dense.search(query, top_k)
-        elif self.mode == "bm25":
-            ranked = self.sparse.search(query, top_k)
+        elif self.mode in ("bm25", "bm25-trans"):
+            ranked = self.sparse.search(self._sparse_query(query), top_k)
         else:
             dense_hits = self.dense.search(query, pool)
-            sparse_hits = self.sparse.search(query, pool)
+            sparse_hits = self.sparse.search(self._sparse_query(query), pool)
             weights = [1.0, 1.0]
             if self.mode == "hybrid-lang" and detect(query) != CORPUS_LANGUAGE:
                 # Out-of-language query: BM25 matches stray tokens ("France",

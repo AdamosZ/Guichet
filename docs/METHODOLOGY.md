@@ -84,3 +84,9 @@ expressed relative to French.
 | `dense`      | Multilingual sentence embeddings (paraphrase-multilingual-MiniLM-L12-v2), cosine |
 | `hybrid`     | Reciprocal Rank Fusion of both, k=60, equal weights |
 | `hybrid-lang`| As `hybrid`, but the BM25 ranking is weighted by `--foreign-sparse-weight` (default 0) when the query is not French |
+| `bm25-trans` | BM25 on the French machine translation of non-French queries |
+| `hybrid-trans`| RRF of dense on the original query + BM25 on the translated query |
+
+Translations are computed once (`python -m guichet.translate`) and committed,
+keyed by the exact question text, so every run uses identical translations
+and CI never needs the translation model.

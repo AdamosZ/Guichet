@@ -33,3 +33,23 @@ def test_detect_language():
     assert detect("titre de séjour") == "fr"
     assert detect("How many hours can I work?") == "en"
     assert detect("What should I do if my residence permit is stolen?") == "en"
+
+
+def test_every_english_question_has_a_cached_translation():
+    # The *-trans modes read translations from disk; CI must never need the MT model.
+    from pathlib import Path
+
+    from guichet.golden import load
+    from guichet.translate import load_cache
+
+    root = Path(__file__).resolve().parents[1]
+    import os
+
+    cwd = os.getcwd()
+    os.chdir(root)
+    try:
+        cache = load_cache()
+        missing = [i.item_id for i in load(root / "evals/golden.jsonl") if i.question_en not in cache]
+    finally:
+        os.chdir(cwd)
+    assert not missing, f"run `python -m guichet.translate`; missing: {missing[:5]}"

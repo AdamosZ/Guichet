@@ -22,6 +22,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
+# Only needed to (re)compute data/translations/; the eval reads the cache.
+translate = ["torch", "transformers", "sentencepiece", "sacremoses"]
 
 [tool.setuptools]
 packages = ["guichet", "scripts"]
