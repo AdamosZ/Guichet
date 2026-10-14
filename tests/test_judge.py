@@ -9,6 +9,9 @@ def test_kappa_perfect_and_chance():
 
 
 def test_hand_grading_sample_is_fixed_and_balanced():
+    import pytest
+
+    pytest.importorskip("inspect_ai")  # judge extra: pip install -e ".[judge]"
     from scripts.grade_by_hand import pick
 
     first, second = pick("pages5"), pick("pages5")
