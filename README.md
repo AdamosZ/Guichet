@@ -18,114 +18,44 @@ The deliverable is the measurement, not the chatbot.
 
 ## Status
 
-- **Answer key:** 104 question pairs (94 answerable, 10 deliberately
-  unanswerable), **all human-reviewed** against their source pages, after
-  independent checks by Claude. 86 are real questions people posted (Stack
-  Exchange, the Ameli forum, Alexia, CommentÇaMarche, expat forums), paraphrased
-  and stripped of personal details, each linked to its original post.
-- **Corpus:** 192 service-public.gouv.fr pages, 3,405 chunks. 138 pages are
-  distractors no question points to.
+Corpus, chunking, four retrieval modes and the retrieval metrics are working.
+The 18-pair seed set has been **human-reviewed against its sources** (12 Oct
+2026); review corrected one wrong source label and one unsupported answer.
 
-## Results
+## First finding
 
-94 answerable pairs, the same question asked in French and in English.
+18 reviewed question pairs (the same question asked in French and in English;
+15 answerable, 3 deliberately unanswerable), hit@1:
 
-| mode                          | FR hit@1 | EN hit@1 | FR recall@5 | EN recall@5 |
-|-------------------------------|----------|----------|-------------|-------------|
-| BM25                          | 0.553    | 0.234    | 0.842       | 0.324       |
-| Dense (multilingual)          | 0.457    | 0.372    | 0.663       | 0.666       |
-| Hybrid (RRF)                  | 0.596    | 0.426    | 0.829       | 0.602       |
-| Hybrid, language-aware        | 0.596    | 0.394    | 0.829       | 0.666       |
-| **Hybrid, translated BM25**   | **0.596**| **0.585**| **0.829**   | **0.738**   |
+| mode                  | French | English | gap  |
+|-----------------------|--------|---------|------|
+| BM25                  | 0.867  | 0.267   | −69% |
+| Dense                 | 0.800  | 0.600   | −25% |
+| Hybrid (RRF)          | 0.867  | 0.467   | −46% |
+| **Hybrid, language-aware** | **0.867** | **0.600** | **−31%** |
 
-English minus French on the same questions, paired-bootstrap 95% CIs
-(`python -m scripts.significance`):
+BM25 failing on English is expected: keyword matching cannot cross languages.
 
-| mode                     | hit@1 gap               | recall@5 gap            |
-|--------------------------|-------------------------|-------------------------|
-| BM25                     | −0.32 [−0.44, −0.20]    | −0.52 [−0.62, −0.43]    |
-| Dense                    | −0.09 [−0.19, +0.02]    | +0.00 [−0.07, +0.07]    |
-| Hybrid (RRF)             | −0.17 [−0.29, −0.05]    | −0.23 [−0.31, −0.15]    |
-| Hybrid, language-aware   | −0.20 [−0.31, −0.10]    | −0.16 [−0.24, −0.10]    |
-| Hybrid, translated BM25  | **−0.01 [−0.11, +0.09]**| −0.09 [−0.17, −0.02]    |
+The result worth following up is that **standard hybrid retrieval is worse than
+dense alone for English queries** (0.467 vs 0.600), despite hybrid being the
+usual recommendation. Reciprocal Rank Fusion treats both rankings as equally
+trustworthy. For an out-of-language query the sparse ranking is close to noise
+(it matches stray tokens like "France" or "residence") and fusion promotes that
+noise over correct dense hits.
 
-### What this shows
+**Language-aware fusion** detects the query language and drops the BM25 ranking
+when it does not match the corpus language. On this set it keeps hybrid's
+French score and recovers dense's English score: the best of both. Partial
+down-weighting (BM25 weight 0.25 or 0.5) did not beat dropping it.
 
-1. **Hybrid search's advantage is French-only.** Dense retrieval is
-   language-neutral but weaker. BM25 is what makes hybrid the best French
-   system, and BM25 can't match "residence permit" to "titre de séjour". So
-   standard hybrid retrieval builds in a cross-lingual gap of about 23 recall
-   points.
-2. **Translating the query for BM25 closes most of it.** Translating English
-   questions to French (Helsinki-NLP opus-mt-en-fr, a small free model) before
-   BM25, while dense keeps the original query, lifts English hit@1 from 0.426
-   to 0.585 (+0.16, CI [+0.07, +0.26]) and English recall@5 from 0.602 to 0.738
-   (+0.14, CI [+0.06, +0.22]). The hit@1 gap with French becomes
-   indistinguishable from zero. French results are untouched.
-3. **It isn't a back-translation artefact.** About half the English questions
-   were themselves translated from French forum posts, so translating them back
-   could just recover the original wording. On the 38 questions originally
-   posted in English, the gain holds (recall@5 +0.17, CI [+0.07, +0.29]).
-4. **A better translator has little room left.** Giving BM25 the *perfect*
-   translation (the human-reviewed French version of each question) as an
-   upper bound reaches English recall@5 0.808 vs 0.743 with opus-mt
-   (+0.065, CI [0.00, +0.13]) and no gain at hit@1. A small free MT model
-   captures most of what translation can offer here.
-5. **Simply dropping BM25 for English queries is not enough.** Language-aware
-   fusion narrows the recall gap a little, but its edge over plain hybrid isn't
-   significant at n=94. Real English questions often contain French terms
-   ("titre de séjour", "CAF", 24 of 94), which BM25 can use. Translation keeps
-   those terms *and* fixes the rest.
+**Caveat.** 15 answerable pairs is a small sample: one query flipping moves
+hit@1 by 0.067. The direction is consistent across hit@3 and MRR, but the set
+is being expanded to ~80 pairs before any claim is made about effect size.
 
-### How the result changed as the data got real
-
-On the first 18 hand-written pairs, language-aware fusion looked like a clean
-win. With 104 real, reviewed questions and a harder corpus, it shrank inside
-the noise, and a more robust finding came out: the gap comes from the sparse
-side, and query translation fixes it. The seed numbers are kept in git history.
-
-## Generation
-
-Claude Haiku 5.5 answers from what `hybrid-trans` retrieved, in the question's
-language, and must quote the passage behind every citation. Citations are
-checked by code, with no LLM judge.
-
-### How much context should the model see?
-
-End to end: the share of answerable questions answered **and** citing a correct
-page (94 per language), against the top-5-passage baseline:
-
-| context given to the model | FR    | EN    | Δ vs top 5 (FR / EN, 95% CI)                      | cost / 208 answers |
-|----------------------------|-------|-------|---------------------------------------------------|--------------------|
-| top 5 passages             | 0.713 | 0.638 | —                                                 | ≈ $0.14            |
-| top 10 passages            | 0.734 | 0.766 | +0.02 [−0.03, +0.07] / +0.13 [+0.05, +0.21]       | ≈ $0.15            |
-| top 3 full pages           | 0.862 | 0.777 | +0.15 [+0.06, +0.23] / +0.14 [+0.06, +0.22]       | ≈ $0.60            |
-| **top 5 full pages**       | **0.926** | **0.809** | **+0.21 [+0.13, +0.30] / +0.17 [+0.10, +0.26]** | ≈ $1.25        |
-
-Constant across all four runs:
-
-- **Citations:** 100% point at a passage the model was actually given.
-- **Quotes:** 99–100% are exact word sequences from the cited page. The rare
-  exceptions are a reordered or swapped word, never invented content.
-- **Unanswerable questions:** all 20 (10 × 2 languages) correctly answered "not
-  found" in every run. More context did not make the model start guessing.
-
-**What this shows**
-
-1. **The bottleneck was the paragraph, not the model.** With 5 passages, the
-   model often had the right page but not the paragraph holding the answer, and
-   correctly refused. Giving it whole pages lifts end-to-end accuracy by 17–21
-   points, at no cost in faithfulness or refusals.
-2. **Accuracy costs tokens.** The best setting uses about 9× the input tokens
-   of the baseline. At this scale that is still about a cent per 2 answers.
-3. **Once generation stops being the bottleneck, the language gap reappears.**
-   With full pages, English trails French by 12 points (−0.12, CI [−0.19,
-   −0.04]), up from a non-significant 7 points. The remaining gap is the
-   retrieval gap from the first half: French queries simply bring back the
-   right pages more often. Fixing retrieval for English is still the lever.
-
-**Next:** an LLM judge for answer *correctness* (not just citation validity),
-calibrated against hand-graded answers, and the final report.
+**What the review caught.** One seed item asked how many hours a *foreign*
+student may work, but its source page covers *EU* students only; the corpus
+has no non-EU equivalent. The unreviewed label had counted an English miss that
+was partly the label's fault. This is the reason unreviewed items never count.
 
 ## Quickstart
 
@@ -139,8 +69,7 @@ make eval-provisional   # includes unreviewed items: development only
 ```
 
 The corpus is committed under `data/corpus/` so results are reproducible
-(source pages change). `make corpus` re-crawls exactly the pages listed in
-`data/corpus/fiche_ids.txt`.
+(source pages change). `make corpus` re-crawls it (~5 min, polite delays).
 
 The harness refuses to report on unreviewed items unless explicitly told to,
 and marks such reports `provisional` in their metadata.
@@ -153,16 +82,13 @@ guichet/
   corpus.py      Crawl and clean service-public.gouv.fr fiches
   chunk.py       Paragraph-boundary chunking, title carried into embed text
   langid.py      One-bit query language detector (French or not)
-  translate.py   EN→FR query translation for BM25, cached in data/translations/
   index.py       Dense (fastembed) + BM25 + weighted RRF, mode-swappable
   metrics.py     recall@k, hit@k, MRR, nDCG, split by query language
   golden.py      Answer-key schema and validation
   run_eval.py    CLI entry point
 scripts/
   seed_golden.py   Seed questions drafted by reading sources directly
-  harvest_stackexchange.py  Collect real candidate questions (provenance)
   review_golden.py Interactive review pass over the answer key
-  significance.py  Paired-bootstrap CIs for the headline comparisons
 tests/           Unit tests, plus a check that the answer key stays valid
 evals/golden.jsonl
 data/corpus/     documents.jsonl, chunks.jsonl
@@ -191,10 +117,7 @@ See [docs/METHODOLOGY.md](docs/METHODOLOGY.md). In short:
 - [x] Language-aware fusion, measured against the baseline
 - [x] CI on every push
 - [x] Human review of the seed set
-- [x] Expansion to 104 pairs from real posted questions, independently pre-checked
-- [x] Human review of all 104 items
-- [x] Paired-bootstrap confidence intervals
-- [x] Query translation (EN→FR) for the sparse side
+- [ ] Expansion to ~80 pairs
 - [ ] Generation layer with programmatic citation verification
 - [ ] Faithfulness scoring (Promptfoo or Inspect), with judge-vs-human agreement on a hand-labelled subset
 - [ ] Report: numbers, failure taxonomy, limitations
