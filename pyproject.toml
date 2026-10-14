@@ -25,6 +25,7 @@ dev = ["pytest>=8.0", "ruff>=0.6"]
 # Only needed to (re)compute data/translations/; the eval reads the cache.
 translate = ["torch", "transformers", "sentencepiece", "sacremoses"]
 generate = ["anthropic>=0.40"]
+judge = ["anthropic>=0.40", "inspect-ai>=0.3"]
 
 [tool.setuptools]
 packages = ["guichet", "scripts"]
