@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guichet · Privacy</title>
+<meta name="description" content="What Guichet stores, why, for how long, and who processes it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root { --wall:#E6EBF0; --paper:#FFFFFF; --ink:#1B2433; --ink-soft:#4E5868; --line:#C9D1DA; --stamp:#5A3E9E; --focus:#2D6CDF; color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root { --wall:#151A21; --paper:#1F2630; --ink:#E7EAEF; --ink-soft:#A9B2BF; --line:#37414E; --stamp:#B39CF0; --focus:#7FA8F5; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--wall); color:var(--ink); font:400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+a { color:inherit; text-underline-offset:3px; }
+:focus-visible { outline:3px solid var(--focus); outline-offset:2px; border-radius:4px; }
+.wrap { max-width:42rem; margin:0 auto; padding:1rem 1rem 4rem; }
+.top { display:flex; justify-content:space-between; align-items:center; padding:.5rem 0 2rem; }
+.mark { font-weight:700; font-size:1.25rem; text-decoration:none; }
+.top nav a { margin-left:1rem; font-size:.95rem; }
+article { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:1.25rem 1.5rem 1.5rem; margin-bottom:2rem; }
+h1 { font-size:1.6rem; line-height:1.25; margin:.25rem 0 1rem; }
+h2 { font-size:1.05rem; margin:1.5rem 0 .25rem; color:var(--stamp); }
+p, li { max-width:38rem; }
+ul { padding-left:1.2rem; }
+.updated { color:var(--ink-soft); font-size:.95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="/">Guichet</a>
+    <nav><a href="#en">English</a><a href="#fr">Français</a></nav>
+  </header>
+
+  <article id="en" lang="en">
+    <h1>Privacy</h1>
+    <p class="updated">Last updated 19 October 2026</p>
+
+    <h2>Who runs Guichet</h2>
+    <p>Guichet is an independent student project by Adam Abdelkefi. It is not a government service and is not affiliated with service-public.gouv.fr or any French administration. Contact: <a href="mailto:adamabdelkefi27@gmail.com">adamabdelkefi27@gmail.com</a>.</p>
+
+    <h2>What is stored</h2>
+    <ul>
+      <li>Your question and the answer shown, after e-mail addresses, phone numbers, bank numbers and other long numbers have been removed automatically.</li>
+      <li>Which official pages were used, the language, the time, and the size of the request (to track cost).</li>
+      <li>Your 👍/👎 and optional comment, if you give one.</li>
+    </ul>
+    <p>Not stored: your name, an account, your IP address, or any cookie. Your IP address is used only in memory, scrambled, to limit how many questions one visitor can ask per hour, and is never written down. Your language choice (EN/FR) is remembered in your own browser only.</p>
+    <p><strong>Please don't type personal details</strong> (names, file numbers, addresses) into your question. Guichet doesn't need them.</p>
+
+    <h2>Why</h2>
+    <p>To find answers that were wrong or missing and fix them, and to see which official pages should be added. Questions are never sold, shared for advertising, or used to identify anyone.</p>
+
+    <h2>Who processes it</h2>
+    <ul>
+      <li><strong>Anthropic</strong> (Claude API) receives your question, together with the official pages, to write the answer. See <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>.</li>
+      <li><strong>Hugging Face</strong> hosts the app and keeps the logs in a private dataset only the author can read.</li>
+    </ul>
+    <p>Both providers may process data outside the European Union.</p>
+
+    <h2>How long</h2>
+    <p>Logs are deleted automatically after <strong>90 days</strong>.</p>
+
+    <h2>Your rights</h2>
+    <p>Because nothing identifies you, your question usually can't be found again. If you want a question removed sooner, write to the address above with its text and approximate date and it will be deleted. You can also contact the <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.</p>
+  </article>
+
+  <article id="fr" lang="fr">
+    <h1>Confidentialité</h1>
+    <p class="updated">Mise à jour le 19 octobre 2026</p>
+
+    <h2>Qui gère Guichet</h2>
+    <p>Guichet est un projet étudiant indépendant d'Adam Abdelkefi. Ce n'est pas un service de l'administration et il n'est pas affilié à service-public.gouv.fr. Contact : <a href="mailto:adamabdelkefi27@gmail.com">adamabdelkefi27@gmail.com</a>.</p>
+
+    <h2>Ce qui est enregistré</h2>
+    <ul>
+      <li>Votre question et la réponse affichée, après suppression automatique des e-mails, numéros de téléphone, numéros bancaires et autres longs numéros.</li>
+      <li>Les pages officielles utilisées, la langue, l'heure et la taille de la requête (pour suivre le coût).</li>
+      <li>Votre 👍/👎 et votre commentaire éventuel.</li>
+    </ul>
+    <p>Pas enregistrés : votre nom, un compte, votre adresse IP, ni aucun cookie. Votre adresse IP sert uniquement en mémoire, brouillée, à limiter le nombre de questions par visiteur et par heure ; elle n'est jamais écrite. Votre choix de langue (EN/FR) est gardé dans votre navigateur uniquement.</p>
+    <p><strong>N'écrivez pas d'informations personnelles</strong> (nom, numéro de dossier, adresse) dans votre question : Guichet n'en a pas besoin.</p>
+
+    <h2>Pourquoi</h2>
+    <p>Pour repérer les réponses fausses ou manquantes et les corriger, et savoir quelles pages officielles ajouter. Les questions ne sont jamais vendues, partagées à des fins publicitaires ni utilisées pour identifier quelqu'un.</p>
+
+    <h2>Qui les traite</h2>
+    <ul>
+      <li><strong>Anthropic</strong> (API Claude) reçoit votre question avec les pages officielles pour rédiger la réponse. Voir la <a href="https://www.anthropic.com/legal/privacy">politique de confidentialité d'Anthropic</a>.</li>
+      <li><strong>Hugging Face</strong> héberge l'application et conserve les journaux dans un jeu de données privé, lisible par l'auteur seulement.</li>
+    </ul>
+    <p>Ces deux prestataires peuvent traiter des données hors de l'Union européenne.</p>
+
+    <h2>Combien de temps</h2>
+    <p>Les journaux sont supprimés automatiquement au bout de <strong>90 jours</strong>.</p>
+
+    <h2>Vos droits</h2>
+    <p>Comme rien ne vous identifie, votre question ne peut généralement pas être retrouvée. Pour faire supprimer une question plus tôt, écrivez à l'adresse ci-dessus avec son texte et sa date approximative. Vous pouvez aussi saisir la <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.</p>
+  </article>
+
+  <p><a href="/">← Back to Guichet / Retour</a></p>
+</div>
+</body>
+</html>

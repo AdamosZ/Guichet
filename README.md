@@ -228,8 +228,8 @@ decisions matched v2. The live app uses v2s. The judge's calibration
   re-downloads every page, flags pages that changed (🔴 if the official
   « Vérifié le » date moved), and lists golden items whose reference answers
   need re-checking. The first run, on 16 Oct 2026, found 5 changed pages
-  affecting 6 items. `ops/freshness.yml` runs it weekly and opens a GitHub
-  issue when items are affected.
+  affecting 6 items. `ops/weekly.yml` runs it every Monday as part of the
+  weekly report.
   Review of that run (19 Oct): all 6 reference answers were still correct, and
   every evidence quote was still on the live pages. Three pages had only
   changed their related-links box. The bank page (F2417) reworded the

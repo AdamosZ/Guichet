@@ -5,9 +5,12 @@ Privacy rules, applied before anything is written:
 - e-mail addresses, phone numbers and long digit runs (social security,
   foreigner file and bank numbers) are replaced by placeholders.
 
-Records go to a local JSONL folder. If HF_LOG_REPO and HF_TOKEN are set (on
-the hosted app), the folder is synced every 10 minutes to a *private* Hugging
-Face dataset so the logs survive restarts.
+Records go to a local JSONL folder, one file per kind and day. If HF_LOG_REPO
+and HF_TOKEN are set (on the hosted app), the folder is synced every 10 minutes
+to a *private* Hugging Face dataset so the logs survive restarts.
+
+Retention: files older than RETENTION_DAYS (90) are deleted locally at start-up
+and once a day; scripts/weekly_report.py --purge deletes them from the dataset.
 """
 
 from __future__ import annotations
@@ -18,9 +21,21 @@ import re
 import threading
 import time
 import uuid
+from datetime import date, timedelta
 from pathlib import Path
 
 LOG_DIR = Path(os.environ.get("GUICHET_LOG_DIR", "user_logs"))
+RETENTION_DAYS = int(os.environ.get("RETENTION_DAYS", "90"))
+_FILE_DATE = re.compile(r"-(\d{4}-\d{2}-\d{2})\.jsonl$")
+
+
+def is_expired(name: str, today: date | None = None, days: int = RETENTION_DAYS) -> bool:
+    """True for a log file (…-YYYY-MM-DD.jsonl) older than the retention period."""
+    match = _FILE_DATE.search(name)
+    if not match:
+        return False
+    return date.fromisoformat(match.group(1)) < (today or date.today()) - timedelta(days=days)
+
 
 _EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 _PHONE = re.compile(r"(?:\+|00)\d[\d .-]{7,}\d|\b0\d(?:[ .-]?\d{2}){4}\b")
@@ -47,8 +62,22 @@ class Logbook:
 
             self._scheduler = CommitScheduler(repo_id=repo, repo_type="dataset", folder_path=folder,
                                               path_in_repo="logs", every=10, private=True, token=token)
+        self._purged_on = ""
+        self.purge()
+
+    def purge(self) -> list[str]:
+        """Delete local log files past the retention period."""
+        removed = []
+        for path in self.folder.glob("*.jsonl"):
+            if is_expired(path.name):
+                path.unlink(missing_ok=True)
+                removed.append(path.name)
+        self._purged_on = time.strftime("%Y-%m-%d")
+        return removed
 
     def _write(self, kind: str, record: dict) -> None:
+        if self._purged_on != time.strftime("%Y-%m-%d"):
+            self.purge()
         path = self.folder / f"{kind}-{time.strftime('%Y-%m-%d')}.jsonl"
         lock = self._scheduler.lock if self._scheduler else self._lock
         with lock, path.open("a", encoding="utf-8") as handle:

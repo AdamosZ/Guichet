@@ -1,0 +1,41 @@
+# Redeploy the Hugging Face Space whenever app code or pages change on main.
+# To enable: move this file to .github/workflows/deploy.yml, then in GitHub →
+# Settings → Secrets and variables → Actions add:
+#   secret   HF_TOKEN   a Hugging Face token with write access
+#   variable HF_SPACE   e.g. AdamosZ/guichet
+# The Anthropic key stays a Space secret; GitHub never sees it.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+    paths: ["guichet/**", "server.py", "app.py", "static/**", "data/corpus/**", "scripts/deploy_space.py"]
+  workflow_dispatch:
+
+concurrency: deploy
+
+jobs:
+  deploy:
+    if: vars.HF_SPACE != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev,app]"
+      - name: Tests must pass before deploying
+        run: python -m pytest -q
+      - name: Reuse embeddings when the pages haven't changed
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/cache
+            ~/.cache/fastembed
+          key: emb-${{ hashFiles('data/corpus/chunks.jsonl') }}
+      - name: Upload to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DEPLOY_MESSAGE: "Deploy ${{ github.sha }}"
+        run: python -m scripts.deploy_space --space "${{ vars.HF_SPACE }}" --code-only

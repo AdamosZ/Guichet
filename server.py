@@ -5,6 +5,7 @@
 
 Endpoints:
     GET  /                 the page (static/index.html)
+    GET  /privacy          privacy notice (static/privacy.html)
     POST /api/ask          {"question": "..."} -> answer with verified sources
     POST /api/feedback     {"answer_id": "...", "rating": "up"|"down", "comment": "..."}
     GET  /api/health
@@ -138,6 +139,11 @@ def _visitor(request: Request) -> str:
 @app.get("/")
 def index():
     return FileResponse(ROOT / "static/index.html")
+
+
+@app.get("/privacy")
+def privacy():
+    return FileResponse(ROOT / "static/privacy.html")
 
 
 @app.get("/api/health")

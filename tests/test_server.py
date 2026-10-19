@@ -24,6 +24,9 @@ def client(tmp_path, monkeypatch):
 def test_page_and_health(client):
     assert client.get("/").status_code == 200
     assert client.get("/api/health").json()["demo"] is True
+    privacy = client.get("/privacy")
+    assert privacy.status_code == 200 and "90 days" in privacy.text and "90 jours" in privacy.text
+    assert 'href="/privacy"' in client.get("/").text
 
 
 def test_answered_not_found_and_feedback(client):
