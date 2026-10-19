@@ -45,7 +45,13 @@ class Hit:
 
 
 class DenseIndex:
-    """Embeddings with an on-disk cache keyed by model and corpus content."""
+    """Embeddings with an on-disk cache keyed by model and chunk *content*.
+
+    Two files in cache_dir:
+    - emb-<fingerprint>.npy: the vectors for exactly this corpus (loaded as is);
+    - store-<model>.npz: the latest vectors with a hash of each chunk's text, so
+      when a few pages change only their chunks are re-embedded.
+    """
 
     def __init__(self, chunks: list[Chunk], model_name: str = DEFAULT_MODEL,
                  cache_dir: Path = Path("data/cache")):
@@ -54,13 +60,22 @@ class DenseIndex:
         self.cache_dir = cache_dir
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._model = None
+        self.reused = 0
         self.vectors = self._load_or_embed()
 
+    @staticmethod
+    def _text_hash(text: str) -> str:
+        return hashlib.sha256(text.encode()).hexdigest()[:20]
+
+    def _hashes(self) -> list[str]:
+        return [self._text_hash(c.embed_text) for c in self.chunks]
+
     def _cache_path(self) -> Path:
-        fingerprint = hashlib.sha256(
-            (self.model_name + "|".join(c.chunk_id for c in self.chunks)).encode()
-        ).hexdigest()[:16]
+        fingerprint = hashlib.sha256((self.model_name + "|".join(self._hashes())).encode()).hexdigest()[:16]
         return self.cache_dir / f"emb-{fingerprint}.npy"
+
+    def _store_path(self) -> Path:
+        return self.cache_dir / f"store-{hashlib.sha256(self.model_name.encode()).hexdigest()[:8]}.npz"
 
     def _embedder(self):
         if self._model is None:
@@ -78,9 +93,26 @@ class DenseIndex:
         path = self._cache_path()
         if path.exists():
             return np.load(path)
-        print(f"embedding {len(self.chunks)} chunks with {self.model_name}")
-        vectors = self.encode([c.embed_text for c in self.chunks])
+        hashes = self._hashes()
+        known: dict[str, np.ndarray] = {}
+        store = self._store_path()
+        if store.exists():
+            saved = np.load(store)
+            known = dict(zip(saved["hashes"].tolist(), saved["vectors"], strict=True))
+        todo = [i for i, h in enumerate(hashes) if h not in known]
+        self.reused = len(hashes) - len(todo)
+        print(f"embedding {len(todo)} of {len(hashes)} chunks with {self.model_name} "
+              f"({self.reused} unchanged, reused)")
+        fresh = self.encode([self.chunks[i].embed_text for i in todo]) if todo else None
+        dim = fresh.shape[1] if fresh is not None else next(iter(known.values())).shape[0]
+        vectors = np.zeros((len(hashes), dim), dtype=np.float32)
+        for row, i in enumerate(todo):
+            vectors[i] = fresh[row]
+        for i, h in enumerate(hashes):
+            if h in known:
+                vectors[i] = known[h]
         np.save(path, vectors)
+        np.savez(store, hashes=np.array(hashes), vectors=vectors)
         return vectors
 
     def search(self, query: str, top_k: int) -> list[tuple[int, float]]:

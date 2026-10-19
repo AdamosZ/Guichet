@@ -175,10 +175,15 @@ question ─┬─ dense search (original question)
 - **Quotes re-checked:** each quote is verified against its page again before
   display, and an answer whose quotes all fail is shown as "not found".
 - **Privacy:** anonymous logging only. No IPs or accounts are kept, and
-  e-mails, phone numbers and long digit runs are scrubbed.
+  e-mails, phone numbers and long digit runs are scrubbed. Logs are deleted
+  after 90 days, both on the server and in the backup dataset. The notice is
+  at `/privacy`.
 - **Feedback:** "Did this answer your question?" on every answer, with an optional comment when the answer is no.
 - **Spending:** per-session and daily question caps (cost is about $0.006 per
   question), on top of a spending limit set in the Anthropic console.
+- **Operations:** pushing to `main` runs the tests and redeploys
+  (`ops/deploy.yml`). A weekly GitHub issue reports usage, unanswered questions,
+  👎 feedback, cost and page changes (`ops/weekly.yml`, see "The rules change" below).
 
 The interface is a single hand-built page (`static/index.html`) on a small
 FastAPI server (`server.py`). Each question gets a numbered queue ticket, and
@@ -224,21 +229,30 @@ decisions matched v2. The live app uses v2s. The judge's calibration
   walks through logged questions, 👎 first. Kept ones become *candidates*, and
   go through the same source-based drafting and human review as every other
   item, so a wrong app answer can never become a "correct" label.
-- **The rules change; the monitor notices.** `python -m scripts.freshness`
-  re-downloads every page, flags pages that changed (🔴 if the official
-  « Vérifié le » date moved), and lists golden items whose reference answers
-  need re-checking. The first run, on 16 Oct 2026, found 5 changed pages
-  affecting 6 items. `ops/weekly.yml` runs it every Monday as part of the
-  weekly report.
-  Review of that run (19 Oct): all 6 reference answers were still correct, and
-  every evidence quote was still on the live pages. Three pages had only
-  changed their related-links box. The bank page (F2417) reworded the
-  basic-services list and added a fee cap (€4 per incident, €20 a month). The
-  international driving permit page dropped its online tracking service, which
-  matters for the app even though no test question cites it. The new versions
-  were accepted with `--accept`, which updates the corpus and logs the review in
-  `evals/page_reviews.jsonl`. Effect on the results: BM25-only French recall@5
-  0.842 → 0.837; every other reported number unchanged.
+- **The rules change; Guichet keeps up on its own, for free.** Every Monday
+  `ops/weekly.yml` runs `python -m scripts.freshness --auto`, which re-downloads
+  all pages and applies two different rules:
+  - *The app always gets the newest page.* The live official page is the
+    truth, so every changed page replaces the stored copy automatically. Only
+    the changed paragraphs are re-embedded, and the app is redeployed.
+  - *The answer key needs evidence.* A test item citing a changed page stays
+    reviewed only if each of its evidence quotes is still on the live page word
+    for word and the page's « Vérifié le » date didn't move. Otherwise it goes
+    back to unreviewed, so it stops counting in the reported numbers until a
+    human re-checks it (`make review`).
+
+  Then the retrieval eval is re-run and compared with the week before. One
+  GitHub issue reports all of it, including usage, 👎 feedback and unanswered
+  questions (`scripts/weekly_report.py`). Every page update is logged in
+  `evals/page_reviews.jsonl`. No paid API is involved.
+  The first manual run (16 Oct 2026) found 5 changed pages; all 6 affected
+  reference answers were still correct, and every evidence quote was still on
+  the live pages. The new versions were accepted, and the international
+  driving permit page turned out to have dropped an online tracking service
+  that the app would otherwise still have mentioned. Effect on the results:
+  BM25-only French recall@5 0.842 → 0.837; nothing else moved. The first
+  automatic test run (19 Oct) caught the bank page being officially re-dated
+  that same day, and sent its test item back for review.
 
 ## Quickstart
 

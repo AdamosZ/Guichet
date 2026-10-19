@@ -62,3 +62,27 @@ def test_weekly_report_counts_last_seven_days():
     md = to_markdown(s)
     assert "Which bank?" in md and "missing the deadline" in md and "failed" in md
     assert "No questions" in to_markdown(summarise([], {}, now=now))
+
+
+def test_freshness_triage_keeps_only_items_whose_evidence_holds():
+    from guichet.corpus import Document
+    from scripts.freshness import triage_items
+
+    def doc(ref, text):
+        return Document(ref, "u", "t", "1 mai", text, len(text), "now")
+
+    live = {"F1": doc("F1", "Le récépissé est valable 4 mois."), "F2": doc("F2", "Nouveau texte.")}
+    golden = [
+        {"item_id": "ok", "reviewed": True, "gold_doc_ids": ["F1"], "question_en": "q",
+         "evidence": [{"doc_id": "F1", "quote": "valable 4 mois"}]},
+        {"item_id": "lost", "reviewed": True, "gold_doc_ids": ["F2"], "question_en": "q",
+         "evidence": [{"doc_id": "F2", "quote": "Ancien texte."}]},
+        {"item_id": "no-evidence", "reviewed": True, "gold_doc_ids": ["F1"], "question_en": "q", "evidence": []},
+        {"item_id": "redated", "reviewed": True, "gold_doc_ids": ["F3", "F1"], "question_en": "q",
+         "evidence": [{"doc_id": "F1", "quote": "valable 4 mois"}]},
+        {"item_id": "untouched", "reviewed": True, "gold_doc_ids": ["F9"], "question_en": "q", "evidence": []},
+    ]
+    live["F3"] = doc("F3", "x")
+    cleared, flagged = triage_items(golden, live, redated={"F3"})
+    assert [c["item_id"] for c in cleared] == ["ok"]
+    assert [f["item_id"] for f in flagged] == ["lost", "no-evidence", "redated"]

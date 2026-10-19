@@ -53,3 +53,27 @@ def test_every_english_question_has_a_cached_translation():
     finally:
         os.chdir(cwd)
     assert not missing, f"run `python -m guichet.translate`; missing: {missing[:5]}"
+
+
+def test_dense_cache_reembeds_only_changed_chunks(tmp_path, monkeypatch):
+    import numpy as np
+
+    from guichet.chunk import Chunk
+    from guichet.index import DenseIndex
+
+    calls = []
+
+    def fake_encode(self, texts):
+        calls.append(len(texts))
+        return np.array([[len(t), 1.0] for t in texts], dtype=np.float32)
+
+    monkeypatch.setattr(DenseIndex, "encode", fake_encode)
+    chunks = [Chunk(f"F{i}-0", f"F{i}", "u", "t", f"body {i}", 0) for i in range(4)]
+    DenseIndex(chunks, cache_dir=tmp_path)
+    assert calls == [4]
+    DenseIndex(chunks, cache_dir=tmp_path)            # exact cache hit
+    assert calls == [4]
+    chunks[2] = Chunk("F2-0", "F2", "u", "t", "body 2, rewritten by the ministry", 0)
+    index = DenseIndex(chunks, cache_dir=tmp_path)    # same ids, new text
+    assert calls == [4, 1] and index.reused == 3
+    assert index.vectors[2][0] == len(chunks[2].embed_text)

@@ -27,13 +27,14 @@ jobs:
       - run: pip install -e ".[dev,app]"
       - name: Tests must pass before deploying
         run: python -m pytest -q
-      - name: Reuse embeddings when the pages haven't changed
+      - name: Reuse embeddings (only changed paragraphs are re-embedded)
         uses: actions/cache@v4
         with:
           path: |
             data/cache
             ~/.cache/fastembed
           key: emb-${{ hashFiles('data/corpus/chunks.jsonl') }}
+          restore-keys: emb-
       - name: Upload to the Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
