@@ -1,0 +1,36 @@
+# Weekly check that the official pages behind the answer key haven't changed.
+# To enable: move this file to .github/workflows/freshness.yml
+name: freshness
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Re-crawl and compare
+        run: python -m scripts.freshness
+      - name: Summary
+        run: cat reports/freshness.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Open an issue if golden items are affected
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(python -c "import json;print(len(json.load(open('reports/freshness.json'))['affected_items']))")
+          if [ "$n" -gt 0 ]; then
+            gh issue create --title "Freshness: $n golden items cite changed pages ($(date +%F))" \
+              --body-file reports/freshness.md
+          fi

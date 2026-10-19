@@ -1,0 +1,120 @@
+{
+  "checked": 192,
+  "changed": [
+    {
+      "doc_id": "F16225",
+      "title": "Je deviens parent",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16225",
+      "verified_before": "01 juin 2026",
+      "verified_now": "01 juin 2026",
+      "sample_diff": [
+        "-Mise en œuvre du congé supplémentaire de naissance",
+        "-Le congé supplémentaire de naissance est mis en œuvre",
+        "-depuis le 1",
+        "-er",
+        "-juillet 2026",
+        "-. Le ou les parents d'un enfant né à compter du 1"
+      ]
+    },
+    {
+      "doc_id": "F11534",
+      "title": "Permis international pour conduire à l'étranger",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11534",
+      "verified_before": "03 mars 2026",
+      "verified_now": "16 octobre 2026",
+      "sample_diff": [
+        "-Comment suivre une demande de permis de conduire international ?",
+        "-Un",
+        "-service en ligne",
+        "-permet de suivre la fabrication et l'envoi de votre permis de conduire international.",
+        "-Suivre l'avancement d'une demande de permis de conduire",
+        "-Savoir comment le permis de conduire international est expédié et suivre son envoi"
+      ]
+    },
+    {
+      "doc_id": "F1169",
+      "title": "Futur locataire d'un logement privé : justificatifs à donner au propriétaire",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1169",
+      "verified_before": "10 avril 2025",
+      "verified_now": "10 avril 2025",
+      "sample_diff": [
+        "-Logement à louer : dans quel cas signer une convention avec l'Anah ?",
+        "+Dans quel cas signer une convention Anah pour louer un logement ? (Loc'Avantages)"
+      ]
+    },
+    {
+      "doc_id": "F12859",
+      "title": "Assurance maladie d'un étranger qui s'installe en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859",
+      "verified_before": "02 avril 2024",
+      "verified_now": "02 avril 2024",
+      "sample_diff": [
+        "-Résider en France de façon stable et régulière",
+        "-Fonds de la complémentaire santé solidaire",
+        "+L'assurance habitation est-elle obligatoire ?",
+        "+Agence nationale pour l'information sur le logement (Anil)"
+      ]
+    },
+    {
+      "doc_id": "F2417",
+      "title": "Refus d'ouverture de compte bancaire : droit au compte",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417",
+      "verified_before": "28 octobre 2025",
+      "verified_now": "28 octobre 2025",
+      "sample_diff": [
+        "-Délivrance à la demande de relevés d'identité bancaire",
+        "+1 changement d'adresse par an",
+        "+Délivrance, à la demande, de relevés d'identité bancaire",
+        "-Envoi mensuel d'un relevé des opérations effectuées sur le compte",
+        "-Réalisation des opérations de caisse",
+        "+Fourniture mensuelle d'un relevé des opérations effectuées sur le compte"
+      ]
+    }
+  ],
+  "missing": [],
+  "affected_items": [
+    {
+      "item_id": "log-108",
+      "pages": [
+        "F1169"
+      ],
+      "question_en": "When renting in France, what documents is a landlord actually allowed to ask for in my rental 'dossier'?"
+    },
+    {
+      "item_id": "log-109",
+      "pages": [
+        "F1169"
+      ],
+      "question_en": "My guarantor lives abroad and doesn't pay tax in France. What proof of income can the landlord ask them for?"
+    },
+    {
+      "item_id": "arg-102",
+      "pages": [
+        "F2417"
+      ],
+      "question_en": "Banks keep turning me down for an account. Is there an official way to force a bank to open one for me?"
+    },
+    {
+      "item_id": "sante-101",
+      "pages": [
+        "F12859"
+      ],
+      "question_en": "I'm a non-EU international student. How do I sign up for French health insurance?"
+    },
+    {
+      "item_id": "sante-102",
+      "pages": [
+        "F12859"
+      ],
+      "question_en": "I'm an EU student in France. Is my EHIC enough to be covered, and what do I do if I don't have one?"
+    },
+    {
+      "item_id": "sante-107",
+      "pages": [
+        "F12859"
+      ],
+      "question_en": "Do I actually need a mutuelle (top-up health insurance) as a student in France, and what are my options?"
+    }
+  ],
+  "checked_at": "2026-10-16 17:12 UTC"
+}

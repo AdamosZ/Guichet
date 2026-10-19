@@ -43,3 +43,15 @@ def test_quote_check_ignores_spacing_but_not_wording():
     assert quote_in("dans l'espace Schengen, à condition", page)
     assert not quote_in("dans l'espace Schengen, sous condition", page)
     assert not quote_in("à condition dans l'espace Schengen", page)
+
+
+def test_structured_reply_is_read_from_the_tool_call():
+    from types import SimpleNamespace
+
+    from guichet.generate import read_message, request_kwargs
+
+    form = SimpleNamespace(type="tool_use", input={"found": True, "answer": "Oui.", "citations": []})
+    raw, reply = read_message(SimpleNamespace(content=[form]))
+    assert reply["found"] is True and "parse_error" not in reply
+    assert request_kwargs("v2s")["tool_choice"]["name"] == "submit_answer"
+    assert "tools" not in request_kwargs("v1")

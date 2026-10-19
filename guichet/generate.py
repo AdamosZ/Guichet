@@ -50,8 +50,13 @@ def contexts_path(variant: str) -> Path:
     return RUNS / f"contexts__{variant}.jsonl"
 
 
-def generations_path(model: str, variant: str) -> Path:
-    return RUNS / f"generations__{model}__{variant}.jsonl"
+def _suffix(prompt: str) -> str:
+    # v1 files keep their original names so earlier results stay reproducible.
+    return "" if prompt == "v1" else f"__{prompt}"
+
+
+def generations_path(model: str, variant: str, prompt: str = "v1") -> Path:
+    return RUNS / f"generations__{model}__{variant}{_suffix(prompt)}.jsonl"
 
 SYSTEM = """You answer questions from international students about French administration.
 Use ONLY the numbered passages provided, which come from service-public.gouv.fr.
@@ -65,6 +70,74 @@ Rules:
 Reply with JSON only, no other text:
 {"found": true or false, "answer": "<your answer, or a one-sentence explanation that the sources don't cover it>",
  "citations": [{"chunk_id": "<id exactly as given>", "quote": "<exact quote>"}]}"""
+
+# v2: same rules, written for the reader. Pilot feedback on v1: answers talked
+# about "the passages", hedged before answering, and buried conditions in prose.
+SYSTEM_V2 = """You help international students with French administrative procedures.
+Use ONLY the numbered official pages provided, which come from service-public.gouv.fr.
+
+How to write the answer (the reader is often stressed and reading in a second language):
+- First sentence: the direct answer. "Yes", "No", "It depends on…", or the number, deadline or amount asked for.
+- If the answer depends on conditions, list each one on its own line starting with "- ", in plain words,
+  keeping the exact amounts, durations and thresholds from the page. Say whether ALL are required or ONE is enough.
+- If the page says what to do next (where to apply, which office, which form), end with one line about it.
+- Short sentences. Explain any French administrative term the first time you use it.
+- Never mention "passages", "sources", "the text provided" or yourself. If needed, say "the official page".
+
+Rules:
+- Every fact must come from the pages. Add nothing from your own knowledge.
+- For each page you rely on, give a short quote copied EXACTLY, character for character, from that page (in French, as written).
+- If the pages do not answer the question, set "found" to false and give no citations. Do not guess.
+
+Reply with JSON only, no other text:
+{"found": true or false, "answer": "<the answer, formatted as above>",
+ "citations": [{"chunk_id": "<id exactly as given>", "quote": "<exact quote>"}]}"""
+
+# v2s: the v2 instructions, but the reply is forced through a tool ("fill in this
+# form") instead of free-text JSON, so a malformed reply can't happen. v2 broke
+# the JSON format on 5 of 208 answers, which a student would see as an error.
+PROMPTS = {"v1": SYSTEM, "v2": SYSTEM_V2, "v2s": SYSTEM_V2}
+STRUCTURED = {"v2s"}
+
+ANSWER_TOOL = {
+    "name": "submit_answer",
+    "description": "Submit the answer to the student's question, with exact quotes from the pages.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "found": {"type": "boolean",
+                      "description": "false if the pages do not answer the question"},
+            "answer": {"type": "string",
+                       "description": "The answer, formatted as instructed (direct answer first, '- ' bullets)."},
+            "citations": {
+                "type": "array",
+                "items": {"type": "object",
+                          "properties": {"chunk_id": {"type": "string"}, "quote": {"type": "string"}},
+                          "required": ["chunk_id", "quote"]},
+            },
+        },
+        "required": ["found", "answer", "citations"],
+    },
+}
+
+
+def request_kwargs(prompt: str) -> dict:
+    """Extra arguments for messages.create: force the answer form for structured prompts."""
+    if prompt in STRUCTURED:
+        return {"tools": [ANSWER_TOOL], "tool_choice": {"type": "tool", "name": ANSWER_TOOL["name"]},
+                "max_tokens": 8192}
+    return {"max_tokens": 4096}
+
+
+def read_message(message) -> tuple[str, dict]:
+    """(raw text for the record, parsed reply) from either a form (tool) or a text reply."""
+    for block in message.content:
+        if getattr(block, "type", "") == "tool_use":
+            data = dict(block.input)
+            data.setdefault("citations", [])
+            return json.dumps(data, ensure_ascii=False), data
+    text = "".join(block.text for block in message.content if getattr(block, "type", "") == "text")
+    return text, parse_reply(text)
 
 
 def _words(text: str) -> list[str]:
@@ -166,7 +239,8 @@ def parse_reply(text: str) -> dict:
     return data
 
 
-def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int | None = None) -> Path:
+def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int | None = None,
+        prompt: str = "v1", items: set[str] | None = None) -> Path:
     import anthropic
 
     _load_env()
@@ -175,7 +249,7 @@ def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int |
 
     client = anthropic.Anthropic()
     contexts = contexts_path(variant)
-    out = generations_path(model, variant)
+    out = generations_path(model, variant, prompt)
     done: set[tuple[str, str]] = set()
     if out.exists():  # resume: skip rows already generated
         for line in out.read_text(encoding="utf-8").splitlines():
@@ -183,6 +257,8 @@ def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int |
             done.add((row["item_id"], row["language"]))
 
     rows = [json.loads(line) for line in contexts.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if items:
+        rows = [r for r in rows if r["item_id"] in items]
     if limit:
         rows = rows[:limit]
     tokens_in = tokens_out = 0
@@ -193,8 +269,9 @@ def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int |
             for attempt in range(4):
                 try:
                     message = client.messages.create(
-                        model=model, max_tokens=4096, system=SYSTEM,
+                        model=model, system=PROMPTS[prompt],
                         messages=[{"role": "user", "content": _prompt(row)}],
+                        **request_kwargs(prompt),
                     )
                     break
                 except (anthropic.RateLimitError, anthropic.APIConnectionError,
@@ -202,12 +279,12 @@ def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int |
                     time.sleep(2 ** attempt * 5)
             else:
                 raise SystemExit("API kept failing; rerun later — progress is saved.")
-            text = "".join(block.text for block in message.content if block.type == "text")
+            text, reply = read_message(message)
             tokens_in += message.usage.input_tokens
             tokens_out += message.usage.output_tokens
             handle.write(json.dumps({
                 "item_id": row["item_id"], "language": row["language"], "model": model,
-                "stop_reason": message.stop_reason, "raw": text, **parse_reply(text),
+                "stop_reason": message.stop_reason, "raw": text, **reply,
             }, ensure_ascii=False) + "\n")
             handle.flush()
             print(f"  {n}/{len(rows)}  {row['item_id']} [{row['language']}]")
@@ -284,11 +361,11 @@ def summarise(scores: list[dict]) -> dict:
     return out
 
 
-def score(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT) -> dict:
+def score(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, prompt: str = "v1") -> dict:
     contexts = contexts_path(variant)
     ctx = {(r["item_id"], r["language"]): r for r in
            map(json.loads, contexts.read_text(encoding="utf-8").splitlines())}
-    path = generations_path(model, variant)
+    path = generations_path(model, variant, prompt)
     gens = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     from .golden import load
 
@@ -296,8 +373,8 @@ def score(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT) -> dict:
     scores = [score_row(g, ctx[(g["item_id"], g["language"])], evidence.get(g["item_id"]))
               for g in gens]
     summary = summarise(scores)
-    report = Path("reports") / f"generation__{model}__{variant}.json"
-    report.write_text(json.dumps({"model": model, "context": variant, "summary": summary,
+    report = Path("reports") / f"generation__{model}__{variant}{_suffix(prompt)}.json"
+    report.write_text(json.dumps({"model": model, "context": variant, "prompt": prompt, "summary": summary,
                                   "rows": scores},
                                  indent=2, ensure_ascii=False), encoding="utf-8")
     for language, values in summary.items():
@@ -313,14 +390,17 @@ def main() -> None:
     parser.add_argument("step", choices=["contexts", "run", "score"])
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--context", default=DEFAULT_CONTEXT, choices=sorted(CONTEXT_VARIANTS))
+    parser.add_argument("--prompt", default="v1", choices=sorted(PROMPTS))
     parser.add_argument("--limit", type=int, default=None, help="only the first N rows (smoke test)")
+    parser.add_argument("--items", default="", help="comma-separated item_ids: run only these (spot check)")
     args = parser.parse_args()
     if args.step == "contexts":
         build_contexts(args.context)
     elif args.step == "run":
-        run(args.model, args.context, limit=args.limit)
+        items = {i.strip() for i in args.items.split(",") if i.strip()} or None
+        run(args.model, args.context, limit=args.limit, prompt=args.prompt, items=items)
     else:
-        score(args.model, args.context)
+        score(args.model, args.context, args.prompt)
 
 
 if __name__ == "__main__":

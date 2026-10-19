@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guichet</title>
+<meta name="description" content="Questions about French administration, answered from service-public.gouv.fr in English or French, with every quote checked.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2323272D'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' text-anchor='middle' fill='%23F2A516'%3EN%C2%B0%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --wall: #E6EBF0;
+  --paper: #FFFFFF;
+  --ink: #1B2433;
+  --ink-soft: #4E5868;
+  --line: #C9D1DA;
+  --stamp: #5A3E9E;
+  --stamp-faint: rgba(90, 62, 158, .08);
+  --board: #23272D;
+  --led: #F2A516;
+  --miss: #6B7684;
+  --focus: #2D6CDF;
+  --notch: var(--wall);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wall: #151A21;
+    --paper: #1F2630;
+    --ink: #E7EAEF;
+    --ink-soft: #A9B2BF;
+    --line: #37414E;
+    --stamp: #B39CF0;
+    --stamp-faint: rgba(179, 156, 240, .10);
+    --board: #0E1116;
+    --led: #F7B733;
+    --miss: #98A2AF;
+    --focus: #7FA8F5;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--wall);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.wrap { max-width: 42rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; padding: .5rem 0 2.5rem; }
+.mark { font-weight: 700; font-size: 1.25rem; letter-spacing: -.01em; text-decoration: none; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--paper); }
+.lang button {
+  font: inherit; font-size: .875rem; border: 0; background: none; color: var(--ink-soft);
+  padding: .2rem .7rem; border-radius: 999px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* ask */
+h1 { font-size: clamp(1.9rem, 5.4vw, 2.6rem); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 .75rem; font-weight: 700; max-width: 22ch; }
+.lede { color: var(--ink-soft); margin: 0 0 1.75rem; max-width: 34rem; }
+form { display: grid; gap: .75rem; }
+label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+textarea {
+  width: 100%; min-height: 6.5rem; resize: vertical;
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: .85rem 1rem;
+}
+textarea:focus { border-color: var(--ink); outline: none; box-shadow: 0 0 0 3px var(--stamp-faint); }
+.row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+.take {
+  font: inherit; font-weight: 700; cursor: pointer;
+  background: var(--ink); color: var(--paper); border: 0; border-radius: 10px;
+  padding: .8rem 1.4rem; display: inline-flex; align-items: center; gap: .6rem;
+}
+.take:disabled { opacity: .55; cursor: progress; }
+.take .slot { font-family: "DotGothic16", monospace; color: var(--led); font-weight: 400; letter-spacing: .04em; }
+.hint { color: var(--ink-soft); font-size: .9rem; }
+.examples { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+.examples button {
+  font: inherit; font-size: .9rem; color: var(--ink); cursor: pointer; text-align: left;
+  background: transparent; border: 1px dashed var(--line); border-radius: 8px; padding: .35rem .7rem;
+}
+.examples button:hover { border-style: solid; border-color: var(--ink-soft); }
+
+/* tickets */
+.tickets { margin-top: 2.5rem; display: grid; gap: 1.75rem; }
+.ticket {
+  background: var(--paper); border-radius: 6px 6px 4px 4px; overflow: hidden;
+  box-shadow: 0 1px 0 var(--line), 0 12px 28px -18px rgba(27, 36, 51, .45);
+  transform-origin: top center;
+}
+.ticket.printing { animation: print .55s cubic-bezier(.2, .8, .3, 1) both; }
+@keyframes print {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(-10px); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
+}
+.board {
+  background: var(--board); color: #C6CCD4; display: flex; align-items: baseline; justify-content: space-between;
+  padding: .75rem 1.1rem .8rem;
+}
+.number { font-family: "DotGothic16", monospace; color: var(--led); font-size: 2.1rem; line-height: 1; letter-spacing: .06em; text-shadow: 0 0 10px rgba(242, 165, 22, .35); }
+.board small { font-size: .82rem; }
+.perf {
+  height: 14px; position: relative;
+  background:
+    radial-gradient(circle at 7px 7px, var(--notch) 5px, transparent 5.5px) 0 0 / 14px 14px repeat-x;
+  margin-top: -7px;
+}
+.body { padding: .6rem 1.25rem 1.25rem; }
+.asked { color: var(--ink-soft); font-style: italic; margin: 0 0 1rem; }
+.status { display: flex; align-items: center; gap: .6rem; color: var(--ink-soft); min-height: 1.6em; }
+.dots { display: inline-flex; gap: 4px; }
+.dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--led); animation: blink 1.2s infinite; }
+.dots i:nth-child(2) { animation-delay: .2s; } .dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+.answer { font-size: 1.125rem; line-height: 1.65; margin: 0 0 1.25rem; }
+.answer p { margin: 0 0 .7rem; }
+.answer p:first-child { font-weight: 700; }
+.answer ul { margin: 0 0 .8rem; padding-left: 1.2rem; }
+.answer li { margin: .3rem 0; padding-left: .2rem; }
+.answer li::marker { color: var(--stamp); }
+.tear { border: 0; border-top: 2px dashed var(--line); margin: 1.25rem -1.25rem; }
+h2 { font-size: 1rem; margin: 0 0 .9rem; }
+.source { position: relative; margin: 0 0 1.25rem; padding: 0 0 0 1rem; border-left: 3px solid var(--stamp); }
+.source blockquote { margin: 0 0 .45rem; font-style: italic; }
+.source a { font-size: .95rem; color: var(--ink-soft); }
+.stamp {
+  display: inline-block; margin-top: .55rem;
+  color: var(--stamp); border: 2px solid var(--stamp); border-radius: 6px;
+  padding: .2rem .6rem .25rem; font-size: .8rem; line-height: 1.3; font-weight: 700;
+  transform: rotate(-3deg); opacity: .9;
+  box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 3px var(--stamp);
+  background: var(--stamp-faint);
+}
+.stamp span { display: block; font-weight: 400; }
+.stamp.grey { color: var(--miss); border-color: var(--miss); box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 3px var(--miss); background: transparent; transform: rotate(-2deg); margin: 0 0 1rem; }
+.office { color: var(--ink-soft); font-size: .95rem; margin: 0; }
+.btn {
+  font: inherit; font-size: .95rem; cursor: pointer; border-radius: 8px; padding: .45rem .9rem;
+  border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; display: inline-block;
+}
+.btn.solid { background: var(--ink); color: var(--paper); }
+.feedback { margin-top: 1rem; display: grid; gap: .6rem; }
+.feedback p { margin: 0; font-weight: 700; font-size: .95rem; }
+.feedback textarea { min-height: 4.5rem; font-size: .95rem; }
+.thanks { color: var(--ink-soft); font-size: .95rem; }
+.notice { color: var(--ink); background: var(--paper); border-left: 3px solid var(--led); padding: .75rem 1rem; border-radius: 4px; }
+
+/* footer */
+footer { margin-top: 4rem; color: var(--ink-soft); font-size: .95rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+footer h2 { color: var(--ink); font-size: 1.05rem; }
+footer p { max-width: 36rem; }
+.facts { margin: .5rem 0 1.25rem; padding-left: 1.1rem; }
+.facts li { margin: .3rem 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket.printing, .dots i { animation: none; }
+  .dots i { opacity: .8; }
+}
+@media (max-width: 30rem) {
+  .take { width: 100%; justify-content: center; }
+  .body { padding: .5rem 1rem 1.1rem; }
+  .tear { margin: 1.1rem -1rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="/">Guichet</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
+  </header>
+
+  <main>
+    <h1 data-t="title"></h1>
+    <p class="lede" data-t="lede"></p>
+
+    <form id="ask">
+      <label class="sr" for="q" data-t="label"></label>
+      <textarea id="q" name="q" maxlength="600" required></textarea>
+      <div class="row">
+        <button class="take" type="submit"><span data-t="take"></span><span class="slot" aria-hidden="true">N°</span></button>
+        <span class="hint" data-t="hint"></span>
+      </div>
+    </form>
+    <ul class="examples" id="examples"></ul>
+
+    <section class="tickets" id="tickets" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <h2 data-t="howTitle"></h2>
+    <p data-t="howIntro"></p>
+    <ul class="facts">
+      <li data-t="fact1"></li>
+      <li data-t="fact2"></li>
+      <li data-t="fact3"></li>
+    </ul>
+    <p data-t-html="method"></p>
+    <p data-t="legal"></p>
+    <p data-t="privacy"></p>
+  </footer>
+</div>
+
+<template id="ticket-tpl">
+  <article class="ticket printing">
+    <div class="board"><span class="number"></span><small data-t="counter"></small></div>
+    <div class="perf" aria-hidden="true"></div>
+    <div class="body">
+      <p class="asked"></p>
+      <div class="content"></div>
+    </div>
+  </article>
+</template>
+
+<script>
+const T = {
+  en: {
+    title: "Ask your question about French paperwork.",
+    lede: "Residence permits, visas, student jobs, CAF, health insurance, taxes. Answers come straight from service-public.gouv.fr, quoted word for word. If the answer isn't there, Guichet tells you instead of guessing.",
+    label: "Your question",
+    placeholder: "For example: when should I renew my student titre de séjour?",
+    take: "Take a ticket",
+    hint: "English or French. Don't include personal details.",
+    counter: "Your ticket",
+    steps: ["Translating your question for the French search", "Searching 192 official pages", "Reading the 5 most relevant pages", "Checking every quote against its page"],
+    stepsFr: ["Searching 192 official pages", "Reading the 5 most relevant pages", "Checking every quote against its page"],
+    sources: "Where this comes from",
+    stampTitle: "Quoted word for word",
+    stampDate: "page checked on",
+    open: "Open the official page",
+    office: "For your own situation, ask your préfecture, CAF or CPAM.",
+    notFoundStamp: "Not found",
+    notFound: "The official pages I searched don't answer this, so I won't guess.",
+    search: "Search service-public.gouv.fr",
+    error: "The answer couldn't be fetched. Try again in a minute.",
+    slow: "You've asked a lot of questions this hour. Try again a little later.",
+    cap: "Guichet has reached today's question limit. Come back tomorrow.",
+    helpful: "Did this answer your question?",
+    yes: "Yes", no: "No",
+    what: "What was wrong or missing? (optional)",
+    send: "Send",
+    thanks: "Thanks, noted. This helps fix the answers.",
+    howTitle: "How do we know it works?",
+    howIntro: "Guichet was tested on 104 real questions people posted online, each answer checked by hand against the official page:",
+    fact1: "It never invented a source: every citation was a page it had actually read, and quotes are checked again before you see them.",
+    fact2: "It refused all 10 questions the official pages can't answer, instead of making something up.",
+    fact3: "It answered and cited a correct page for 89% of questions in French and 82% in English, and an independent AI grader rated 85% of French and 75% of English answers fully correct.",
+    method: 'Method, data and code: <a href="https://github.com/AdamosZ/Guichet">github.com/AdamosZ/Guichet</a>. Built by Adam Abdelkefi.',
+    legal: "General information from service-public.gouv.fr (Licence Ouverte / Etalab 2.0), not legal advice. Guichet is an independent student project, not a government service. Rules change and your case may differ.",
+    privacy: "Questions are logged anonymously to improve the answers: no account, no IP address, and e-mail addresses, phone numbers and long numbers are removed before saving.",
+    examples: ["How long is a récépissé valid?", "Can I work more than 964 hours a year as a non-EU student?", "How much notice do I give to leave a furnished flat?", "My student visa was refused. How do I appeal?"]
+  },
+  fr: {
+    title: "Posez votre question sur vos démarches.",
+    lede: "Titres de séjour, visas, jobs étudiants, CAF, assurance maladie, impôts. Les réponses viennent de service-public.gouv.fr, citées mot pour mot. Si la réponse n'y est pas, Guichet vous le dit au lieu de deviner.",
+    label: "Votre question",
+    placeholder: "Par exemple : quand dois-je renouveler mon titre de séjour étudiant ?",
+    take: "Prendre un ticket",
+    hint: "En français ou en anglais. N'indiquez pas d'informations personnelles.",
+    counter: "Votre ticket",
+    steps: ["Traduction de votre question pour la recherche", "Recherche dans 192 fiches officielles", "Lecture des 5 fiches les plus pertinentes", "Vérification de chaque citation"],
+    stepsFr: ["Recherche dans 192 fiches officielles", "Lecture des 5 fiches les plus pertinentes", "Vérification de chaque citation"],
+    sources: "D'où vient cette réponse",
+    stampTitle: "Cité mot pour mot",
+    stampDate: "fiche vérifiée le",
+    open: "Ouvrir la fiche officielle",
+    office: "Pour votre situation personnelle, renseignez-vous auprès de votre préfecture, CAF ou CPAM.",
+    notFoundStamp: "Non trouvé",
+    notFound: "Les fiches officielles consultées ne répondent pas à cette question, je préfère ne pas deviner.",
+    search: "Chercher sur service-public.gouv.fr",
+    error: "La réponse n'a pas pu être obtenue. Réessayez dans une minute.",
+    slow: "Vous avez posé beaucoup de questions cette heure-ci. Réessayez un peu plus tard.",
+    cap: "Guichet a atteint la limite de questions du jour. Revenez demain.",
+    helpful: "Cette réponse vous a-t-elle aidé ?",
+    yes: "Oui", no: "Non",
+    what: "Qu'est-ce qui était faux ou manquant ? (facultatif)",
+    send: "Envoyer",
+    thanks: "Merci, c'est noté. Cela aide à corriger les réponses.",
+    howTitle: "Comment savons-nous que ça marche ?",
+    howIntro: "Guichet a été testé sur 104 vraies questions publiées en ligne, chaque réponse vérifiée à la main sur la fiche officielle :",
+    fact1: "Il n'a jamais inventé de source : chaque citation vient d'une fiche réellement lue, et les citations sont revérifiées avant affichage.",
+    fact2: "Il a refusé de répondre aux 10 questions que les fiches officielles ne couvrent pas, au lieu d'inventer.",
+    fact3: "Il a répondu en citant une bonne fiche pour 89 % des questions en français et 82 % en anglais, et un correcteur IA indépendant a jugé 85 % des réponses en français et 75 % en anglais entièrement correctes.",
+    method: 'Méthode, données et code : <a href="https://github.com/AdamosZ/Guichet">github.com/AdamosZ/Guichet</a>. Réalisé par Adam Abdelkefi.',
+    legal: "Informations générales issues de service-public.gouv.fr (Licence Ouverte / Etalab 2.0), pas un conseil juridique. Guichet est un projet étudiant indépendant, pas un service de l'administration. Les règles changent et votre cas peut différer.",
+    privacy: "Les questions sont enregistrées anonymement pour améliorer les réponses : pas de compte, pas d'adresse IP, et les e-mails, numéros de téléphone et longs numéros sont supprimés avant l'enregistrement.",
+    examples: ["Combien de temps est valable un récépissé ?", "Puis-je travailler plus de 964 heures par an comme étudiant étranger ?", "Quel préavis pour quitter un logement meublé ?", "Mon visa étudiant a été refusé, comment faire un recours ?"]
+  }
+};
+
+let ui = "en";
+try { ui = localStorage.getItem("guichet-lang") || (navigator.language || "en").slice(0, 2); } catch (e) {}
+if (!T[ui]) ui = "en";
+let ticketNo = 10 + Math.floor(Math.random() * 40);
+
+const $ = (s, el = document) => el.querySelector(s);
+const el = (tag, attrs = {}, text) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (text !== undefined) n.textContent = text;
+  return n;
+};
+
+function applyLang() {
+  const t = T[ui];
+  document.documentElement.lang = ui;
+  document.querySelectorAll("[data-t]").forEach(n => { if (t[n.dataset.t] !== undefined) n.textContent = t[n.dataset.t]; });
+  document.querySelectorAll("[data-t-html]").forEach(n => { n.innerHTML = t[n.dataset.tHtml]; });
+  $("#q").placeholder = t.placeholder;
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === ui)));
+  const list = $("#examples"); list.replaceChildren();
+  t.examples.forEach(x => {
+    const li = el("li"); const b = el("button", { type: "button" }, x);
+    b.addEventListener("click", () => { $("#q").value = x; $("#q").focus(); });
+    li.append(b); list.append(li);
+  });
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  ui = b.dataset.lang; try { localStorage.setItem("guichet-lang", ui); } catch (e) {}
+  applyLang();
+}));
+
+function newTicket(question) {
+  const node = $("#ticket-tpl").content.firstElementChild.cloneNode(true);
+  $(".number", node).textContent = "N° " + String(++ticketNo).padStart(3, "0");
+  $("[data-t]", node).textContent = T[ui].counter;
+  $(".asked", node).textContent = "« " + question + " »";
+  $("#tickets").prepend(node);
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) node.scrollIntoView({ behavior: "smooth", block: "start" });
+  return node;
+}
+
+function showStatus(content, steps) {
+  const status = el("div", { class: "status", role: "status" });
+  const dots = el("span", { class: "dots", "aria-hidden": "true" });
+  dots.append(el("i"), el("i"), el("i"));
+  const label = el("span", {}, steps[0] + "…");
+  status.append(dots, label);
+  content.replaceChildren(status);
+  let i = 0;
+  const timer = setInterval(() => { i = Math.min(i + 1, steps.length - 1); label.textContent = steps[i] + "…"; }, 2200);
+  return () => clearInterval(timer);
+}
+
+function feedbackBox(content, answerId, t) {
+  const box = el("div", { class: "feedback" });
+  const q = el("p", {}, t.helpful);
+  const row = el("div", { class: "row" });
+  const yes = el("button", { class: "btn", type: "button" }, t.yes);
+  const no = el("button", { class: "btn", type: "button" }, t.no);
+  row.append(yes, no);
+  box.append(q, row);
+  const done = () => box.replaceChildren(el("p", { class: "thanks" }, t.thanks));
+  const send = (rating, comment = "") => fetch("/api/feedback", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answer_id: answerId, rating, comment })
+  }).catch(() => {}).finally(done);
+  yes.addEventListener("click", () => send("up"));
+  no.addEventListener("click", () => {
+    const area = el("textarea", { "aria-label": t.what, placeholder: t.what, maxlength: "1000" });
+    const go = el("button", { class: "btn solid", type: "button" }, t.send);
+    go.addEventListener("click", () => send("down", area.value));
+    box.replaceChildren(el("p", {}, t.what), area, el("div", { class: "row" }));
+    $(".row", box).append(go);
+    area.focus();
+  });
+  content.append(box);
+}
+
+// Model text → paragraphs and "- " bullet lists, built with textContent (never innerHTML).
+function answerBlock(text) {
+  const box = el("div", { class: "answer" });
+  let list = null;
+  for (const raw of String(text).split(/\n+/)) {
+    const line = raw.trim();
+    if (!line) continue;
+    const bullet = line.match(/^[-•*]\s+(.*)$/);
+    if (bullet) {
+      if (!list) { list = el("ul"); box.append(list); }
+      list.append(el("li", {}, bullet[1]));
+    } else {
+      list = null;
+      box.append(el("p", {}, line));
+    }
+  }
+  return box;
+}
+
+function render(content, data) {
+  const t = T[data.language] || T[ui];
+  content.replaceChildren();
+  if (data.status === "answered") {
+    content.append(answerBlock(data.answer));
+    content.append(el("hr", { class: "tear" }));
+    content.append(el("h2", {}, t.sources));
+    for (const s of data.sources) {
+      const fig = el("figure", { class: "source", style: "margin-left:0" });
+      fig.append(el("blockquote", { lang: "fr" }, "« " + s.quote + " »"));
+      const link = el("a", { href: s.url, target: "_blank", rel: "noopener" }, s.title);
+      fig.append(link);
+      const stamp = el("div", { class: "stamp" }, t.stampTitle);
+      if (s.verified_on) stamp.append(el("span", {}, t.stampDate + " " + s.verified_on));
+      fig.append(el("div", {}, "")); fig.lastChild.append(stamp);
+      content.append(fig);
+    }
+    content.append(el("p", { class: "office" }, t.office));
+    feedbackBox(content, data.answer_id, t);
+  } else if (data.status === "not_found") {
+    content.append(el("div", { class: "stamp grey" }, t.notFoundStamp));
+    content.append(el("p", { class: "answer" }, t.notFound));
+    const row = el("div", { class: "row" });
+    row.append(el("a", { class: "btn solid", href: data.search_link, target: "_blank", rel: "noopener" }, t.search));
+    content.append(row);
+    content.append(el("p", { class: "office", style: "margin-top:1rem" }, t.office));
+    feedbackBox(content, data.answer_id, t);
+  } else {
+    content.append(el("p", { class: "notice" }, t[data.status] || t.error));
+  }
+}
+
+$("#ask").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const question = $("#q").value.trim();
+  if (!question) return;
+  const button = $(".take"); button.disabled = true;
+  const ticket = newTicket(question);
+  const content = $(".content", ticket);
+  const looksFrench = /[àâçéèêëîïôûùœ]/i.test(question) && !/\b(the|is|how|what|can|my|do|when)\b/i.test(question);
+  const stop = showStatus(content, looksFrench ? T[ui].stepsFr : T[ui].steps);
+  try {
+    const response = await fetch("/api/ask", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question })
+    });
+    const data = await response.json();
+    stop(); render(content, response.ok ? data : { status: data.status || "error", language: data.language || ui });
+  } catch (e) {
+    stop(); render(content, { status: "error", language: ui });
+  } finally {
+    button.disabled = false; $("#q").value = "";
+  }
+});
+$("#q").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) $("#ask").requestSubmit(); });
+
+applyLang();
+</script>
+</body>
+</html>

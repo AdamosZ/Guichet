@@ -58,14 +58,15 @@ INSTRUCTIONS = """First explain your reasoning in two or three sentences, compar
 Then end with exactly one line: GRADE: C, GRADE: P or GRADE: I"""
 
 
-def load_samples(variant: str, generator: str = GENERATOR) -> list[Sample]:
+def load_samples(variant: str, generator: str = GENERATOR, prompt: str = "v1") -> list[Sample]:
     golden = {}
     with (ROOT / "evals/golden.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             item = json.loads(line)
             golden[item["item_id"]] = item
     samples = []
-    path = ROOT / f"data/runs/generations__{generator}__{variant}.jsonl"
+    suffix = "" if prompt == "v1" else f"__{prompt}"
+    path = ROOT / f"data/runs/generations__{generator}__{variant}{suffix}.jsonl"
     with path.open(encoding="utf-8") as handle:
         for line in handle:
             gen = json.loads(line)
@@ -93,9 +94,10 @@ def replay():
 
 
 @task
-def guichet_judge(variant: str = "pages5", generator: str = GENERATOR, judge: str = JUDGE_MODEL):
+def guichet_judge(variant: str = "pages5", generator: str = GENERATOR, judge: str = JUDGE_MODEL,
+                  prompt: str = "v1"):
     return Task(
-        dataset=MemoryDataset(load_samples(variant, generator), name=f"guichet-{variant}"),
+        dataset=MemoryDataset(load_samples(variant, generator, prompt), name=f"guichet-{variant}-{prompt}"),
         solver=replay(),
         scorer=model_graded_qa(template=TEMPLATE, instructions=INSTRUCTIONS,
                                partial_credit=True, model=judge),
