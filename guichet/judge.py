@@ -65,8 +65,10 @@ def load_samples(variant: str, generator: str = GENERATOR, prompt: str = "v1") -
             item = json.loads(line)
             golden[item["item_id"]] = item
     samples = []
+    from guichet.llm import safe_name
+
     suffix = "" if prompt == "v1" else f"__{prompt}"
-    path = ROOT / f"data/runs/generations__{generator}__{variant}{suffix}.jsonl"
+    path = ROOT / f"data/runs/generations__{safe_name(generator)}__{variant}{suffix}.jsonl"
     with path.open(encoding="utf-8") as handle:
         for line in handle:
             gen = json.loads(line)

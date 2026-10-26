@@ -92,6 +92,7 @@ class Logbook:
             "sources": [s["doc_id"] for s in answer["sources"]], "pages_seen": answer["pages_seen"],
             "dropped_quotes": answer["dropped_quotes"], "error": answer["error"],
             "tokens_in": answer["tokens_in"], "tokens_out": answer["tokens_out"],
+            "model": answer.get("model", ""),
         })
         return answer_id
 

@@ -29,9 +29,18 @@ from guichet.logbook import RETENTION_DAYS, is_expired
 from scripts.review_user_questions import load_logs
 
 ROOT = Path(__file__).resolve().parents[1]
-# Claude Haiku 5.5, USD per million tokens (prompts under 100k tokens).
-# platform.claude.com/docs/en/about-claude/pricing, checked 19 Oct 2026.
-PRICE_IN, PRICE_OUT = 0.10, 0.50
+# USD per million tokens (input, output). Rows without a model are from before
+# models were logged, when the app always used Claude Haiku 5.5.
+# Claude: platform.claude.com/docs/en/about-claude/pricing (19 Oct 2026).
+# Hugging Face providers: router.huggingface.co/v1/models (26 Oct 2026).
+PRICES = {
+    "claude-haiku-5-5": (0.10, 0.50),
+    "openai/gpt-oss-120b:deepinfra": (0.037, 0.17),
+    "openai/gpt-oss-120b:novita": (0.05, 0.25),
+    "openai/gpt-oss-20b:deepinfra": (0.03, 0.14),
+    "deepseek-ai/DeepSeek-V4-Flash:deepinfra": (0.09, 0.18),
+}
+DEFAULT_MODEL = "claude-haiku-5-5"
 
 
 def _when(row: dict) -> datetime:
@@ -47,8 +56,14 @@ def summarise(answers: list[dict], feedback: dict[str, list[dict]], now: datetim
     errors = [a for a in week if a.get("error")]
     found = [a for a in week if a.get("found") and not a.get("error")]
     missing = [a for a in week if not a.get("found") and not a.get("error")]
-    tokens_in = sum(a.get("tokens_in", 0) for a in week)
-    tokens_out = sum(a.get("tokens_out", 0) for a in week)
+    cost, unpriced = 0.0, set()
+    for a in week:
+        model = a.get("model") or DEFAULT_MODEL
+        if model not in PRICES:
+            unpriced.add(model)
+            continue
+        price_in, price_out = PRICES[model]
+        cost += a.get("tokens_in", 0) / 1e6 * price_in + a.get("tokens_out", 0) / 1e6 * price_out
     pages = Counter(p for a in found for p in a.get("sources", []))
     down = [(a, f) for a in week for f in feedback.get(a["answer_id"], []) if f["rating"] == "down"]
     return {
@@ -58,7 +73,9 @@ def summarise(answers: list[dict], feedback: dict[str, list[dict]], now: datetim
         "answered": len(found), "not_found": len(missing), "errors": len(errors),
         "thumbs_up": sum(f["rating"] == "up" for f in ratings),
         "thumbs_down": sum(f["rating"] == "down" for f in ratings),
-        "cost_usd": round(tokens_in / 1e6 * PRICE_IN + tokens_out / 1e6 * PRICE_OUT, 2),
+        "cost_usd": round(cost, 2),
+        "models": dict(Counter(a.get("model") or DEFAULT_MODEL for a in week)),
+        "unpriced_models": sorted(unpriced),
         "top_pages": pages.most_common(5),
         "not_found_questions": [a["question"] for a in missing][:15],
         "down_comments": [{"question": a["question"], "comment": f.get("comment", "")} for a, f in down][:15],
@@ -85,7 +102,9 @@ def to_markdown(s: dict, freshness: dict | None = None) -> str:
             f"| Not found | {s['not_found']} ({_pct(s['not_found'], n)}) |",
             f"| Errors | {s['errors']} ({_pct(s['errors'], n)}) |",
             f"| Feedback | 👍 {s['thumbs_up']} · 👎 {s['thumbs_down']} ({_pct(s['thumbs_down'], rated)} negative) |",
-            f"| Estimated cost | ${s['cost_usd']:.2f} |",
+            f"| Estimated cost | ${s['cost_usd']:.2f}"
+            + (f" (no price for {', '.join(s['unpriced_models'])})" if s.get("unpriced_models") else "") + " |",
+            f"| Model | {', '.join(f'{m} ({k})' for m, k in s.get('models', {}).items())} |",
             "",
         ]
         if s["errors"] and s["errors"] / n > 0.05:

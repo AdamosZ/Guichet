@@ -22,11 +22,23 @@ from pathlib import Path
 
 from .chunk import load_chunks
 from .corpus import load_corpus
-from .generate import PROMPTS, _prompt, quote_in, read_message, request_kwargs
+from .generate import (
+    ANSWER_TOOL,
+    PROMPTS,
+    STRUCTURED,
+    _prompt,
+    parse_reply,
+    quote_in,
+    request_kwargs,
+)
 from .index import BM25Index, DenseIndex, reciprocal_rank_fusion
 from .langid import detect
+from .llm import complete, is_claude
 
 ROOT = Path(__file__).resolve().parents[1]
+# Any Claude model id, or a Hugging Face model id with an optional ":provider"
+# (e.g. "openai/gpt-oss-120b:deepinfra"). Only switch after it has been
+# evaluated on the golden set (python -m guichet.generate run --model …).
 MODEL = os.environ.get("GUICHET_MODEL", "claude-haiku-5-5")
 # Which answer-writing prompt the live app uses. Only switch after the new
 # prompt has been re-evaluated on the golden set (python -m guichet.generate --prompt …).
@@ -60,6 +72,7 @@ class Answer:
     tokens_in: int = 0
     tokens_out: int = 0
     error: str = ""
+    model: str = ""
 
 
 class Guichet:
@@ -75,26 +88,19 @@ class Guichet:
 
     # ------------------------------------------------------------------ helpers
     def _client(self):
-        if self.client is None:
+        if self.client is None and is_claude(self.model):
             import anthropic
 
             self.client = anthropic.Anthropic()
         return self.client
 
-    def _call(self, system: str, user: str, max_tokens: int, **extra):
-        kwargs = {"max_tokens": max_tokens, **extra}
-        return self._client().messages.create(
-            model=self.model, system=system, messages=[{"role": "user", "content": user}], **kwargs,
-        )
-
-    @staticmethod
-    def _text(message) -> str:
-        return "".join(b.text for b in message.content if getattr(b, "type", "") == "text").strip()
+    def _call(self, system: str, user: str, max_tokens: int, tool: dict | None = None):
+        return complete(self.model, system, user, tool=tool, max_tokens=max_tokens, client=self._client())
 
     def translate(self, question: str) -> str:
         if question not in self._translations:
             reply = self._call(TRANSLATE_SYSTEM, question, 300)
-            self._translations[question] = self._text(reply) or question
+            self._translations[question] = reply.text or question
         return self._translations[question]
 
     # ------------------------------------------------------------------ pipeline
@@ -114,18 +120,18 @@ class Guichet:
     def answer(self, question: str) -> Answer:
         question = question.strip()
         language = detect(question)
-        result = Answer(question=question, language=language, found=False, text="")
+        result = Answer(question=question, language=language, found=False, text="", model=self.model)
         try:
             doc_ids = self.retrieve(question, language)
             result.pages_seen = doc_ids
             row = {"question": question, "language": language,
                    "passages": [{"chunk_id": d, "doc_id": d, "title": self.pages[d].title,
                                  "text": self.pages[d].text} for d in doc_ids]}
-            extra = request_kwargs(PROMPT)
-            message = self._call(PROMPTS[PROMPT], _prompt(row), extra.pop("max_tokens"), **extra)
-            result.tokens_in = message.usage.input_tokens
-            result.tokens_out = message.usage.output_tokens
-            _raw, reply = read_message(message)
+            tool = ANSWER_TOOL if PROMPT in STRUCTURED else None
+            message = self._call(PROMPTS[PROMPT], _prompt(row), request_kwargs(PROMPT)["max_tokens"], tool)
+            result.tokens_in = message.tokens_in
+            result.tokens_out = message.tokens_out
+            reply = message.data if tool else parse_reply(message.text)
         except Exception as exc:  # network, quota, malformed index…
             result.error = f"{type(exc).__name__}: {exc}"
             return result

@@ -72,7 +72,7 @@ CMD ["python", "app.py"]
 """
 
 PACKAGE_FILES = ["__init__.py", "chunk.py", "corpus.py", "generate.py", "index.py",
-                 "langid.py", "logbook.py", "normalize.py", "service.py"]
+                 "langid.py", "llm.py", "logbook.py", "normalize.py", "service.py"]
 
 
 def build_bundle(target: Path) -> None:

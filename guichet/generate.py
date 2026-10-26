@@ -56,7 +56,11 @@ def _suffix(prompt: str) -> str:
 
 
 def generations_path(model: str, variant: str, prompt: str = "v1") -> Path:
+    from .llm import safe_name
+
+    model = safe_name(model)
     return RUNS / f"generations__{model}__{variant}{_suffix(prompt)}.jsonl"
+
 
 SYSTEM = """You answer questions from international students about French administration.
 Use ONLY the numbered passages provided, which come from service-public.gouv.fr.
@@ -241,53 +245,59 @@ def parse_reply(text: str) -> dict:
 
 def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int | None = None,
         prompt: str = "v1", items: set[str] | None = None) -> Path:
-    import anthropic
+    from .llm import AccessError, complete, is_claude
 
     _load_env()
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        raise SystemExit("ANTHROPIC_API_KEY not set — put it in .env (never commit it).")
+    needed = "ANTHROPIC_API_KEY" if is_claude(model) else "HF_TOKEN"
+    if not os.environ.get(needed):
+        raise SystemExit(f"{needed} not set: put it in .env (never commit it).")
 
-    client = anthropic.Anthropic()
     contexts = contexts_path(variant)
     out = generations_path(model, variant, prompt)
     done: set[tuple[str, str]] = set()
     if out.exists():  # resume: skip rows already generated
         for line in out.read_text(encoding="utf-8").splitlines():
             row = json.loads(line)
-            done.add((row["item_id"], row["language"]))
+            if row.get("stop_reason") != "error":  # failed calls are retried on the next run
+                done.add((row["item_id"], row["language"]))
 
     rows = [json.loads(line) for line in contexts.read_text(encoding="utf-8").splitlines() if line.strip()]
     if items:
         rows = [r for r in rows if r["item_id"] in items]
     if limit:
         rows = rows[:limit]
-    tokens_in = tokens_out = 0
+    tokens_in = tokens_out = failures = attempts = 0
+    tool = ANSWER_TOOL if prompt in STRUCTURED else None
+    max_tokens = request_kwargs(prompt)["max_tokens"]
     with out.open("a", encoding="utf-8") as handle:
         for n, row in enumerate(rows, start=1):
             if (row["item_id"], row["language"]) in done:
                 continue
-            for attempt in range(4):
-                try:
-                    message = client.messages.create(
-                        model=model, system=PROMPTS[prompt],
-                        messages=[{"role": "user", "content": _prompt(row)}],
-                        **request_kwargs(prompt),
-                    )
-                    break
-                except (anthropic.RateLimitError, anthropic.APIConnectionError,
-                        anthropic.InternalServerError):
-                    time.sleep(2 ** attempt * 5)
+            started = time.time()
+            attempts += 1
+            try:
+                result = complete(model, PROMPTS[prompt], _prompt(row), tool=tool, max_tokens=max_tokens)
+            except AccessError as exc:
+                raise SystemExit(f"\nStopped: the model can't be called with these credentials.\n{exc}") from None
+            except Exception as exc:  # keep going: a failed call is scored as a failure, not a crash
+                failures += 1
+                print(f"  {n}/{len(rows)}  {row['item_id']} [{row['language']}]  FAILED {type(exc).__name__}: "
+                      f"{str(exc)[:120]}")
+                if failures >= 5 and failures == attempts:
+                    raise SystemExit("\nStopped: the first 5 calls all failed. Fix the error above, "
+                                     "then rerun.") from None
+                reply, raw, stop = {"found": None, "answer": "", "citations": [], "parse_error": True}, str(exc), "error"
             else:
-                raise SystemExit("API kept failing; rerun later — progress is saved.")
-            text, reply = read_message(message)
-            tokens_in += message.usage.input_tokens
-            tokens_out += message.usage.output_tokens
+                reply = result.data if tool else parse_reply(result.text)
+                raw, stop = result.raw, result.stop_reason
+                tokens_in += result.tokens_in
+                tokens_out += result.tokens_out
+                print(f"  {n}/{len(rows)}  {row['item_id']} [{row['language']}]  {time.time() - started:.1f}s")
             handle.write(json.dumps({
                 "item_id": row["item_id"], "language": row["language"], "model": model,
-                "stop_reason": message.stop_reason, "raw": text, **reply,
+                "stop_reason": stop, "seconds": round(time.time() - started, 1), "raw": raw, **reply,
             }, ensure_ascii=False) + "\n")
             handle.flush()
-            print(f"  {n}/{len(rows)}  {row['item_id']} [{row['language']}]")
     print(f"\nwrote {out}\ntokens this run: {tokens_in:,} in / {tokens_out:,} out")
     return out
 
@@ -373,7 +383,9 @@ def score(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, prompt: st
     scores = [score_row(g, ctx[(g["item_id"], g["language"])], evidence.get(g["item_id"]))
               for g in gens]
     summary = summarise(scores)
-    report = Path("reports") / f"generation__{model}__{variant}{_suffix(prompt)}.json"
+    from .llm import safe_name
+
+    report = Path("reports") / f"generation__{safe_name(model)}__{variant}{_suffix(prompt)}.json"
     report.write_text(json.dumps({"model": model, "context": variant, "prompt": prompt, "summary": summary,
                                   "rows": scores},
                                  indent=2, ensure_ascii=False), encoding="utf-8")
