@@ -2,57 +2,105 @@
   "checked": 192,
   "changed": [
     {
+      "doc_id": "F13517",
+      "title": "Européen en France : refus d'entrée et éloignement",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13517",
+      "verified_before": "03 mai 2022",
+      "verified_now": "23 octobre 2026",
+      "sample_diff": [
+        "-, votre liberté de circuler et de séjourner en France (et celle de votre famille) peut être remise en cause dans des cas limités. Vous pouvez faire l'objet d'une interdiction administrative du territoire, d'une obligation de quitter la France ou d'une décision d'expulsion.",
+        "+, votre liberté de circuler et de séjourner en France (et celle de votre famille) peut être remise en cause dans des cas limités. Vous pouvez faire l'objet d'une interdiction administrative du territoire (IAT), d'une obligation de quitter la France (OQTF) ou d'une décision d'expulsion. Nous faisons un point sur la règlementation.",
+        "-Interdiction administrative du territoire (IAT)",
+        "-Vous pouvez vous voir refuser l'entrée en France si votre comportement (ou celui d'un membre de votre famille) constitue une menace pour l'ordre et la sécurité publics.",
+        "+Un étranger européen peut-il faire l'objet d'une interdiction administrative du territoire (IAT) ?",
+        "+Vous pouvez vous voir refuser l'entrée en France si votre comportement (ou celui d'un membre de votre famille) constitue une menace pour"
+      ]
+    },
+    {
+      "doc_id": "F16123",
+      "title": "Je veux obtenir un crédit immobilier",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16123",
+      "verified_before": "05 avril 2024",
+      "verified_now": "05 avril 2024",
+      "sample_diff": [
+        "-Le taux de l'usure : qu'est-ce que c'est ?",
+        "+Le taux d'usure : qu'est-ce que c'est ?"
+      ]
+    },
+    {
       "doc_id": "F16225",
       "title": "Je deviens parent",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16225",
       "verified_before": "01 juin 2026",
       "verified_now": "01 juin 2026",
       "sample_diff": [
-        "-Mise en œuvre du congé supplémentaire de naissance",
-        "-Le congé supplémentaire de naissance est mis en œuvre",
-        "-depuis le 1",
-        "-er",
-        "-juillet 2026",
-        "-. Le ou les parents d'un enfant né à compter du 1"
+        "-avant de contacter l'Assurance maladie.",
+        "+avant d'appeler.",
+        "-avant de contacter l'Assurance maladie.",
+        "+avant d'appeler."
       ]
     },
     {
-      "doc_id": "F11534",
-      "title": "Permis international pour conduire à l'étranger",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11534",
-      "verified_before": "03 mars 2026",
-      "verified_now": "16 octobre 2026",
+      "doc_id": "F1168",
+      "title": "Préavis et formalités du congé donné par le locataire (bail d'habitation)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1168",
+      "verified_before": "16 avril 2026",
+      "verified_now": "16 avril 2026",
       "sample_diff": [
-        "-Comment suivre une demande de permis de conduire international ?",
-        "-Un",
-        "-service en ligne",
-        "-permet de suivre la fabrication et l'envoi de votre permis de conduire international.",
-        "-Suivre l'avancement d'une demande de permis de conduire",
-        "-Savoir comment le permis de conduire international est expédié et suivre son envoi"
+        "-Qui est le locataire qui peut donner son congé (ou préavis) au propriétaire ?",
+        "+Que doit faire le locataire qui veut quitter définitivement le logement (logement vide) ?",
+        "-leur congé.",
+        "+leur congé au propriétaire (ou à l'agence immobilière).",
+        "-des époux donne congé, l'autre époux",
+        "+des époux veut quitter définitvement le logement, il doit donner son congé au propriétaire (ou à l'agence immobilière)."
       ]
     },
     {
-      "doc_id": "F1169",
-      "title": "Futur locataire d'un logement privé : justificatifs à donner au propriétaire",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1169",
-      "verified_before": "10 avril 2025",
-      "verified_now": "10 avril 2025",
+      "doc_id": "F163",
+      "title": "Médecin traitant et parcours de soins coordonnés",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F163",
+      "verified_before": "21 août 2026",
+      "verified_now": "21 août 2026",
       "sample_diff": [
-        "-Logement à louer : dans quel cas signer une convention avec l'Anah ?",
-        "+Dans quel cas signer une convention Anah pour louer un logement ? (Loc'Avantages)"
+        "-Gynécologue, ophtalmologue, psychiatre, stomatologue (à la condition d'avoir déclaré un médecin traitant)",
+        "+Psychiatre (pour les moins de 26 ans), gynécologue, ophtalmologue, stomatologue (à la condition d'avoir déclaré un médecin traitant)",
+        "-https://www.france-assos-sante.org/sante-info-droits/",
+        "+https://france-assos-sante.org/sante-info-droits/"
       ]
     },
     {
-      "doc_id": "F12859",
-      "title": "Assurance maladie d'un étranger qui s'installe en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859",
-      "verified_before": "02 avril 2024",
-      "verified_now": "02 avril 2024",
+      "doc_id": "F200",
+      "title": "Déroulement d'une hospitalisation et prise en charge par l'Assurance maladie",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F200",
+      "verified_before": "01 mars 2026",
+      "verified_now": "01 mars 2026",
       "sample_diff": [
-        "-Résider en France de façon stable et régulière",
-        "-Fonds de la complémentaire santé solidaire",
-        "+L'assurance habitation est-elle obligatoire ?",
-        "+Agence nationale pour l'information sur le logement (Anil)"
+        "-https://www.france-assos-sante.org/sante-info-droits/",
+        "+https://france-assos-sante.org/sante-info-droits/"
+      ]
+    },
+    {
+      "doc_id": "F22575",
+      "title": "Sortie ou voyage scolaires au collège et au lycée",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22575",
+      "verified_before": "17 février 2026",
+      "verified_now": "17 février 2026",
+      "sample_diff": [
+        "+Plan Vigipirate",
+        "+Premier ministre"
+      ]
+    },
+    {
+      "doc_id": "F2413",
+      "title": "Compte bancaire individuel",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2413",
+      "verified_before": "22 mai 2026",
+      "verified_now": "22 mai 2026",
+      "sample_diff": [
+        "-Droit au compte",
+        "+Droit au compte et relations avec le client",
+        "-Code monétaire et financier : articles R312-1 à R312-4-4",
+        "-Droit au compte et relations avec le client"
       ]
     },
     {
@@ -60,61 +108,234 @@
       "title": "Refus d'ouverture de compte bancaire : droit au compte",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417",
       "verified_before": "28 octobre 2025",
-      "verified_now": "28 octobre 2025",
+      "verified_now": "19 octobre 2026",
       "sample_diff": [
-        "-Délivrance à la demande de relevés d'identité bancaire",
-        "+1 changement d'adresse par an",
-        "+Délivrance, à la demande, de relevés d'identité bancaire",
-        "-Envoi mensuel d'un relevé des opérations effectuées sur le compte",
-        "-Réalisation des opérations de caisse",
-        "+Fourniture mensuelle d'un relevé des opérations effectuées sur le compte"
+        "-Une banque refuse de vous ouvrir un compte bancaire ? Dans ce cas, vous pouvez saisir la Banque de France pour bénéficier de la",
+        "+Une banque refuse de vous ouvrir un compte bancaire et vous n'avez aucun compte de dépôt en France ? Dans ce cas, vous pouvez saisir la Banque de France pour bénéficier de la",
+        "-Pour bénéficier de la procédure du droit au compte, vous devez remplir",
+        "+Pour bénéficier de la procédure du droit au compte en France, vous devez remplir",
+        "-Résider en France",
+        "-Résider légalement sur le territoire d'un autre État membre de"
+      ]
+    },
+    {
+      "doc_id": "F265",
+      "title": "Carte Vitale",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F265",
+      "verified_before": "29 août 2026",
+      "verified_now": "29 août 2026",
+      "sample_diff": [
+        "-avant de contacter l'Assurance maladie.",
+        "+avant d'appeler.",
+        "-avant de contacter l'Assurance maladie.",
+        "+avant d'appeler."
+      ]
+    },
+    {
+      "doc_id": "F2863",
+      "title": "Inscription d'un étranger dans l'enseignement supérieur",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2863",
+      "verified_before": "05 décembre 2025",
+      "verified_now": "05 décembre 2025",
+      "sample_diff": [
+        "-Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2026-2027",
+        "+Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2027-2028",
+        "-Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2026-2027",
+        "+Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2027-2028"
+      ]
+    },
+    {
+      "doc_id": "F33072",
+      "title": "Un étudiant peut-il faire une césure dans ses études ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33072",
+      "verified_before": "23 janvier 2025",
+      "verified_now": "19 octobre 2026",
+      "sample_diff": [
+        "-Oui. Si vous êtes étudiant, vous pouvez suspendre votre formation d'enseignement supérieur pour avoir une expérience professionnelle ou personnelle. Cette période est appelée la",
+        "+Oui",
+        "+. Si vous êtes étudiant, vous pouvez suspendre votre formation d'enseignement supérieur pour avoir une expérience professionnelle ou personnelle. Cette période est appelée la",
+        "-service volontaire européen",
+        "+mission dans le Corps européen de solidarité",
+        "-La période de césure intervient"
+      ]
+    },
+    {
+      "doc_id": "F33626",
+      "title": "Comment trouver son décret de naturalisation publié au Journal officiel ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33626",
+      "verified_before": "11 février 2025",
+      "verified_now": "23 octobre 2026",
+      "sample_diff": [
+        "-Les décrets de naturalisation, publiés au Journal officiel depuis 1924, sont téléchargeables sur le site Légifrance.",
+        "-Attention",
+        "-Cette page indique comment trouver un décret de",
+        "+Les",
+        "+décrets de",
+        "-française. La procédure est différente si vous avez fait une déclaration de nationalité française"
+      ]
+    },
+    {
+      "doc_id": "F34441",
+      "title": "Carte européenne d'assurance maladie (CEAM)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34441",
+      "verified_before": "11 août 2025",
+      "verified_now": "22 octobre 2026",
+      "sample_diff": [
+        "-Vous vous demandez à quoi sert la carte européenne d'assurance maladie (CEAM) ? Elle facilite la prise en charge de vos soins médicaux en Europe. Elle atteste de vos droits à l'Assurance maladie française. Vous pouvez effectuer votre demande de carte avant un séjour en Europe (sauf exceptions) et la demander",
+        "-gratuitement",
+        "-à l'Assurance maladie, quelle que soit votre nationalité. Nous vous exposons les règles à connaître.",
+        "-Attention",
+        "-Si vous allez vivre dans un autre pays européen",
+        "+Vous vous demandez à quoi sert la carte européenne d'assurance maladie (CEAM) ? Elle facilite la prise en charge de vos soins médicaux en Europe lors de séjours temporaires (exemples : vacances, séjour professionnel). Elle atteste de vos droits à l'Assurance maladie française. Vous pouvez effectuer votre demande de carte avant un séjour en Europe (sauf exceptions) et la demander gratuitement à l'Assurance maladie, quelle que soit votre nationalité. Nous vous exposons les règles à connaître."
+      ]
+    },
+    {
+      "doc_id": "F407",
+      "title": "Assurance maladie d'un Français vivant à l'étranger",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F407",
+      "verified_before": "11 janvier 2023",
+      "verified_now": "11 janvier 2023",
+      "sample_diff": [
+        "-Feuille de soins - Soins reçus à l'étranger par le travailleur salarié détaché",
+        "-Formulaire"
+      ]
+    },
+    {
+      "doc_id": "F725",
+      "title": "Séjour à l'hôpital",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F725",
+      "verified_before": "26 novembre 2025",
+      "verified_now": "26 novembre 2025",
+      "sample_diff": [
+        "-https://www.france-assos-sante.org/sante-info-droits/",
+        "+https://france-assos-sante.org/sante-info-droits/"
+      ]
+    },
+    {
+      "doc_id": "F748",
+      "title": "Hospitalisation : quels sont les droits du patient ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F748",
+      "verified_before": "09 septembre 2026",
+      "verified_now": "09 septembre 2026",
+      "sample_diff": [
+        "-https://www.france-assos-sante.org/sante-info-droits/",
+        "+https://france-assos-sante.org/sante-info-droits/"
       ]
     }
   ],
   "missing": [],
   "affected_items": [
     {
-      "item_id": "log-108",
+      "item_id": "etu-103",
       "pages": [
-        "F1169"
+        "F33072"
       ],
-      "question_en": "When renting in France, what documents is a landlord actually allowed to ask for in my rental 'dossier'?"
+      "question_en": "If I take a gap year (césure) to do an internship, do I keep my student status?"
     },
     {
-      "item_id": "log-109",
+      "item_id": "log-104",
       "pages": [
-        "F1169"
+        "F1168"
       ],
-      "question_en": "My guarantor lives abroad and doesn't pay tax in France. What proof of income can the landlord ask them for?"
+      "question_en": "I moved out and handed back the keys before my notice period ended. Until what date do I still owe rent?"
     },
     {
       "item_id": "arg-102",
       "pages": [
+        "F2413",
         "F2417"
       ],
       "question_en": "Banks keep turning me down for an account. Is there an official way to force a bank to open one for me?"
-    },
-    {
-      "item_id": "sante-101",
-      "pages": [
-        "F12859"
-      ],
-      "question_en": "I'm a non-EU international student. How do I sign up for French health insurance?"
-    },
-    {
-      "item_id": "sante-102",
-      "pages": [
-        "F12859"
-      ],
-      "question_en": "I'm an EU student in France. Is my EHIC enough to be covered, and what do I do if I don't have one?"
-    },
-    {
-      "item_id": "sante-107",
-      "pages": [
-        "F12859"
-      ],
-      "question_en": "Do I actually need a mutuelle (top-up health insurance) as a student in France, and what are my options?"
     }
   ],
-  "checked_at": "2026-10-16 17:12 UTC"
+  "checked_at": "2026-10-26 13:08 UTC",
+  "auto": {
+    "cleared": [
+      {
+        "item_id": "log-101",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "I'm renting a furnished flat. How much notice do I have to give my landlord before moving out?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-102",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "As a student renting an unfurnished place, what notice period applies when I end my lease?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-103",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "Does my furnished rental have to end at the end of a calendar month, or does the notice run from the day my letter is received?",
+        "reasons": []
+      },
+      {
+        "item_id": "arg-101",
+        "pages": [
+          "F2413"
+        ],
+        "question_en": "What documents do French banks ask for when a foreigner opens a bank account?",
+        "reasons": []
+      },
+      {
+        "item_id": "sante-103",
+        "pages": [
+          "F265"
+        ],
+        "question_en": "How do I apply for my carte Vitale as a foreign student, and how long does it take to arrive?",
+        "reasons": []
+      }
+    ],
+    "flagged": [
+      {
+        "item_id": "etu-103",
+        "pages": [
+          "F33072"
+        ],
+        "question_en": "If I take a gap year (césure) to do an internship, do I keep my student status?",
+        "reasons": [
+          "F33072 re-dated (official update)"
+        ]
+      },
+      {
+        "item_id": "log-104",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "I moved out and handed back the keys before my notice period ended. Until what date do I still owe rent?",
+        "reasons": [
+          "F1168: 1 of 3 evidence quotes no longer on the page"
+        ]
+      },
+      {
+        "item_id": "arg-102",
+        "pages": [
+          "F2413",
+          "F2417"
+        ],
+        "question_en": "Banks keep turning me down for an account. Is there an official way to force a bank to open one for me?",
+        "reasons": [
+          "F2417 re-dated (official update)"
+        ]
+      }
+    ],
+    "eval_before": {
+      "en hit@1": 0.574,
+      "en recall@5": 0.743,
+      "fr hit@1": 0.596,
+      "fr recall@5": 0.829
+    },
+    "eval_after": {
+      "en hit@1": 0.56,
+      "en recall@5": 0.734,
+      "fr hit@1": 0.593,
+      "fr recall@5": 0.823
+    }
+  }
 }
