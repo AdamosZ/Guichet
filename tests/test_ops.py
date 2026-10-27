@@ -59,7 +59,7 @@ def test_weekly_report_counts_last_seven_days():
     assert (s["questions"], s["answered"], s["not_found"], s["errors"]) == (3, 1, 1, 1)
     assert (s["thumbs_up"], s["thumbs_down"]) == (1, 1)
     assert s["cost_usd"] == round(3 * (0.05 * 0.10 + 0.0004 * 0.50), 2)
-    md = to_markdown(s)
+    md = to_markdown(s, details=True)
     assert "Which bank?" in md and "missing the deadline" in md and "failed" in md
     assert "No questions" in to_markdown(summarise([], {}, now=now))
 
@@ -86,3 +86,20 @@ def test_freshness_triage_keeps_only_items_whose_evidence_holds():
     cleared, flagged = triage_items(golden, live, redated={"F3"})
     assert [c["item_id"] for c in cleared] == ["ok"]
     assert [f["item_id"] for f in flagged] == ["lost", "no-evidence", "redated"]
+
+
+def test_public_weekly_report_never_contains_what_users_typed():
+    from datetime import UTC, datetime
+
+    from scripts.weekly_report import summarise, to_markdown
+
+    now = datetime(2026, 10, 19, 12, tzinfo=UTC)
+    answers = [{"answer_id": "a", "time": "2026-10-18T10:00:00Z", "question": "my secret question",
+                "language": "en", "found": False, "sources": [], "error": "", "tokens_in": 1, "tokens_out": 1}]
+    feedback = {"a": [{"rating": "down", "comment": "private comment"}]}
+    stats = summarise(answers, feedback, now=now)
+    public = to_markdown(stats)
+    assert "my secret question" not in public and "private comment" not in public
+    assert "stay private" in public
+    detailed = to_markdown(stats, details=True)
+    assert "my secret question" in detailed and "private comment" in detailed

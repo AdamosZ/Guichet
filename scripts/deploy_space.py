@@ -133,7 +133,9 @@ def main() -> None:
         bundle = Path(tmp)
         print("building bundle (embedding the corpus if not cached, a few minutes the first time)…")
         build_bundle(bundle)
+        # Old embedding files would pile up otherwise: only the current one is kept.
         api.upload_folder(repo_id=args.space, repo_type="space", folder_path=bundle,
+                          delete_patterns=["data/cache/*.npy"],
                           commit_message=os.environ.get("DEPLOY_MESSAGE", "Deploy Guichet"))
     print(f"\ndeployed: https://huggingface.co/spaces/{args.space}")
     print("first start takes a few minutes while it installs; refresh the page until it loads.")

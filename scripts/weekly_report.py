@@ -5,9 +5,13 @@
     python -m scripts.weekly_report --hf adamosz/guichet-logs --purge
 
 Covers the last 7 days: questions asked, how many were answered / not found /
-failed, 👍/👎, estimated cost, the questions Guichet couldn't answer (the list
-that says which official pages to add), 👎 comments, and the latest freshness
-check if there is one. Writes reports/weekly.md and reports/weekly.json.
+failed, 👍/👎, estimated cost and the latest freshness check. With --details
+(on your own machine only) it also lists the questions Guichet couldn't answer
+and the 👎 comments. Writes reports/weekly.md (and reports/weekly.json with
+--details).
+
+The default output holds counts only, because the GitHub issue it becomes is
+public: what students typed never leaves the private logs dataset.
 
 --purge also deletes log files older than the retention period (90 days) from
 the private dataset; the app already deletes them from its own disk.
@@ -87,7 +91,9 @@ def _pct(part: int, whole: int) -> str:
     return f"{100 * part / whole:.0f}%" if whole else "–"
 
 
-def to_markdown(s: dict, freshness: dict | None = None) -> str:
+def to_markdown(s: dict, freshness: dict | None = None, details: bool = False) -> str:
+    """The report. Without `details` it holds counts only, never what anyone typed:
+    the GitHub issue it becomes is public. Use details=True on your own machine."""
     n = s["questions"]
     rated = s["thumbs_up"] + s["thumbs_down"]
     out = [f"## Guichet weekly report, {s['from']} → {s['to']}", ""]
@@ -108,15 +114,19 @@ def to_markdown(s: dict, freshness: dict | None = None) -> str:
             "",
         ]
         if s["errors"] and s["errors"] / n > 0.05:
-            out += [f"⚠️ **{_pct(s['errors'], n)} of questions failed.** Samples: "
-                    + "; ".join(f"`{e}`" for e in s["error_samples"]), ""]
-        if s["not_found_questions"]:
-            out += ["### Couldn't answer (candidates for new pages)"]
-            out += [f"- {q}" for q in s["not_found_questions"]] + [""]
-        if s["down_comments"]:
-            out += ["### 👎 feedback"]
-            out += [f"- {d['question']}" + (f" — _{d['comment']}_" if d["comment"] else "")
-                    for d in s["down_comments"]] + [""]
+            kinds = sorted({e.split(":")[0] for e in s["error_samples"]})
+            out += [f"⚠️ **{_pct(s['errors'], n)} of questions failed** ({', '.join(kinds)}).", ""]
+        if details:
+            if s["not_found_questions"]:
+                out += ["### Couldn't answer (candidates for new pages)"]
+                out += [f"- {q}" for q in s["not_found_questions"]] + [""]
+            if s["down_comments"]:
+                out += ["### 👎 feedback"]
+                out += [f"- {d['question']}" + (f" — _{d['comment']}_" if d["comment"] else "")
+                        for d in s["down_comments"]] + [""]
+        elif s["not_found_questions"] or s["down_comments"]:
+            out += ["_Unanswered questions and 👎 comments stay private: see them with "
+                    "`python -m scripts.weekly_report --hf <logs dataset> --details`._", ""]
         if s["top_pages"]:
             out += ["### Most cited pages"]
             out += [f"- [{doc}](https://www.service-public.gouv.fr/particuliers/vosdroits/{doc}) × {k}"
@@ -147,6 +157,8 @@ def main() -> None:
     parser.add_argument("--logs", default=str(ROOT / "user_logs"), help="local log folder")
     parser.add_argument("--days", type=int, default=7)
     parser.add_argument("--purge", action="store_true", help="delete expired logs from the dataset (needs --hf)")
+    parser.add_argument("--details", action="store_true",
+                        help="include what users typed (private use only: never for the public issue)")
     args = parser.parse_args()
 
     folder = Path(args.logs)
@@ -169,8 +181,9 @@ def main() -> None:
     freshness = json.loads(fresh_path.read_text(encoding="utf-8")) if fresh_path.exists() else None
 
     (ROOT / "reports").mkdir(exist_ok=True)
-    (ROOT / "reports/weekly.json").write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
-    markdown = to_markdown(stats, freshness)
+    if args.details:
+        (ROOT / "reports/weekly.json").write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
+    markdown = to_markdown(stats, freshness, details=args.details)
     (ROOT / "reports/weekly.md").write_text(markdown, encoding="utf-8")
     print(markdown)
 

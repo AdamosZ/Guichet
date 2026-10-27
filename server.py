@@ -20,6 +20,7 @@ Environment:
 from __future__ import annotations
 
 import hashlib
+import ipaddress
 import os
 import secrets
 import threading
@@ -41,6 +42,7 @@ ROOT = Path(__file__).resolve().parent
 _load_env()
 DAILY_CAP = int(os.environ.get("DAILY_CAP", "300"))
 PER_USER_HOUR = int(os.environ.get("PER_USER_HOUR", "15"))
+FEEDBACK_PER_HOUR = int(os.environ.get("FEEDBACK_PER_HOUR", "30"))
 DEMO = os.environ.get("GUICHET_DEMO") == "1"
 
 
@@ -91,11 +93,13 @@ logbook = Logbook()
 class Limits:
     """Per-visitor hourly limit (keyed by a salted hash, kept in memory only) and a daily cap."""
 
-    def __init__(self):
+    def __init__(self, per_hour: int | None = None, daily_cap: int | None = None):
         self.lock = threading.Lock()
         self.salt = secrets.token_hex(8)
         self.seen: dict[str, deque] = defaultdict(deque)
         self.day, self.count = time.strftime("%Y-%m-%d"), 0
+        self.per_hour = per_hour or PER_USER_HOUR
+        self.daily_cap = daily_cap or DAILY_CAP
 
     def take(self, visitor: str) -> str | None:
         key = hashlib.sha256((self.salt + visitor).encode()).hexdigest()[:16]
@@ -104,12 +108,15 @@ class Limits:
             history = self.seen[key]
             while history and now - history[0] > 3600:
                 history.popleft()
-            if len(history) >= PER_USER_HOUR:
+            if not history:
+                del self.seen[key]  # keep memory bounded: forget idle visitors
+                history = self.seen[key]
+            if len(history) >= self.per_hour:
                 return "slow"
             today = time.strftime("%Y-%m-%d")
             if today != self.day:
                 self.day, self.count = today, 0
-            if self.count >= DAILY_CAP:
+            if self.count >= self.daily_cap:
                 return "cap"
             self.count += 1
             history.append(now)
@@ -117,8 +124,31 @@ class Limits:
 
 
 limits = Limits()
-app = FastAPI(title="Guichet", docs_url=None, redoc_url=None)
+feedback_limits = Limits(per_hour=FEEDBACK_PER_HOUR, daily_cap=10 * DAILY_CAP)
+app = FastAPI(title="Guichet", docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
+
+# The page's script and styles are inline; fonts come from Google Fonts. Framing
+# is allowed only by Hugging Face, which shows the Space inside its own page.
+SECURITY_HEADERS = {
+    "Content-Security-Policy": (
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; "
+        "base-uri 'none'; form-action 'self'; "
+        "frame-ancestors 'self' https://huggingface.co https://*.hf.space"),
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+}
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    for name, value in SECURITY_HEADERS.items():
+        response.headers.setdefault(name, value)
+    return response
 
 
 class AskIn(BaseModel):
@@ -126,14 +156,28 @@ class AskIn(BaseModel):
 
 
 class FeedbackIn(BaseModel):
-    answer_id: str = Field(max_length=40)
+    answer_id: str = Field(pattern="^[0-9a-f]{12}$")
     rating: str = Field(pattern="^(up|down)$")
     comment: str = Field(default="", max_length=1000)
 
 
 def _visitor(request: Request) -> str:
-    forwarded = request.headers.get("x-forwarded-for", "")
-    return forwarded.split(",")[0].strip() or (request.client.host if request.client else "unknown")
+    """The visitor's IP address, as seen by the hosting proxy.
+
+    Anyone can send their own X-Forwarded-For header, but proxies only ever
+    append to it, so the left-most entries are the ones a visitor can fake. The
+    right-most *public* address was added by the hosting infrastructure and is
+    the real client; private addresses after it are internal proxy hops.
+    """
+    hops = [h.strip() for h in request.headers.get("x-forwarded-for", "").split(",") if h.strip()]
+    for hop in reversed(hops):
+        try:
+            address = ipaddress.ip_address(hop)
+        except ValueError:
+            continue
+        if address.is_global:
+            return str(address)
+    return request.client.host if request.client else "unknown"
 
 
 @app.get("/")
@@ -172,6 +216,8 @@ def ask(body: AskIn, request: Request):
 
 
 @app.post("/api/feedback")
-def feedback(body: FeedbackIn):
+def feedback(body: FeedbackIn, request: Request):
+    if feedback_limits.take(_visitor(request)):
+        return JSONResponse({"ok": False}, status_code=429)
     logbook.feedback(body.answer_id, body.rating, body.comment)
     return {"ok": True}
