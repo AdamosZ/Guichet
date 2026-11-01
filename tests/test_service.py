@@ -80,3 +80,13 @@ def test_structured_prompt_answers_through_the_form(monkeypatch):
     g = make(monkeypatch, prompt="v2s")
     answer = g.answer("Quelle est la durée de validité d'un récépissé ?")
     assert answer.found and answer.sources and not answer.error
+
+
+def test_citations_sent_as_plain_strings_do_not_crash(monkeypatch):
+    from guichet.llm import Reply
+
+    g = make(monkeypatch, prompt="v2s")
+    odd = Reply(raw="", data={"found": True, "answer": "x", "citations": ["a bare string"]})
+    monkeypatch.setattr(g, "_call", lambda *a, **k: odd)
+    answer = g.answer("Combien de temps est valable un récépissé ?")
+    assert answer.found is False and answer.dropped_quotes == 1 and not answer.error

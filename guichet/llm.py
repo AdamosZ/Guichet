@@ -66,7 +66,7 @@ def _anthropic(client, model, system, user, tool, max_tokens) -> Reply:
                   stop_reason=getattr(message, "stop_reason", "") or "")
     for block in message.content:
         if getattr(block, "type", "") == "tool_use":
-            reply.data = dict(block.input)
+            reply.data = clean_reply(block.input)
             reply.raw = json.dumps(reply.data, ensure_ascii=False)
             return reply
     reply.text = "".join(b.text for b in message.content if getattr(b, "type", "") == "text").strip()
@@ -122,6 +122,40 @@ def _hf(model, system, user, tool, max_tokens, http=None) -> Reply:
     return reply
 
 
+def clean_reply(data) -> dict:
+    """Bring a model's answer form into one shape, whatever it sent.
+
+    Models occasionally return citations as a JSON string, as plain strings, or
+    with found="true". Anything that isn't a {chunk_id, quote} object is kept
+    as a citation with no page, so the quote check drops it and counts it.
+    """
+    if not isinstance(data, dict):
+        return {"found": None, "answer": str(data or ""), "citations": [], "parse_error": True}
+    citations = data.get("citations") or []
+    if isinstance(citations, str):
+        try:
+            citations = json.loads(citations)
+        except json.JSONDecodeError:
+            citations = [citations]
+    if isinstance(citations, dict):
+        citations = [citations]
+    if not isinstance(citations, list):
+        citations = []
+    cleaned = []
+    for c in citations:
+        if isinstance(c, dict):
+            cleaned.append({"chunk_id": str(c.get("chunk_id") or ""), "quote": str(c.get("quote") or "")})
+        elif c:
+            cleaned.append({"chunk_id": "", "quote": str(c)})
+    found = data.get("found")
+    if isinstance(found, str):
+        found = {"true": True, "false": False}.get(found.strip().lower())
+    answer = data.get("answer")
+    out = {**data, "found": found, "answer": answer if isinstance(answer, str) else str(answer or ""),
+           "citations": cleaned}
+    return out
+
+
 def _json_from_text(text: str) -> dict:
     match = re.search(r"\{.*\}", text or "", flags=re.S)
     if not match:
@@ -132,8 +166,7 @@ def _json_from_text(text: str) -> dict:
         return {"found": None, "answer": (text or "").strip(), "citations": [], "parse_error": True}
     if not isinstance(data, dict):
         return {"found": None, "answer": str(data), "citations": [], "parse_error": True}
-    data.setdefault("citations", [])
-    return data
+    return clean_reply(data)
 
 
 # -------------------------------------------------------------------- public

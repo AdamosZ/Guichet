@@ -103,3 +103,27 @@ def test_public_weekly_report_never_contains_what_users_typed():
     assert "stay private" in public
     detailed = to_markdown(stats, details=True)
     assert "my secret question" in detailed and "private comment" in detailed
+
+
+def test_live_eval_scoring():
+    from scripts.eval_live import score
+
+    gold = {"a": {"answerable": True, "gold_doc_ids": ["F1"]},
+            "b": {"answerable": True, "gold_doc_ids": ["F2"]},
+            "u": {"answerable": False, "gold_doc_ids": []}}
+
+    def row(item, found, sources, seen, answer="Le récépissé est valable trois mois.", error="", dropped=0):
+        return {"item_id": item, "language": "fr", "model": "claude-haiku-5-5", "found": found, "answer": answer,
+                "source_ids": sources, "pages_seen": seen, "dropped_quotes": dropped, "tokens_in": 50_000,
+                "tokens_out": 800, "seconds": 4.0, "error": error}
+
+    rows = [row("a", True, ["F1"], ["F1", "F9"], dropped=1),   # right page
+            row("b", True, ["F9"], ["F9", "F2"]),              # answered from the wrong page
+            row("u", False, [], ["F9"], answer=""),           # correct refusal
+            row("a", False, [], [], error="Timeout")]          # failed call
+    s = score(rows, gold)["fr"]
+    assert (s["n"], s["errors"]) == (4, 1)
+    assert s["answered_with_gold_citation"] == 0.5 and s["answered_citing_wrong_page"] == 0.5
+    assert s["correct_abstention_rate"] == 1.0 and s["gold_page_in_top5"] == 1.0
+    assert s["quotes_dropped_rate"] == round(1 / 3, 3)
+    assert s["cost_per_question_usd"] == round(0.05 * 0.10 + 0.0008 * 0.50, 3)

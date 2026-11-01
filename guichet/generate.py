@@ -137,8 +137,9 @@ def read_message(message) -> tuple[str, dict]:
     """(raw text for the record, parsed reply) from either a form (tool) or a text reply."""
     for block in message.content:
         if getattr(block, "type", "") == "tool_use":
-            data = dict(block.input)
-            data.setdefault("citations", [])
+            from .llm import clean_reply
+
+            data = clean_reply(block.input)
             return json.dumps(data, ensure_ascii=False), data
     text = "".join(block.text for block in message.content if getattr(block, "type", "") == "text")
     return text, parse_reply(text)
@@ -239,8 +240,9 @@ def parse_reply(text: str) -> dict:
         data = json.loads(match.group(0))
     except json.JSONDecodeError:
         return {"found": None, "answer": text.strip(), "citations": [], "parse_error": True}
-    data.setdefault("citations", [])
-    return data
+    from .llm import clean_reply
+
+    return clean_reply(data)
 
 
 def run(model: str = DEFAULT_MODEL, variant: str = DEFAULT_CONTEXT, limit: int | None = None,
@@ -312,7 +314,9 @@ def score_row(gen: dict, ctx: dict, evidence: list[dict] | None = None) -> dict:
     context_text = _norm(" ".join(p["text"] for p in ctx["passages"]))
     evidence_in_context = any(_norm(e.get("quote", ""))[:60] in context_text
                               for e in (evidence or []) if e.get("quote"))
-    citations = gen.get("citations") or []
+    from .llm import clean_reply
+
+    citations = clean_reply(gen)["citations"]
     valid = [c for c in citations if c.get("chunk_id") in passages]
     faithful = [c for c in valid
                 if c.get("quote") and quote_in(c["quote"], passages[c["chunk_id"]]["text"])]

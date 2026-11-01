@@ -202,7 +202,11 @@ def ask(body: AskIn, request: Request):
     blocked = limits.take(_visitor(request))
     if blocked:
         return JSONResponse({"status": blocked, "language": language}, status_code=429)
-    answer = engine.answer(question)
+    try:
+        answer = engine.answer(question)
+    except Exception as exc:  # never a 500 for the student: log it and show the normal error message
+        answer = Answer(question=question, language=language, found=False, text="",
+                        error=f"unhandled {type(exc).__name__}: {exc}"[:300])
     data = answer_to_dict(answer)
     answer_id = logbook.question(data)
     status = "error" if answer.error else ("answered" if answer.found else "not_found")

@@ -76,3 +76,14 @@ def test_missing_permission_is_an_access_error_not_retried():
     with pytest.raises(llm.AccessError, match="403"):
         llm.complete("some/model", "sys", "hello", http=http)
     assert len(http.bodies) == 1
+
+
+def test_odd_answer_forms_are_normalised():
+    from guichet.llm import clean_reply
+
+    as_string = clean_reply({"found": "true", "answer": "x",
+                             "citations": '[{"chunk_id": "F1", "quote": "q"}]'})
+    assert as_string["found"] is True and as_string["citations"] == [{"chunk_id": "F1", "quote": "q"}]
+    plain = clean_reply({"found": True, "answer": "x", "citations": ["just a sentence", {"chunk_id": "F2"}]})
+    assert plain["citations"] == [{"chunk_id": "", "quote": "just a sentence"}, {"chunk_id": "F2", "quote": ""}]
+    assert clean_reply("oops")["parse_error"] is True

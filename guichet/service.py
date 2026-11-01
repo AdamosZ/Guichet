@@ -33,7 +33,7 @@ from .generate import (
 )
 from .index import BM25Index, DenseIndex, reciprocal_rank_fusion
 from .langid import detect
-from .llm import complete, is_claude
+from .llm import clean_reply, complete, is_claude
 
 ROOT = Path(__file__).resolve().parents[1]
 # Any Claude model id, or a Hugging Face model id with an optional ":provider"
@@ -131,7 +131,7 @@ class Guichet:
             message = self._call(PROMPTS[PROMPT], _prompt(row), request_kwargs(PROMPT)["max_tokens"], tool)
             result.tokens_in = message.tokens_in
             result.tokens_out = message.tokens_out
-            reply = message.data if tool else parse_reply(message.text)
+            reply = clean_reply(message.data) if tool else parse_reply(message.text)
         except Exception as exc:  # network, quota, malformed index…
             result.error = f"{type(exc).__name__}: {exc}"
             return result
