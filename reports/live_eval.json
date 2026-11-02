@@ -1,31 +1,31 @@
 {
   "run": "generations__claude-haiku-5-5__live__v2s.jsonl",
-  "checked_at": "2026-11-02 00:46",
+  "checked_at": "2026-11-02 16:37",
   "summary": {
     "fr": {
-      "n": 3,
+      "n": 104,
       "errors": 0,
-      "answered_with_gold_citation": 1.0,
+      "answered_with_gold_citation": 0.904,
       "answered_citing_wrong_page": 0.0,
-      "said_not_found": 0.0,
-      "correct_abstention_rate": null,
-      "gold_page_in_top5": 1.0,
-      "quotes_dropped_rate": 0.0,
+      "said_not_found": 0.096,
+      "correct_abstention_rate": 1.0,
+      "gold_page_in_top5": 0.936,
+      "quotes_dropped_rate": 0.006,
       "answer_language_ok": 1.0,
-      "seconds_mean": 3.233,
-      "cost_per_question_usd": 0.006
+      "seconds_mean": 3.463,
+      "cost_per_question_usd": 0.005
     },
     "en": {
-      "n": 3,
+      "n": 104,
       "errors": 0,
-      "answered_with_gold_citation": 1.0,
-      "answered_citing_wrong_page": 0.0,
-      "said_not_found": 0.0,
-      "correct_abstention_rate": null,
-      "gold_page_in_top5": 1.0,
-      "quotes_dropped_rate": 0.0,
+      "answered_with_gold_citation": 0.894,
+      "answered_citing_wrong_page": 0.043,
+      "said_not_found": 0.064,
+      "correct_abstention_rate": 1.0,
+      "gold_page_in_top5": 0.915,
+      "quotes_dropped_rate": 0.02,
       "answer_language_ok": 1.0,
-      "seconds_mean": 4.067,
+      "seconds_mean": 4.99,
       "cost_per_question_usd": 0.006
     }
   }

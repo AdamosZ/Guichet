@@ -223,6 +223,40 @@ there were 0 malformed replies, every citation was valid, and the found/not-foun
 decisions matched v2. The live app uses v2s. The judge's calibration
 (κ = 0.33 against hand grades) was measured on v1 answers.
 
+### Measured on the deployed pipeline
+
+The numbers above come from the offline eval, which differs from the live site
+in two ways: it translated questions with a small offline model (opus-mt), and
+it read the pages as crawled in October. `python -m scripts.eval_live` sends
+all 208 test questions through `Guichet.answer`, the exact code the site runs
+(Claude translation, current pages, prompt v2s, quote re-check, ~90k-token
+context cap), and scores the answers. Run of 2 Nov 2026:
+
+| live pipeline, 2 Nov 2026                     | FR          | EN          |
+|-----------------------------------------------|-------------|-------------|
+| Answered, correct page cited                  | **90.4%**   | **89.4%**   |
+| Answered, citing only other pages             | 0.0%        | 4.3%        |
+| Said "not found" although answerable          | 9.6%        | 6.4%        |
+| Unanswerable refused                          | 10 / 10     | 10 / 10     |
+| Proposed quotes that failed the check (never shown) | 0.6%  | 2.0%        |
+| Answer in the question's language             | 100%        | 100%        |
+| Seconds / cost per question                   | 3.5 s / $0.005 | 5.0 s / $0.006 |
+
+Against the offline v2 run on the same 94 answerable pairs (paired bootstrap):
+English **+0.074 [+0.021, +0.138]** (8 questions better, 1 worse), French
++0.011 [−0.032, +0.064]. The likely cause is the live translation: Claude
+translates the question for keyword search better than opus-mt. On the live
+site the English-minus-French gap is **−0.011 [−0.074, +0.053]**: not
+distinguishable from zero. The cross-lingual gap this project set out to
+measure is closed end to end.
+
+The context cap exists because Haiku 5.5 bills prompts over 100k tokens at 5×
+the base price: before it, 23 of the remaining 200 questions would have crossed
+that line. With pages added in relevance order up to ~205k characters (about
+89k tokens at the measured 0.42–0.43 tokens per character), the largest prompt
+was 86k tokens and all 208 answers cost $1.14. The site's "measured" footer
+quotes this table, not the offline one.
+
 ### Keeping it honest after launch
 
 - **Real questions feed the eval.** `python -m scripts.review_user_questions`

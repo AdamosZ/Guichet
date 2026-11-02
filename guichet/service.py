@@ -8,7 +8,8 @@
 
 Measured on 104 human-reviewed question pairs (see README): no fabricated
 citations, 20/20 refusals on unanswerable questions; with the v2 answer style,
-89% (FR) / 82% (EN) of answerable questions answered with a correct page cited.
+measured on this exact pipeline (scripts/eval_live.py, 2 Nov 2026): 90% (FR) /
+89% (EN) of answerable questions answered with a correct page cited.
 
 The Anthropic client is injected, so the service can be tested without a key.
 """
