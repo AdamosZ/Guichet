@@ -90,3 +90,18 @@ def test_citations_sent_as_plain_strings_do_not_crash(monkeypatch):
     monkeypatch.setattr(g, "_call", lambda *a, **k: odd)
     answer = g.answer("Combien de temps est valable un récépissé ?")
     assert answer.found is False and answer.dropped_quotes == 1 and not answer.error
+
+
+def test_context_budget_keeps_order_and_cuts_the_last_page(monkeypatch):
+    g = make(monkeypatch)
+    monkeypatch.setattr(service, "MAX_CONTEXT_CHARS", 30_000)
+    monkeypatch.setattr(service, "MIN_PAGE_CHARS", 1_000)
+    ids = sorted(g.pages, key=lambda d: -len(g.pages[d].text))
+    small = [d for d in ids if 2_000 < len(g.pages[d].text) < 12_000][:3]
+    big = next(d for d in ids if len(g.pages[d].text) > 30_000)
+    shown = g.fit_pages(small + [big])
+    assert [d for d, _ in shown][:len(small)] == small          # relevance order kept
+    assert sum(len(t) for _, t in shown) <= 30_000              # within budget
+    if len(shown) > len(small):                                 # big page included only as a cut-down copy
+        assert len(shown[-1][1]) < len(g.pages[big].text)
+    assert g.fit_pages([big])[0][1] == g.pages[big].text[:len(g.fit_pages([big])[0][1])]

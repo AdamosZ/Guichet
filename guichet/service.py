@@ -44,6 +44,13 @@ MODEL = os.environ.get("GUICHET_MODEL", "claude-haiku-5-5")
 # prompt has been re-evaluated on the golden set (python -m guichet.generate --prompt …).
 PROMPT = os.environ.get("GUICHET_PROMPT", "v2s")  # v2s chosen 19 Oct 2026, see README
 PAGES = 5
+# Haiku 5.5 bills prompts over 100k tokens at 5x the price. Pages are given to the
+# model in order of relevance until this budget is used, and the last one is cut
+# at a paragraph break, so every question stays under ~90k tokens (measured: about
+# 0.42 tokens per character of these pages). Sizing on 19 Oct corpus: 29 of 208
+# test questions get a shortened last page; none loses its correct page entirely.
+MAX_CONTEXT_CHARS = int(os.environ.get("GUICHET_MAX_CONTEXT_CHARS", "205000"))
+MIN_PAGE_CHARS = 7000  # below this, a cut-down page isn't worth including
 SERVICE_PUBLIC_SEARCH = "https://www.service-public.gouv.fr/particuliers/recherche?keyword="
 
 TRANSLATE_SYSTEM = ("Translate the user's question into natural French as a French student would write it. "
@@ -117,16 +124,32 @@ class Guichet:
                 break
         return order
 
+    def fit_pages(self, doc_ids: list[str]) -> list[tuple[str, str]]:
+        """(doc_id, text) in relevance order, within MAX_CONTEXT_CHARS."""
+        kept, used = [], 0
+        for doc_id in doc_ids:
+            text = self.pages[doc_id].text
+            room = MAX_CONTEXT_CHARS - used
+            if len(text) > room:
+                if room >= MIN_PAGE_CHARS:
+                    cut = text.rfind("\n", 0, room)
+                    kept.append((doc_id, text[:cut if cut > room // 2 else room]))
+                break
+            kept.append((doc_id, text))
+            used += len(text)
+        return kept
+
     def answer(self, question: str) -> Answer:
         question = question.strip()
         language = detect(question)
         result = Answer(question=question, language=language, found=False, text="", model=self.model)
         try:
-            doc_ids = self.retrieve(question, language)
+            shown = self.fit_pages(self.retrieve(question, language))
+            doc_ids = [d for d, _ in shown]
             result.pages_seen = doc_ids
             row = {"question": question, "language": language,
-                   "passages": [{"chunk_id": d, "doc_id": d, "title": self.pages[d].title,
-                                 "text": self.pages[d].text} for d in doc_ids]}
+                   "passages": [{"chunk_id": d, "doc_id": d, "title": self.pages[d].title, "text": text}
+                                for d, text in shown]}
             tool = ANSWER_TOOL if PROMPT in STRUCTURED else None
             message = self._call(PROMPTS[PROMPT], _prompt(row), request_kwargs(PROMPT)["max_tokens"], tool)
             result.tokens_in = message.tokens_in
