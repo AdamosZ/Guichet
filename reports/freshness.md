@@ -1,114 +1,172 @@
-## Freshness check, 2026-10-26 13:08 UTC
-192 pages checked: **17 changed** (5 with a new « Vérifié le » date, the strongest sign of a rule update), 0 unreachable, **3 golden items to re-review**.
+## Freshness check, 2026-11-02 15:59 UTC
+192 pages checked: **22 changed** (3 with a new « Vérifié le » date, the strongest sign of a rule update), 0 unreachable, **6 golden items to re-review**.
 
 ### What happened automatically
-- The app now uses the new version of all 17 changed pages.
-- 5 test answers stayed reviewed: every evidence quote is still on the page and the page wasn't re-dated.
-  `log-101`, `log-102`, `log-103`, `arg-101`, `sante-103`
+- The app now uses the new version of all 22 changed pages.
+- 4 test answers stayed reviewed: every evidence quote is still on the page and the page wasn't re-dated.
+  `sej-110`, `visa-108`, `trav-114`, `sante-103`
 
-### 👉 3 test answers need you (`make review`)
-- `etu-103`: If I take a gap year (césure) to do an internship, do I keep my student status?  
-  _F33072 re-dated (official update)_
-- `log-104`: I moved out and handed back the keys before my notice period ended. Until what date do I still owe rent?  
-  _F1168: 1 of 3 evidence quotes no longer on the page_
-- `arg-102`: Banks keep turning me down for an account. Is there an official way to force a bank to open one for me?  
-  _F2417 re-dated (official update)_
+### 👉 6 test answers need you (`make review`)
+- `proc-001`: What should I do if I lose my residence permit?  
+  _F21032 changed and the item has no evidence quote to check_
+- `sej-112`: My work-based residence permit expired while my renewal is being processed. Can I keep working on the renewal récépissé?  
+  _F2728 changed and the item has no evidence quote to check_
+- `trav-104`: Am I allowed to work more than 20 hours a week (say at a supermarket) on a student titre de séjour?  
+  _F2728 changed and the item has no evidence quote to check_
+- `trav-106`: Does my employer have to apply for a work permit for my apprenticeship contract since I'm a foreign student?  
+  _F2728 changed and the item has no evidence quote to check_
+- `trav-112`: My récépissé for a job-seeker permit application doesn't say anything about work authorisation — am I allowed to work with it?  
+  _F2728 changed and the item has no evidence quote to check_
+- `trav-113`: I'm on the post-study job-seeker permit. What's the minimum salary I need to switch to a salarié (employee) permit?  
+  _F16922 changed and the item has no evidence quote to check; F2728 changed and the item has no evidence quote to check_
 
 They no longer count in the reported numbers until re-reviewed.
 
 ### Retrieval check (hybrid-trans)
 | metric | before | after |
 |---|---|---|
-| en hit@1 | 0.574 | 0.560 |
-| en recall@5 | 0.743 | 0.734 |
-| fr hit@1 | 0.596 | 0.593 |
-| fr recall@5 | 0.829 | 0.823 |
+| en hit@1 | 0.560 | 0.545 |
+| en recall@5 | 0.734 | 0.761 |
+| fr hit@1 | 0.593 | 0.557 ⚠️ |
+| fr recall@5 | 0.823 | 0.821 |
 
 _The answer key shrank this week, so part of any change is the smaller set._
 
 ### Changed pages
-- 🔴 re-dated [F13517](https://www.service-public.gouv.fr/particuliers/vosdroits/F13517) Européen en France : refus d'entrée et éloignement: vérifié 03 mai 2022 → 23 octobre 2026
-    `-, votre liberté de circuler et de séjourner en France (et celle de votre famille) peut être remise en cause dans des cas limités. Vous pouv`
-    `+, votre liberté de circuler et de séjourner en France (et celle de votre famille) peut être remise en cause dans des cas limités. Vous pouv`
-    `-Interdiction administrative du territoire (IAT)`
-    `-Vous pouvez vous voir refuser l'entrée en France si votre comportement (ou celui d'un membre de votre famille) constitue une menace pour l'`
-    `+Un étranger européen peut-il faire l'objet d'une interdiction administrative du territoire (IAT) ?`
-    `+Vous pouvez vous voir refuser l'entrée en France si votre comportement (ou celui d'un membre de votre famille) constitue une menace pour`
-- 🟡 same date [F16123](https://www.service-public.gouv.fr/particuliers/vosdroits/F16123) Je veux obtenir un crédit immobilier: vérifié 05 avril 2024 → 05 avril 2024
-    `-Le taux de l'usure : qu'est-ce que c'est ?`
-    `+Le taux d'usure : qu'est-ce que c'est ?`
+- 🟡 same date [F15813](https://www.service-public.gouv.fr/particuliers/vosdroits/F15813) Carte de séjour temporaire - Jeune au pair: vérifié 01 mai 2026 → 01 mai 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F15898](https://www.service-public.gouv.fr/particuliers/vosdroits/F15898) Travail d'un étranger en France : carte de séjour - salarié/travailleur temporaire: vérifié 01 mai 2026 → 01 mai 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
 - 🟡 same date [F16225](https://www.service-public.gouv.fr/particuliers/vosdroits/F16225) Je deviens parent: vérifié 01 juin 2026 → 01 juin 2026
-    `-avant de contacter l'Assurance maladie.`
-    `+avant d'appeler.`
-    `-avant de contacter l'Assurance maladie.`
-    `+avant d'appeler.`
-- 🟡 same date [F1168](https://www.service-public.gouv.fr/particuliers/vosdroits/F1168) Préavis et formalités du congé donné par le locataire (bail d'habitation): vérifié 16 avril 2026 → 16 avril 2026
-    `-Qui est le locataire qui peut donner son congé (ou préavis) au propriétaire ?`
-    `+Que doit faire le locataire qui veut quitter définitivement le logement (logement vide) ?`
-    `-leur congé.`
-    `+leur congé au propriétaire (ou à l'agence immobilière).`
-    `-des époux donne congé, l'autre époux`
-    `+des époux veut quitter définitvement le logement, il doit donner son congé au propriétaire (ou à l'agence immobilière).`
-- 🟡 same date [F163](https://www.service-public.gouv.fr/particuliers/vosdroits/F163) Médecin traitant et parcours de soins coordonnés: vérifié 21 août 2026 → 21 août 2026
-    `-Gynécologue, ophtalmologue, psychiatre, stomatologue (à la condition d'avoir déclaré un médecin traitant)`
-    `+Psychiatre (pour les moins de 26 ans), gynécologue, ophtalmologue, stomatologue (à la condition d'avoir déclaré un médecin traitant)`
-    `-https://www.france-assos-sante.org/sante-info-droits/`
-    `+https://france-assos-sante.org/sante-info-droits/`
-- 🟡 same date [F200](https://www.service-public.gouv.fr/particuliers/vosdroits/F200) Déroulement d'une hospitalisation et prise en charge par l'Assurance maladie: vérifié 01 mars 2026 → 01 mars 2026
-    `-https://www.france-assos-sante.org/sante-info-droits/`
-    `+https://france-assos-sante.org/sante-info-droits/`
+    `-Un guide intitulé`
+    `-Ma maternité - Je prépare l'arrivée de mon enfant`
+    `+Un`
+    `+guide des futurs parents avant la naissance`
+    `-et les dates de votre congé maternité`
+    `+et les dates de votre`
+- 🟡 same date [F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922) Carte talent : carte de séjour pluriannuelle d'un étranger en France: vérifié 01 juin 2026 → 01 juin 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🔴 re-dated [F17146](https://www.service-public.gouv.fr/particuliers/vosdroits/F17146) Qu'est-ce que la régularisation pour motif humanitaire ou exceptionnel d'un étranger en situation irrégulière ?: vérifié 12 mars 2025 → 29 octobre 2026
+    `-, en situation irrégulière, vous pouvez demander une carte de séjour temporaire`
+    `+en situation irrégulière, vous pouvez demander une carte de séjour temporaire`
+    `-pour motifs exceptionnels ou humanitaires, sous conditions. Vous devez déposer votre demande de carte de séjour en préfecture. La carte vou`
+    `+pour motifs exceptionnels ou humanitaires, sous conditions. Vous devez déposer votre demande de carte de séjour en préfecture. La carte vou`
+    `-Si vous êtes en situation irrégulière, vous pouvez demander à être admis au séjour si des considérations humanitaires ou des motifs excepti`
+    `+Si vous êtes étranger non`
+- 🟡 same date [F17164](https://www.service-public.gouv.fr/particuliers/vosdroits/F17164) Comment un étranger habitant en France et gravement malade peut-il obtenir un titre de séjour ?: vérifié 01 mai 2026 → 01 mai 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F17359](https://www.service-public.gouv.fr/particuliers/vosdroits/F17359) Carte de résident de longue durée-UE (étranger en France depuis 5 ans): vérifié 01 juin 2026 → 01 juin 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F21032](https://www.service-public.gouv.fr/particuliers/vosdroits/F21032) Que doit faire un étranger en cas de perte de sa carte de séjour ?: vérifié 01 juillet 2026 → 01 juillet 2026
+    `-Perte de sa carte de séjour par l'Européen ou un membre de sa famille`
+    `+Perte de la carte de séjour d'un citoyen européen ou d'un membre de sa famille`
+- 🟡 same date [F2208](https://www.service-public.gouv.fr/particuliers/vosdroits/F2208) Carte de résident de 10 ans d'un étranger en France: vérifié 01 juillet 2026 → 01 juillet 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F2209](https://www.service-public.gouv.fr/particuliers/vosdroits/F2209) Carte de séjour "vie privée et familiale" d'un étranger en France: vérifié 01 mai 2026 → 01 mai 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F2215](https://www.service-public.gouv.fr/particuliers/vosdroits/F2215) Certificat de résidence d'1 an pour Algérien: vérifié 01 août 2026 → 01 août 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F12118](https://www.service-public.gouv.fr/particuliers/vosdroits/F12118) Changer l'adresse sur son certificat d'immatriculation: vérifié 06 mars 2026 → 06 mars 2026
+    `-Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voir plusieurs semaines pour les cas les plus c`
+    `+Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voire plusieurs semaines pour les cas les plus `
+    `-Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voir plusieurs semaines pour les cas les plus c`
+    `+Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voire plusieurs semaines pour les cas les plus `
+- 🟡 same date [F12216](https://www.service-public.gouv.fr/particuliers/vosdroits/F12216) DSE (dossier social étudiant) : comment demander une bourse et/ou un logement ?: vérifié 03 mars 2026 → 03 mars 2026
+    `+Centre régional des œuvres universitaires et scolaires (Crous)`
+- 🔴 re-dated [F21765](https://www.service-public.gouv.fr/particuliers/vosdroits/F21765) Sortie ou voyage scolaires à l'école primaire (maternelle ou élémentaire): vérifié 12 février 2025 → 30 octobre 2026
+    `-Votre enfant participe à une sortie ou à un voyage scolaire et vous vous posez des questions sur les règles d'organisation ? Contrairement `
+    `+Votre enfant va participer à une sortie ou à un voyage scolaire et vous vous posez des questions sur les règles d'organisation ? Contrairem`
+    `-(par exemple : piscine, bibliothèque, gymnase)`
+    `+(par exemple : piscine, bibliothèque, gymnase),`
+    `-Des accompagnateurs doivent encadrer les sorties scolaires. Les règles d'encadrement sont différentes à l'école maternelle et à l'école élé`
+    `+Des accompagnateurs doivent encadrer les sorties scolaires. Les règles d'encadrement sont différentes à l'école maternelle et à l'école élé`
 - 🟡 same date [F22575](https://www.service-public.gouv.fr/particuliers/vosdroits/F22575) Sortie ou voyage scolaires au collège et au lycée: vérifié 17 février 2026 → 17 février 2026
-    `+Plan Vigipirate`
-    `+Premier ministre`
-- 🟡 same date [F2413](https://www.service-public.gouv.fr/particuliers/vosdroits/F2413) Compte bancaire individuel: vérifié 22 mai 2026 → 22 mai 2026
-    `-Droit au compte`
-    `+Droit au compte et relations avec le client`
-    `-Code monétaire et financier : articles R312-1 à R312-4-4`
-    `-Droit au compte et relations avec le client`
-- 🔴 re-dated [F2417](https://www.service-public.gouv.fr/particuliers/vosdroits/F2417) Refus d'ouverture de compte bancaire : droit au compte: vérifié 28 octobre 2025 → 19 octobre 2026
-    `-Une banque refuse de vous ouvrir un compte bancaire ? Dans ce cas, vous pouvez saisir la Banque de France pour bénéficier de la`
-    `+Une banque refuse de vous ouvrir un compte bancaire et vous n'avez aucun compte de dépôt en France ? Dans ce cas, vous pouvez saisir la Ban`
-    `-Pour bénéficier de la procédure du droit au compte, vous devez remplir`
-    `+Pour bénéficier de la procédure du droit au compte en France, vous devez remplir`
-    `-Résider en France`
-    `-Résider légalement sur le territoire d'un autre État membre de`
+    `+Prévenir et agir contre les violences en milieu scolaire`
+    `+Ministère chargé de l'éducation`
 - 🟡 same date [F265](https://www.service-public.gouv.fr/particuliers/vosdroits/F265) Carte Vitale: vérifié 29 août 2026 → 29 août 2026
-    `-avant de contacter l'Assurance maladie.`
-    `+avant d'appeler.`
-    `-avant de contacter l'Assurance maladie.`
-    `+avant d'appeler.`
-- 🟡 same date [F2863](https://www.service-public.gouv.fr/particuliers/vosdroits/F2863) Inscription d'un étranger dans l'enseignement supérieur: vérifié 05 décembre 2025 → 05 décembre 2025
-    `-Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2026-2027`
-    `+Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2027-2028`
-    `-Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2026-2027`
-    `+Dossier vert (étudiant étranger) : demande d'admission préalable en université - 1ère année de licence ou Paces - 2027-2028`
-- 🔴 re-dated [F33072](https://www.service-public.gouv.fr/particuliers/vosdroits/F33072) Un étudiant peut-il faire une césure dans ses études ?: vérifié 23 janvier 2025 → 19 octobre 2026
-    `-Oui. Si vous êtes étudiant, vous pouvez suspendre votre formation d'enseignement supérieur pour avoir une expérience professionnelle ou per`
-    `+Oui`
-    `+. Si vous êtes étudiant, vous pouvez suspendre votre formation d'enseignement supérieur pour avoir une expérience professionnelle ou person`
-    `-service volontaire européen`
-    `+mission dans le Corps européen de solidarité`
-    `-La période de césure intervient`
-- 🔴 re-dated [F33626](https://www.service-public.gouv.fr/particuliers/vosdroits/F33626) Comment trouver son décret de naturalisation publié au Journal officiel ?: vérifié 11 février 2025 → 23 octobre 2026
-    `-Les décrets de naturalisation, publiés au Journal officiel depuis 1924, sont téléchargeables sur le site Légifrance.`
-    `-Attention`
-    `-Cette page indique comment trouver un décret de`
-    `+Les`
-    `+décrets de`
-    `-française. La procédure est différente si vous avez fait une déclaration de nationalité française`
-- 🔴 re-dated [F34441](https://www.service-public.gouv.fr/particuliers/vosdroits/F34441) Carte européenne d'assurance maladie (CEAM): vérifié 11 août 2025 → 22 octobre 2026
-    `-Vous vous demandez à quoi sert la carte européenne d'assurance maladie (CEAM) ? Elle facilite la prise en charge de vos soins médicaux en E`
-    `-gratuitement`
-    `-à l'Assurance maladie, quelle que soit votre nationalité. Nous vous exposons les règles à connaître.`
-    `-Attention`
-    `-Si vous allez vivre dans un autre pays européen`
-    `+Vous vous demandez à quoi sert la carte européenne d'assurance maladie (CEAM) ? Elle facilite la prise en charge de vos soins médicaux en E`
-- 🟡 same date [F407](https://www.service-public.gouv.fr/particuliers/vosdroits/F407) Assurance maladie d'un Français vivant à l'étranger: vérifié 11 janvier 2023 → 11 janvier 2023
-    `-Feuille de soins - Soins reçus à l'étranger par le travailleur salarié détaché`
-    `-Formulaire`
-- 🟡 same date [F725](https://www.service-public.gouv.fr/particuliers/vosdroits/F725) Séjour à l'hôpital: vérifié 26 novembre 2025 → 26 novembre 2025
-    `-https://www.france-assos-sante.org/sante-info-droits/`
-    `+https://france-assos-sante.org/sante-info-droits/`
-- 🟡 same date [F748](https://www.service-public.gouv.fr/particuliers/vosdroits/F748) Hospitalisation : quels sont les droits du patient ?: vérifié 09 septembre 2026 → 09 septembre 2026
-    `-https://www.france-assos-sante.org/sante-info-droits/`
-    `+https://france-assos-sante.org/sante-info-droits/`
+    `-Il est possible de demander une carte Vitale matérielle via un téléservice mise à disposition par la`
+    `-Cnam`
+    `-.`
+    `+Il est possible de demander une carte Vitale matérielle via un téléservice mise à disposition par la Caisse nationale de l'assurance maladi`
+- 🟡 same date [F2728](https://www.service-public.gouv.fr/particuliers/vosdroits/F2728) Autorisation de travail d'un salarié étranger en France: vérifié 18 juin 2026 → 18 juin 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F302](https://www.service-public.gouv.fr/particuliers/vosdroits/F302) Carte de séjour temporaire "visiteur" d'un étranger en France: vérifié 01 juin 2026 → 01 juin 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F3180](https://www.service-public.gouv.fr/particuliers/vosdroits/F3180) Subventions versées aux associations: vérifié 01 janvier 2026 → 01 janvier 2026
+    `-Par qui une subvention peut-être attribuée à une association ?`
+    `+Par qui une subvention peut être attribuée à une association ?`
+    `+Pour de nombreuses subventions de l'État et de certaines collectivités, la demande doit être déposée en ligne via la plateforme`
+    `+Le Compte Asso`
+    `+. Toutefois, dans certains cas, l'organisme financeur peut encore demander l'utilisation du formulaire cerfa papier.`
+    `-Insertion professionnelle et sociale.`
+- 🟡 same date [F33952](https://www.service-public.gouv.fr/particuliers/vosdroits/F33952) Étranger en France : carte de séjour pluriannuelle - salarié détaché ICT: vérifié 01 juin 2026 → 01 juin 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🟡 same date [F35792](https://www.service-public.gouv.fr/particuliers/vosdroits/F35792) Carte de séjour pluriannuelle "talent-famille": vérifié 01 mai 2026 → 01 mai 2026
+    `+Diverses modifications en matière de titres de séjour et d'autorisation de travail`
+    `+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte b`
+    `+Le`
+    `+décret n°2026-1001 du 26 octobre 2026`
+    `+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le cod`
+    `+Cette page est en cours de mise à jour.`
+- 🔴 re-dated [F847](https://www.service-public.gouv.fr/particuliers/vosdroits/F847) Perte de la carte de séjour d'un citoyen européen ou d'un membre de sa famille: vérifié 04 décembre 2023 → 30 octobre 2026
+    `-?`
+    `-Si vous êtes`
+    `+? Si vous êtes`
+    `+citoyen`
+    `-demander un duplicata de votre carte, la démarche est`
+    `+demander un duplicata de votre carte de séjour. Cette démarche est`
