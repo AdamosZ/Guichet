@@ -2,18 +2,83 @@
   "checked": 192,
   "changed": [
     {
+      "doc_id": "F10610",
+      "title": "Un étranger a-t-il besoin d'un visa pour un voyage en outre-mer ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
+      "verified_before": "20 novembre 2024",
+      "verified_now": "20 novembre 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F11201",
+      "title": "Carte de résident permanent d'un étranger en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
+      "verified_before": "01 mai 2026",
+      "verified_now": "01 mai 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F11892",
+      "title": "Un étranger peut-il se faire retirer son titre de séjour en cours de validité ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11892",
+      "verified_before": "16 août 2024",
+      "verified_now": "16 août 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F12189",
+      "title": "Comment un étranger peut revenir en France après être sorti de l'espace Schengen ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12189",
+      "verified_before": "10 avril 2024",
+      "verified_now": "10 avril 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1375",
+      "title": "Peut-on s'installer en France avec un titre de séjour européen ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1375",
+      "verified_before": "20 août 2026",
+      "verified_now": "20 août 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F15371",
+      "title": "Quel droit au séjour pour un étranger ancien combattant de l'armée française ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15371",
+      "verified_before": "12 décembre 2023",
+      "verified_now": "12 décembre 2023",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F15763",
+      "title": "Qu'est-ce qu'un récépissé de demande de titre de séjour ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15763",
+      "verified_before": "17 novembre 2023",
+      "verified_now": "17 novembre 2023",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
       "doc_id": "F15813",
       "title": "Carte de séjour temporaire - Jeune au pair",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15813",
       "verified_before": "01 mai 2026",
       "verified_now": "01 mai 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -23,27 +88,57 @@
       "verified_before": "01 mai 2026",
       "verified_now": "01 mai 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "-pour la délivrance d'une première carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans",
+        "+pour la délivrance d'une",
+        "+1",
+        "+re",
+        "+carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans",
+        "-» pour la délivrance d'une première carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans."
       ]
     },
     {
-      "doc_id": "F16225",
-      "title": "Je deviens parent",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16225",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
+      "doc_id": "F16003",
+      "title": "Carte de séjour d'un citoyen UE/EEE/Suisse travaillant en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16003",
+      "verified_before": "11 juin 2025",
+      "verified_now": "06 novembre 2026",
       "sample_diff": [
-        "-Un guide intitulé",
-        "-Ma maternité - Je prépare l'arrivée de mon enfant",
-        "+Un",
-        "+guide des futurs parents avant la naissance",
-        "-et les dates de votre congé maternité",
-        "+et les dates de votre"
+        "-Si vous êtes Européen et venez travailler en France, vous pouvez demander un titre de séjour même si ce n'est pas obligatoire. Nous faisons le point sur cette règlementation qui varie en fonction de votre temps de présence en France.",
+        "+Si vous êtes",
+        "+Européen",
+        "+et venez travailler en France, vous pouvez demander un titre de séjour même si ce n'est pas obligatoire. La règlementation varie en fonction de votre temps de présence en France.",
+        "+Vous êtes concerné par la carte de séjour « citoyen UE/EEE/Suisse - Toutes activités professionnelles » si vous répondez aux 3 conditions suivantes :",
+        "+Être"
+      ]
+    },
+    {
+      "doc_id": "F16162",
+      "title": "Visa de long séjour (séjour de plus de 3 mois à 1 an)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162",
+      "verified_before": "09 octobre 2026",
+      "verified_now": "09 octobre 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F16189",
+      "title": "Qu'est-ce que le visa de court séjour \"étudiant concours\" ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16189",
+      "verified_before": "03 novembre 2025",
+      "verified_now": "03 novembre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F16507",
+      "title": "Un proche est décédé",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16507",
+      "verified_before": "01 octobre 2026",
+      "verified_now": "01 octobre 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -53,27 +148,32 @@
       "verified_before": "01 juin 2026",
       "verified_now": "01 juin 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
+      ]
+    },
+    {
+      "doc_id": "F17048",
+      "title": "Qu'est-ce que le contrat d'intégration républicaine (CIR) ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048",
+      "verified_before": "26 juin 2026",
+      "verified_now": "26 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
       "doc_id": "F17146",
       "title": "Qu'est-ce que la régularisation pour motif humanitaire ou exceptionnel d'un étranger en situation irrégulière ?",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17146",
-      "verified_before": "12 mars 2025",
+      "verified_before": "29 octobre 2026",
       "verified_now": "29 octobre 2026",
       "sample_diff": [
-        "-, en situation irrégulière, vous pouvez demander une carte de séjour temporaire",
-        "+en situation irrégulière, vous pouvez demander une carte de séjour temporaire",
-        "-pour motifs exceptionnels ou humanitaires, sous conditions. Vous devez déposer votre demande de carte de séjour en préfecture. La carte vous autorise à travaille. Mais sa délivrance n'est pas automatique : elle reste à l'appréciation du préfet, au cas par cas.",
-        "+pour motifs exceptionnels ou humanitaires, sous conditions. Vous devez déposer votre demande de carte de séjour en préfecture. La carte vous autorise à travailler. Mais sa délivrance n'est pas automatique : elle reste à l'appréciation du préfet, au cas par cas. Nous faisons le point sur la règlementation.",
-        "-Si vous êtes en situation irrégulière, vous pouvez demander à être admis au séjour si des considérations humanitaires ou des motifs exceptionnels existent.",
-        "+Si vous êtes étranger non"
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -83,12 +183,47 @@
       "verified_before": "01 mai 2026",
       "verified_now": "01 mai 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F17312",
+      "title": "Stagiaire étranger en France : visa de long séjour ou carte de séjour",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17312",
+      "verified_before": "01 juin 2026",
+      "verified_now": "01 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F17319",
+      "title": "Carte de séjour ou VLS-TS - Recherche d'emploi/création d'entreprise",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17319",
+      "verified_before": "01 juin 2026",
+      "verified_now": "01 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F17335",
+      "title": "Autorisation provisoire de séjour (APS) pour volontaire en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17335",
+      "verified_before": "01 mai 2026",
+      "verified_now": "01 mai 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F17336",
+      "title": "Autorisation provisoire de séjour (APS) d'un étranger parent d'enfant malade",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17336",
+      "verified_before": "01 mai 2026",
+      "verified_now": "01 mai 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -98,12 +233,32 @@
       "verified_before": "01 juin 2026",
       "verified_now": "01 juin 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1765",
+      "title": "Espace Schengen : quelles sont les conditions d'entrée et de circulation ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1765",
+      "verified_before": "12 octobre 2025",
+      "verified_now": "12 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F19315",
+      "title": "Carte de séjour en tant que membre de famille d'un Européen",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19315",
+      "verified_before": "02 février 2024",
+      "verified_now": "02 février 2024",
+      "sample_diff": [
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
       ]
     },
     {
@@ -113,8 +268,48 @@
       "verified_before": "01 juillet 2026",
       "verified_now": "01 juillet 2026",
       "sample_diff": [
-        "-Perte de sa carte de séjour par l'Européen ou un membre de sa famille",
-        "+Perte de la carte de séjour d'un citoyen européen ou d'un membre de sa famille"
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F21516",
+      "title": "Étranger en France : carte de séjour pluriannuelle - travailleur saisonnier",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21516",
+      "verified_before": "01 mai 2026",
+      "verified_now": "01 mai 2026",
+      "sample_diff": [
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2190",
+      "title": "Refus d'entrée en France d'un étranger",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2190",
+      "verified_before": "23 avril 2024",
+      "verified_now": "23 avril 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2191",
+      "title": "Attestation d'accueil",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2191",
+      "verified_before": "21 octobre 2025",
+      "verified_now": "21 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F21921",
+      "title": "Un étranger a-t-il besoin d'un visa pour venir en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21921",
+      "verified_before": "12 octobre 2025",
+      "verified_now": "12 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -124,12 +319,12 @@
       "verified_before": "01 juillet 2026",
       "verified_now": "01 juillet 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+. Dans certains cas, ces actes doivent également être légalisés",
+        "+(apostille ou légalisation par le consulat de France à l'étranger)",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
       ]
     },
     {
@@ -137,14 +332,29 @@
       "title": "Carte de séjour \"vie privée et familiale\" d'un étranger en France",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2209",
       "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
+      "verified_now": "06 novembre 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "-Diverses modifications en matière de titres de séjour et d'autorisation de travail",
+        "-Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
+        "-Le",
+        "-décret n°2026-1001 du 26 octobre 2026",
+        "-a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
+        "-Cette page est en cours de mise à jour."
+      ]
+    },
+    {
+      "doc_id": "F22116",
+      "title": "Carte de séjour d'un étudiant européen",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22116",
+      "verified_before": "26 octobre 2023",
+      "verified_now": "06 novembre 2026",
+      "sample_diff": [
+        "-et venez suivre des études en France, vous n'avez pas besoin de carte de séjour pour vivre en France. Toutefois, vous pouvez en demander une.",
+        "+et venez suivre des études en France, vous n'avez pas besoin de carte de séjour pour vivre en France. Toutefois, vous pouvez en demander une. La règlementation varie en fonction de votre temps de présence en France.",
+        "-Vous êtes européen",
+        "-Vous êtes inscrit dans un établissement privé ou public pour suivre des études en France",
+        "-Vous avez une assurance maladie",
+        "-Vous avez des ressources suffisantes pour vous et les membres de votre famille qui vous accompagnent"
       ]
     },
     {
@@ -154,74 +364,278 @@
       "verified_before": "01 août 2026",
       "verified_now": "01 août 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
       ]
     },
     {
-      "doc_id": "F12118",
-      "title": "Changer l'adresse sur son certificat d'immatriculation",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12118",
+      "doc_id": "F2231",
+      "title": "Étudiant étranger en France : visa de long séjour ou titre de séjour",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231",
+      "verified_before": "01 août 2026",
+      "verified_now": "01 août 2026",
+      "sample_diff": [
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F22312",
+      "title": "Que doit faire un étranger en cas de vol de sa carte de séjour ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22312",
+      "verified_before": "01 juillet 2026",
+      "verified_now": "01 juillet 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2257",
+      "title": "Certificat de résidence de 10 ans - Personne de nationalité algérienne",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2257",
+      "verified_before": "01 octobre 2024",
+      "verified_now": "01 octobre 2024",
+      "sample_diff": [
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
+      ]
+    },
+    {
+      "doc_id": "F2651",
+      "title": "Séjour de longue durée d'un Européen en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2651",
+      "verified_before": "01 avril 2026",
+      "verified_now": "01 avril 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2672",
+      "title": "Un étranger en transit en France doit-il demander un visa ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2672",
+      "verified_before": "12 octobre 2025",
+      "verified_now": "12 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2687",
+      "title": "Un enfant étranger non européen doit-il avoir un titre de séjour ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2687",
+      "verified_before": "08 février 2024",
+      "verified_now": "08 février 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F11167",
+      "title": "Une famille déjà en France peut-elle bénéficier d'un regroupement familial ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11167",
+      "verified_before": "12 janvier 2026",
+      "verified_now": "12 janvier 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1165",
+      "title": "Bail d'habitation : quelles différences entre logement vide et logement meublé ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1165",
       "verified_before": "06 mars 2026",
       "verified_now": "06 mars 2026",
       "sample_diff": [
-        "-Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voir plusieurs semaines pour les cas les plus complexes. Les délais varient également en fonction de la période de l'année : une forte affluence de demandes peut prolonger le temps de traitement.",
-        "+Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voire plusieurs semaines pour les cas les plus complexes. Les délais varient également en fonction de la période de l'année : une forte affluence de demandes peut prolonger le temps de traitement.",
-        "-Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voir plusieurs semaines pour les cas les plus complexes. Les délais varient également en fonction de la période de l'année : une forte affluence de demandes peut prolonger le temps de traitement.",
-        "+Le traitement de votre demande de certificat d'immatriculation peut prendre quelques jours, voire plusieurs semaines pour les cas les plus complexes. Les délais varient également en fonction de la période de l'année : une forte affluence de demandes peut prolonger le temps de traitement."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F12216",
-      "title": "DSE (dossier social étudiant) : comment demander une bourse et/ou un logement ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12216",
-      "verified_before": "03 mars 2026",
-      "verified_now": "03 mars 2026",
+      "doc_id": "F1168",
+      "title": "Préavis et formalités du congé donné par le locataire (bail d'habitation)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1168",
+      "verified_before": "16 avril 2026",
+      "verified_now": "16 avril 2026",
       "sample_diff": [
-        "+Centre régional des œuvres universitaires et scolaires (Crous)"
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F21765",
-      "title": "Sortie ou voyage scolaires à l'école primaire (maternelle ou élémentaire)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21765",
-      "verified_before": "12 février 2025",
-      "verified_now": "30 octobre 2026",
+      "doc_id": "F1169",
+      "title": "Futur locataire d'un logement privé : justificatifs à donner au propriétaire",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1169",
+      "verified_before": "10 avril 2025",
+      "verified_now": "10 avril 2025",
       "sample_diff": [
-        "-Votre enfant participe à une sortie ou à un voyage scolaire et vous vous posez des questions sur les règles d'organisation ? Contrairement aux voyages, les sorties ne comportent pas de nuitée. Encadrement, documents à fournir, participation financière, assurance : voici les règles à respecter. Elles sont différentes selon qu'il s'agisse d'une",
-        "+Votre enfant va participer à une sortie ou à un voyage scolaire et vous vous posez des questions sur les règles d'organisation ? Contrairement aux voyages, les sorties ne comportent pas de nuitée. Encadrement, documents à fournir, participation financière, assurance : voici les règles à respecter. Elles sont différentes selon qu'il s'agisse d'une",
-        "-(par exemple : piscine, bibliothèque, gymnase)",
-        "+(par exemple : piscine, bibliothèque, gymnase),",
-        "-Des accompagnateurs doivent encadrer les sorties scolaires. Les règles d'encadrement sont différentes à l'école maternelle et à l'école élémentaire.",
-        "+Des accompagnateurs doivent encadrer les sorties scolaires. Les règles d'encadrement sont différentes à l'école maternelle et à l'école élémentaire :"
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F22575",
-      "title": "Sortie ou voyage scolaires au collège et au lycée",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22575",
-      "verified_before": "17 février 2026",
-      "verified_now": "17 février 2026",
+      "doc_id": "F1213",
+      "title": "Loyers impayés et expulsion du locataire",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31272",
+      "verified_before": "06 août 2026",
+      "verified_now": "06 août 2026",
       "sample_diff": [
-        "+Prévenir et agir contre les violences en milieu scolaire",
-        "+Ministère chargé de l'éducation"
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F265",
-      "title": "Carte Vitale",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F265",
-      "verified_before": "29 août 2026",
-      "verified_now": "29 août 2026",
+      "doc_id": "F1220",
+      "title": "Un mineur peut-il signer un bail d'habitation ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1220",
+      "verified_before": "28 mai 2026",
+      "verified_now": "28 mai 2026",
       "sample_diff": [
-        "-Il est possible de demander une carte Vitale matérielle via un téléservice mise à disposition par la",
-        "-Cnam",
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1223",
+      "title": "Séparation des parents : relations entre l'enfant et sa famille ou ses proches",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1223",
+      "verified_before": "22 juillet 2025",
+      "verified_now": "22 juillet 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1270",
+      "title": "Règles en matière d'héritage : défunt ayant eu des enfants",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1270",
+      "verified_before": "05 octobre 2026",
+      "verified_now": "05 octobre 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F16493",
+      "title": "Un salarié peut-il être dispensé de la visite médicale d'embauche ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16493",
+      "verified_before": "11 juin 2026",
+      "verified_now": "11 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F1764",
+      "title": "L'époux étranger d'un Français peut-il séjourner en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1764",
+      "verified_before": "04 août 2026",
+      "verified_now": "04 août 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F18910",
+      "title": "Mise à jour du livret de famille à la suite d'un changement d'état civil (naissance, divorce, etc.)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F18910",
+      "verified_before": "26 février 2025",
+      "verified_now": "06 novembre 2026",
+      "sample_diff": [
+        "-en mairie",
+        "-pour que l'officier de l'état civil remplisse votre livret, la date, le signe et y appose le tampon de la mairie.",
+        "+à la mairie",
+        "+pour que l'officier de l'état civil remplisse votre livret, le date, le signe et y appose le tampon de la mairie.",
+        "-Français de l'étranger",
+        "+Français vivant à l'étranger"
+      ]
+    },
+    {
+      "doc_id": "F2213",
+      "title": "Naturalisation française par décret",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
+      "verified_before": "16 juillet 2026",
+      "verified_now": "16 juillet 2026",
+      "sample_diff": [
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers",
         "-.",
-        "+Il est possible de demander une carte Vitale matérielle via un téléservice mise à disposition par la Caisse nationale de l'assurance maladie."
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le"
+      ]
+    },
+    {
+      "doc_id": "F2214",
+      "title": "Réintégration dans la nationalité française par décret",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2214",
+      "verified_before": "16 juillet 2026",
+      "verified_now": "16 juillet 2026",
+      "sample_diff": [
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers",
+        "-.",
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2338",
+      "title": "Un travailleur temporaire est-il suivi par la médecine du travail ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2338",
+      "verified_before": "16 juin 2026",
+      "verified_now": "16 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2413",
+      "title": "Compte bancaire individuel",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2413",
+      "verified_before": "22 mai 2026",
+      "verified_now": "22 mai 2026",
+      "sample_diff": [
+        "-Clôture de compte et mobilité bancaire",
+        "+Le compte bancaire"
+      ]
+    },
+    {
+      "doc_id": "F2653",
+      "title": "Séjour en France de la famille d'un citoyen européen",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2653",
+      "verified_before": "08 avril 2024",
+      "verified_now": "08 avril 2024",
+      "sample_diff": [
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour."
+      ]
+    },
+    {
+      "doc_id": "F2713",
+      "title": "Un étudiant non européen peut-il travailler en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2713",
+      "verified_before": "07 octobre 2025",
+      "verified_now": "07 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2718",
+      "title": "Document de circulation pour étranger mineur (DCEM)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2718",
+      "verified_before": "30 juillet 2024",
+      "verified_now": "30 juillet 2024",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -231,12 +645,38 @@
       "verified_before": "18 juin 2026",
       "verified_now": "18 juin 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2733",
+      "title": "Autorisation de travail d'un Algérien salarié en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2733",
+      "verified_before": "02 avril 2021",
+      "verified_now": "02 avril 2021",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F2863",
+      "title": "Inscription d'un étranger dans l'enseignement supérieur",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2863",
+      "verified_before": "05 décembre 2025",
+      "verified_now": "05 décembre 2025",
+      "sample_diff": [
+        "-(dans un pays",
+        "+(d'un pays"
+      ]
+    },
+    {
+      "doc_id": "F2871",
+      "title": "Un salarié doit-il passer une visite médicale après un arrêt de travail ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2871",
+      "verified_before": "31 août 2026",
+      "verified_now": "31 août 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
@@ -246,124 +686,396 @@
       "verified_before": "01 juin 2026",
       "verified_now": "01 juin 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Cette attestation n'est pas un document provisoire de séjour. Il ne justifie pas de la régularité de votre séjour.",
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F3180",
-      "title": "Subventions versées aux associations",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3180",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
+      "doc_id": "F3100",
+      "title": "Salarié étranger : comment sont délivrées les autorisations de travail ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3100",
+      "verified_before": "18 juin 2026",
+      "verified_now": "18 juin 2026",
       "sample_diff": [
-        "-Par qui une subvention peut-être attribuée à une association ?",
-        "+Par qui une subvention peut être attribuée à une association ?",
-        "+Pour de nombreuses subventions de l'État et de certaines collectivités, la demande doit être déposée en ligne via la plateforme",
-        "+Le Compte Asso",
-        "+. Toutefois, dans certains cas, l'organisme financeur peut encore demander l'utilisation du formulaire cerfa papier.",
-        "-Insertion professionnelle et sociale."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F33952",
-      "title": "Étranger en France : carte de séjour pluriannuelle - salarié détaché ICT",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33952",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
+      "doc_id": "F31037",
+      "title": "Quel est le titre de séjour délivré à un mineur étranger isolé à sa majorité ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31037",
+      "verified_before": "13 mars 2025",
+      "verified_now": "13 mars 2025",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F35792",
-      "title": "Carte de séjour pluriannuelle \"talent-famille\"",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35792",
+      "doc_id": "F31039",
+      "title": "Quels liens privés et familiaux peut invoquer un étranger pour être admis au séjour en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31039",
+      "verified_before": "21 octobre 2025",
+      "verified_now": "21 octobre 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F31267",
+      "title": "Caution du locataire ou du colocataire dans un logement privé",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31267",
+      "verified_before": "10 avril 2025",
+      "verified_now": "10 avril 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F31269",
+      "title": "Dépôt de garantie dans un bail d'habitation",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31269",
+      "verified_before": "09 juin 2026",
+      "verified_now": "09 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F33430",
+      "title": "Déclaration de nationalité française de l'ascendant d'un Français",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33430",
       "verified_before": "01 mai 2026",
       "verified_now": "01 mai 2026",
       "sample_diff": [
-        "+Diverses modifications en matière de titres de séjour et d'autorisation de travail",
-        "+Les délais de notification des décisions par le préfet, le délai de refus implicite, le refus de renouvellement ou le retrait d'une carte bleue européenne et les conditions de rémunérations des cartes de séjour salariés ICT/stagiaires ICT et mobile sont modifiés à compter du 30 octobre 2026.",
-        "+Le",
-        "+décret n°2026-1001 du 26 octobre 2026",
-        "+a modifié certaines dispositions du code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA). Il a également modifié le code du travail en matière de renouvellement des autorisations de travail et de détachement de salariés d'entreprises implantées au Royaume-Uni.",
-        "+Cette page est en cours de mise à jour."
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     },
     {
-      "doc_id": "F847",
-      "title": "Perte de la carte de séjour d'un citoyen européen ou d'un membre de sa famille",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F847",
-      "verified_before": "04 décembre 2023",
-      "verified_now": "30 octobre 2026",
+      "doc_id": "F34741",
+      "title": "Naturalisation française : quels justificatifs d'état civil et de nationalité ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34741",
+      "verified_before": "01 janvier 2026",
+      "verified_now": "01 janvier 2026",
       "sample_diff": [
-        "-?",
-        "-Si vous êtes",
-        "+? Si vous êtes",
-        "+citoyen",
-        "-demander un duplicata de votre carte, la démarche est",
-        "+demander un duplicata de votre carte de séjour. Cette démarche est"
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers"
+      ]
+    },
+    {
+      "doc_id": "F34745",
+      "title": "Naturalisation française : quels justificatifs de domicile fournir ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34745",
+      "verified_before": "01 janvier 2026",
+      "verified_now": "01 janvier 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers"
+      ]
+    },
+    {
+      "doc_id": "F34746",
+      "title": "Naturalisation française : quels justificatifs de revenus et d'impôts ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34746",
+      "verified_before": "01 janvier 2026",
+      "verified_now": "01 janvier 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers"
+      ]
+    },
+    {
+      "doc_id": "F34758",
+      "title": "Naturalisation française : quels justificatifs si l'on vit en couple ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34758",
+      "verified_before": "01 janvier 2026",
+      "verified_now": "01 janvier 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers"
+      ]
+    },
+    {
+      "doc_id": "F34764",
+      "title": "Naturalisation française : quels justificatifs pour les enfants mineurs ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34764",
+      "verified_before": "01 janvier 2026",
+      "verified_now": "01 janvier 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre",
+        "-.",
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers"
+      ]
+    },
+    {
+      "doc_id": "F35156",
+      "title": "Un étranger sans titre de séjour peut-il faire venir sa famille en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35156",
+      "verified_before": "26 juin 2026",
+      "verified_now": "26 juin 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F35795",
+      "title": "Carte de séjour \"entrepreneur/profession libérale\" d'un étranger en France",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35795",
+      "verified_before": "01 juin 2026",
+      "verified_now": "01 juin 2026",
+      "sample_diff": [
+        "-pour la délivrance d'une première carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans",
+        "+pour la délivrance d'une",
+        "+1",
+        "+re",
+        "+carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans",
+        "-» pour la délivrance d'une première carte de séjour pluriannuelle, sauf si vous avez plus de 65 ans."
+      ]
+    },
+    {
+      "doc_id": "F35799",
+      "title": "Carte de séjour pluriannuelle",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35799",
+      "verified_before": "01 mai 2026",
+      "verified_now": "01 mai 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F36290",
+      "title": "Qu'est-ce que la visite médicale de mi-carrière pour un salarié ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36290",
+      "verified_before": "11 août 2025",
+      "verified_now": "11 août 2025",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F38329",
+      "title": "Qu'est-ce que le contrat d'engagement à respecter les principes de la République ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F38329",
+      "verified_before": "04 août 2026",
+      "verified_now": "04 août 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F39",
+      "title": "Quels titres de séjour un ressortissant étranger doit-il avoir pour rester en France plus de 3 mois ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39",
+      "verified_before": "08 juillet 2026",
+      "verified_now": "08 juillet 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
+      ]
+    },
+    {
+      "doc_id": "F39426",
+      "title": "Naturalisation française : comment passer l'examen civique ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39426",
+      "verified_before": "16 juillet 2026",
+      "verified_now": "16 juillet 2026",
+      "sample_diff": [
+        "-Vous pouvez aussi utiliser le",
+        "-formulaire d'assistance aux usagers",
+        "-."
+      ]
+    },
+    {
+      "doc_id": "F935",
+      "title": "Comment adopter un enfant à l'étranger ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F935",
+      "verified_before": "06 février 2026",
+      "verified_now": "06 février 2026",
+      "sample_diff": [
+        "+Fermeture exceptionnelle le mercredi 11 novembre"
       ]
     }
   ],
   "missing": [],
   "affected_items": [
     {
-      "item_id": "proc-001",
+      "item_id": "sej-001",
       "pages": [
-        "F21032"
+        "F15763"
       ],
-      "question_en": "What should I do if I lose my residence permit?"
+      "question_en": "How long is a receipt for a residence permit application valid?"
     },
     {
-      "item_id": "sej-112",
+      "item_id": "sej-002",
       "pages": [
-        "F2728"
+        "F16162",
+        "F2231"
       ],
-      "question_en": "My work-based residence permit expired while my renewal is being processed. Can I keep working on the renewal récépissé?"
+      "question_en": "How long after arriving in France do I have to validate my VLS-TS?"
     },
     {
-      "item_id": "trav-104",
+      "item_id": "sej-003",
       "pages": [
-        "F2728"
+        "F2231"
       ],
-      "question_en": "Am I allowed to work more than 20 hours a week (say at a supermarket) on a student titre de séjour?"
+      "question_en": "How long is a student VLS-TS valid for?"
     },
     {
-      "item_id": "trav-106",
+      "item_id": "sej-004",
       "pages": [
-        "F2728"
+        "F2231"
       ],
-      "question_en": "Does my employer have to apply for a work permit for my apprenticeship contract since I'm a foreign student?"
+      "question_en": "When should I apply to renew my student residence permit?"
     },
     {
-      "item_id": "trav-112",
+      "item_id": "sej-005",
       "pages": [
-        "F2728"
+        "F2231"
       ],
-      "question_en": "My récépissé for a job-seeker permit application doesn't say anything about work authorisation — am I allowed to work with it?"
+      "question_en": "After a year of studying in France, what residence permit can I apply for?"
     },
     {
-      "item_id": "trav-113",
+      "item_id": "visa-001",
       "pages": [
-        "F16922",
-        "F2728"
+        "F16162"
       ],
-      "question_en": "I'm on the post-study job-seeker permit. What's the minimum salary I need to switch to a salarié (employee) permit?"
+      "question_en": "How many days can I travel in the Schengen area on a long-stay visa?"
+    },
+    {
+      "item_id": "visa-002",
+      "pages": [
+        "F16189"
+      ],
+      "question_en": "What is the short-stay 'étudiant concours' visa?"
+    },
+    {
+      "item_id": "proc-002",
+      "pages": [
+        "F22312"
+      ],
+      "question_en": "What should I do if my residence permit is stolen?"
+    },
+    {
+      "item_id": "trav-002",
+      "pages": [
+        "F17312"
+      ],
+      "question_en": "Which residence permit does a foreign intern in France need?"
+    },
+    {
+      "item_id": "trav-003",
+      "pages": [
+        "F17319"
+      ],
+      "question_en": "What is the 'job seeking / business creation' residence permit?"
+    },
+    {
+      "item_id": "sej-107",
+      "pages": [
+        "F2231",
+        "F35799"
+      ],
+      "question_en": "How much does it cost to renew a student residence permit?"
+    },
+    {
+      "item_id": "sej-116",
+      "pages": [
+        "F16003",
+        "F2651",
+        "F39"
+      ],
+      "question_en": "As an EU citizen moving to France long-term, do I have to get a residence permit?"
+    },
+    {
+      "item_id": "log-101",
+      "pages": [
+        "F1165",
+        "F1168"
+      ],
+      "question_en": "I'm renting a furnished flat. How much notice do I have to give my landlord before moving out?"
+    },
+    {
+      "item_id": "log-102",
+      "pages": [
+        "F1165",
+        "F1168"
+      ],
+      "question_en": "As a student renting an unfurnished place, what notice period applies when I end my lease?"
+    },
+    {
+      "item_id": "log-104",
+      "pages": [
+        "F1168"
+      ],
+      "question_en": "I moved out and handed back the keys before my notice period ended. Until what date do I still owe rent?"
+    },
+    {
+      "item_id": "log-105",
+      "pages": [
+        "F1165",
+        "F31269"
+      ],
+      "question_en": "What's the most a landlord can legally ask for as a security deposit?"
     }
   ],
-  "checked_at": "2026-11-02 15:59 UTC",
+  "checked_at": "2026-11-09 16:25 UTC",
   "auto": {
     "cleared": [
+      {
+        "item_id": "sej-101",
+        "pages": [
+          "F12189"
+        ],
+        "question_en": "I'm waiting for my first titre de séjour and all I have is the application deposit attestation. If I fly home outside Schengen, can I get back into France?",
+        "reasons": []
+      },
+      {
+        "item_id": "sej-102",
+        "pages": [
+          "F12189"
+        ],
+        "question_en": "My student residence permit has expired but I have a renewal récépissé. Can I travel abroad and come back on it?",
+        "reasons": []
+      },
+      {
+        "item_id": "sej-105",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "What happens if I submit my student residence permit renewal late?",
+        "reasons": []
+      },
+      {
+        "item_id": "sej-106",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "The prefecture still hasn't answered my student permit renewal. When does the silence count as a refusal, and what can I do then?",
+        "reasons": []
+      },
+      {
+        "item_id": "sej-108",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "If I repeat a year at uni, can that block the renewal of my student titre de séjour?",
+        "reasons": []
+      },
+      {
+        "item_id": "sej-109",
+        "pages": [
+          "F11892"
+        ],
+        "question_en": "I was let go during my trial period. Can my 'salarié' residence permit be taken away because I'm now unemployed?",
+        "reasons": []
+      },
       {
         "item_id": "sej-110",
         "pages": [
@@ -373,11 +1085,143 @@
         "reasons": []
       },
       {
+        "item_id": "sej-113",
+        "pages": [
+          "F15763"
+        ],
+        "question_en": "What happens if my residence permit runs out before the prefecture has processed my renewal application?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-101",
+        "pages": [
+          "F16162"
+        ],
+        "question_en": "My long-stay student visa got refused. How do I appeal?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-102",
+        "pages": [
+          "F16162"
+        ],
+        "question_en": "I applied for a French long-stay visa and the consulate just hasn't answered. When does no reply count as a refusal?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-103",
+        "pages": [
+          "F1765",
+          "F21921"
+        ],
+        "question_en": "How much money do I need to show per day of my stay to enter France for a short stay?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-106",
+        "pages": [
+          "F1765"
+        ],
+        "question_en": "I have a French student residence permit. Do I need a Schengen visa to visit another Schengen country?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-107",
+        "pages": [
+          "F16189",
+          "F2231"
+        ],
+        "question_en": "I'm in France on a tourist visa. Can I switch to a student residence permit here, without going home to get a student visa?",
+        "reasons": []
+      },
+      {
         "item_id": "visa-108",
         "pages": [
+          "F16162",
           "F302"
         ],
         "question_en": "On a long-stay visitor visa, am I allowed to earn money from an activity in France, say as an auto-entrepreneur?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-109",
+        "pages": [
+          "F16162"
+        ],
+        "question_en": "Can I switch from a working holiday visa to another residence permit, like 'vie privée et familiale' after a PACS?",
+        "reasons": []
+      },
+      {
+        "item_id": "visa-110",
+        "pages": [
+          "F16162",
+          "F39"
+        ],
+        "question_en": "My passport doesn't need a visa for short trips. Can I still stay in France for 7 months without one?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-101",
+        "pages": [
+          "F2713"
+        ],
+        "question_en": "Is the 964-hour work limit for international students counted per calendar year, or from some other date?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-102",
+        "pages": [
+          "F2713"
+        ],
+        "question_en": "What happens to my student residence permit if I go over the 964 hours of work allowed per year?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-103",
+        "pages": [
+          "F2713"
+        ],
+        "question_en": "I know a student visa lets me work 964 hours a year — does that also cover working as an independent contractor or freelancer?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-105",
+        "pages": [
+          "F2713"
+        ],
+        "question_en": "I'm an international student in my first year in France — can I sign an apprenticeship (alternance) contract?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-107",
+        "pages": [
+          "F17312"
+        ],
+        "question_en": "I've been offered a 2-month unpaid internship at a French lab. Can I come on a short-stay visa instead of a long-stay one?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-108",
+        "pages": [
+          "F17312"
+        ],
+        "question_en": "My internship in France has been extended past the end of my long-stay intern visa. What do I need to do to stay?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-110",
+        "pages": [
+          "F17319"
+        ],
+        "question_en": "I finished my master's in France but have since left the country. Can I still get the post-study job-seeking / business-creation permit to come back and look for work?",
+        "reasons": []
+      },
+      {
+        "item_id": "trav-111",
+        "pages": [
+          "F17319"
+        ],
+        "question_en": "For the post-graduation job-seeking / business-creation permit, do I apply for a residence card or a VLS-TS, and when?",
         "reasons": []
       },
       {
@@ -389,89 +1233,276 @@
         "reasons": []
       },
       {
-        "item_id": "sante-103",
+        "item_id": "etu-102",
         "pages": [
-          "F265"
+          "F2231"
         ],
-        "question_en": "How do I apply for my carte Vitale as a foreign student, and how long does it take to arrive?",
+        "question_en": "If I switch to a different degree programme, could I lose my student residence permit?",
+        "reasons": []
+      },
+      {
+        "item_id": "etu-104",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "I'm in France without a residence permit. Can I enrol at university and apply for a student residence permit from inside France?",
+        "reasons": []
+      },
+      {
+        "item_id": "etu-105",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "I applied online to renew my student titre de séjour — do I get any proof of the application while I wait?",
+        "reasons": []
+      },
+      {
+        "item_id": "etu-106",
+        "pages": [
+          "F2231"
+        ],
+        "question_en": "What do I need to meet to renew my residence permit and stay on student status?",
+        "reasons": []
+      },
+      {
+        "item_id": "etu-107",
+        "pages": [
+          "F2213"
+        ],
+        "question_en": "If I graduate from a French university, does that shorten how long I have to live in France before applying for citizenship?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-103",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "Does my furnished rental have to end at the end of a calendar month, or does the notice run from the day my letter is received?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-106",
+        "pages": [
+          "F31269"
+        ],
+        "question_en": "How long does my landlord have to give back my deposit, and what happens if they're late?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-108",
+        "pages": [
+          "F1169"
+        ],
+        "question_en": "When renting in France, what documents is a landlord actually allowed to ask for in my rental 'dossier'?",
+        "reasons": []
+      },
+      {
+        "item_id": "log-109",
+        "pages": [
+          "F1169",
+          "F31267"
+        ],
+        "question_en": "My guarantor lives abroad and doesn't pay tax in France. What proof of income can the landlord ask them for?",
+        "reasons": []
+      },
+      {
+        "item_id": "arg-101",
+        "pages": [
+          "F2413"
+        ],
+        "question_en": "What documents do French banks ask for when a foreigner opens a bank account?",
+        "reasons": []
+      },
+      {
+        "item_id": "arg-102",
+        "pages": [
+          "F2413"
+        ],
+        "question_en": "Banks keep turning me down for an account. Is there an official way to force a bank to open one for me?",
         "reasons": []
       }
     ],
     "flagged": [
       {
-        "item_id": "proc-001",
+        "item_id": "sej-001",
         "pages": [
-          "F21032"
+          "F15763"
         ],
-        "question_en": "What should I do if I lose my residence permit?",
+        "question_en": "How long is a receipt for a residence permit application valid?",
         "reasons": [
-          "F21032 changed and the item has no evidence quote to check"
+          "F15763 changed and the item has no evidence quote to check"
         ]
       },
       {
-        "item_id": "sej-112",
+        "item_id": "sej-002",
         "pages": [
-          "F2728"
+          "F16162",
+          "F2231"
         ],
-        "question_en": "My work-based residence permit expired while my renewal is being processed. Can I keep working on the renewal récépissé?",
+        "question_en": "How long after arriving in France do I have to validate my VLS-TS?",
         "reasons": [
-          "F2728 changed and the item has no evidence quote to check"
+          "F16162 changed and the item has no evidence quote to check",
+          "F2231 changed and the item has no evidence quote to check"
         ]
       },
       {
-        "item_id": "trav-104",
+        "item_id": "sej-003",
         "pages": [
-          "F2728"
+          "F2231"
         ],
-        "question_en": "Am I allowed to work more than 20 hours a week (say at a supermarket) on a student titre de séjour?",
+        "question_en": "How long is a student VLS-TS valid for?",
         "reasons": [
-          "F2728 changed and the item has no evidence quote to check"
+          "F2231 changed and the item has no evidence quote to check"
         ]
       },
       {
-        "item_id": "trav-106",
+        "item_id": "sej-004",
         "pages": [
-          "F2728"
+          "F2231"
         ],
-        "question_en": "Does my employer have to apply for a work permit for my apprenticeship contract since I'm a foreign student?",
+        "question_en": "When should I apply to renew my student residence permit?",
         "reasons": [
-          "F2728 changed and the item has no evidence quote to check"
+          "F2231 changed and the item has no evidence quote to check"
         ]
       },
       {
-        "item_id": "trav-112",
+        "item_id": "sej-005",
         "pages": [
-          "F2728"
+          "F2231"
         ],
-        "question_en": "My récépissé for a job-seeker permit application doesn't say anything about work authorisation — am I allowed to work with it?",
+        "question_en": "After a year of studying in France, what residence permit can I apply for?",
         "reasons": [
-          "F2728 changed and the item has no evidence quote to check"
+          "F2231 changed and the item has no evidence quote to check"
         ]
       },
       {
-        "item_id": "trav-113",
+        "item_id": "visa-001",
         "pages": [
-          "F16922",
-          "F2728"
+          "F16162"
         ],
-        "question_en": "I'm on the post-study job-seeker permit. What's the minimum salary I need to switch to a salarié (employee) permit?",
+        "question_en": "How many days can I travel in the Schengen area on a long-stay visa?",
         "reasons": [
-          "F16922 changed and the item has no evidence quote to check",
-          "F2728 changed and the item has no evidence quote to check"
+          "F16162 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "visa-002",
+        "pages": [
+          "F16189"
+        ],
+        "question_en": "What is the short-stay 'étudiant concours' visa?",
+        "reasons": [
+          "F16189 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "proc-002",
+        "pages": [
+          "F22312"
+        ],
+        "question_en": "What should I do if my residence permit is stolen?",
+        "reasons": [
+          "F22312 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "trav-002",
+        "pages": [
+          "F17312"
+        ],
+        "question_en": "Which residence permit does a foreign intern in France need?",
+        "reasons": [
+          "F17312 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "trav-003",
+        "pages": [
+          "F17319"
+        ],
+        "question_en": "What is the 'job seeking / business creation' residence permit?",
+        "reasons": [
+          "F17319 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "sej-107",
+        "pages": [
+          "F2231",
+          "F35799"
+        ],
+        "question_en": "How much does it cost to renew a student residence permit?",
+        "reasons": [
+          "F35799 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "sej-116",
+        "pages": [
+          "F16003",
+          "F2651",
+          "F39"
+        ],
+        "question_en": "As an EU citizen moving to France long-term, do I have to get a residence permit?",
+        "reasons": [
+          "F16003 re-dated (official update)"
+        ]
+      },
+      {
+        "item_id": "log-101",
+        "pages": [
+          "F1165",
+          "F1168"
+        ],
+        "question_en": "I'm renting a furnished flat. How much notice do I have to give my landlord before moving out?",
+        "reasons": [
+          "F1165 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "log-102",
+        "pages": [
+          "F1165",
+          "F1168"
+        ],
+        "question_en": "As a student renting an unfurnished place, what notice period applies when I end my lease?",
+        "reasons": [
+          "F1165 changed and the item has no evidence quote to check"
+        ]
+      },
+      {
+        "item_id": "log-104",
+        "pages": [
+          "F1168"
+        ],
+        "question_en": "I moved out and handed back the keys before my notice period ended. Until what date do I still owe rent?",
+        "reasons": [
+          "F1168: 1 of 3 evidence quotes no longer on the page"
+        ]
+      },
+      {
+        "item_id": "log-105",
+        "pages": [
+          "F1165",
+          "F31269"
+        ],
+        "question_en": "What's the most a landlord can legally ask for as a security deposit?",
+        "reasons": [
+          "F1165 changed and the item has no evidence quote to check"
         ]
       }
     ],
     "eval_before": {
-      "en hit@1": 0.56,
-      "en recall@5": 0.734,
-      "fr hit@1": 0.593,
-      "fr recall@5": 0.823
-    },
-    "eval_after": {
       "en hit@1": 0.545,
       "en recall@5": 0.761,
       "fr hit@1": 0.557,
       "fr recall@5": 0.821
+    },
+    "eval_after": {
+      "en hit@1": 0.514,
+      "en recall@5": 0.747,
+      "fr hit@1": 0.486,
+      "fr recall@5": 0.795
     }
   }
 }
