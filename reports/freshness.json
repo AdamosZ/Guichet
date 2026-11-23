@@ -2,1161 +2,113 @@
   "checked": 192,
   "changed": [
     {
-      "doc_id": "F10610",
-      "title": "Un étranger a-t-il besoin d'un visa pour un voyage en outre-mer ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
-      "verified_before": "20 novembre 2024",
-      "verified_now": "20 novembre 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F11201",
-      "title": "Carte de résident permanent d'un étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F11892",
-      "title": "Un étranger peut-il se faire retirer son titre de séjour en cours de validité ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11892",
-      "verified_before": "16 août 2024",
-      "verified_now": "16 août 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
       "doc_id": "F12006",
       "title": "Aide personnalisée au logement (APL)",
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12006",
       "verified_before": "01 juillet 2026",
       "verified_now": "01 juillet 2026",
       "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Accéder aux informations générales",
-        "+sans renseigner ma situation"
+        "-Les aides au logement pour les personnes âgées en Ehpad",
+        "+Les aides au logement en Ehpad"
       ]
     },
     {
-      "doc_id": "F12189",
-      "title": "Comment un étranger peut revenir en France après être sorti de l'espace Schengen ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12189",
-      "verified_before": "10 avril 2024",
-      "verified_now": "10 avril 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1375",
-      "title": "Peut-on s'installer en France avec un titre de séjour européen ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1375",
-      "verified_before": "20 août 2026",
-      "verified_now": "20 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F14128",
-      "title": "Je déménage en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14128",
-      "verified_before": "09 juillet 2024",
-      "verified_now": "09 juillet 2024",
-      "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Accéder aux informations générales",
-        "+sans renseigner ma situation"
-      ]
-    },
-    {
-      "doc_id": "F15371",
-      "title": "Quel droit au séjour pour un étranger ancien combattant de l'armée française ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15371",
-      "verified_before": "12 décembre 2023",
-      "verified_now": "12 décembre 2023",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F15763",
-      "title": "Qu'est-ce qu'un récépissé de demande de titre de séjour ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15763",
-      "verified_before": "17 novembre 2023",
-      "verified_now": "17 novembre 2023",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F15813",
-      "title": "Carte de séjour temporaire - Jeune au pair",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15813",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F15898",
-      "title": "Travail d'un étranger en France : carte de séjour - salarié/travailleur temporaire",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F15898",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F16162",
-      "title": "Visa de long séjour (séjour de plus de 3 mois à 1 an)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162",
-      "verified_before": "09 octobre 2026",
-      "verified_now": "09 octobre 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F16189",
-      "title": "Qu'est-ce que le visa de court séjour \"étudiant concours\" ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16189",
-      "verified_before": "03 novembre 2025",
-      "verified_now": "03 novembre 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F16507",
-      "title": "Un proche est décédé",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16507",
-      "verified_before": "01 octobre 2026",
-      "verified_now": "01 octobre 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F16922",
-      "title": "Carte talent : carte de séjour pluriannuelle d'un étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17048",
-      "title": "Qu'est-ce que le contrat d'intégration républicaine (CIR) ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048",
-      "verified_before": "26 juin 2026",
-      "verified_now": "26 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17146",
-      "title": "Qu'est-ce que la régularisation pour motif humanitaire ou exceptionnel d'un étranger en situation irrégulière ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17146",
-      "verified_before": "29 octobre 2026",
-      "verified_now": "29 octobre 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17164",
-      "title": "Comment un étranger habitant en France et gravement malade peut-il obtenir un titre de séjour ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17164",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17312",
-      "title": "Stagiaire étranger en France : visa de long séjour ou carte de séjour",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17312",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17319",
-      "title": "Carte de séjour ou VLS-TS - Recherche d'emploi/création d'entreprise",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17319",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17335",
-      "title": "Autorisation provisoire de séjour (APS) pour volontaire en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17335",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17336",
-      "title": "Autorisation provisoire de séjour (APS) d'un étranger parent d'enfant malade",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17336",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17359",
-      "title": "Carte de résident de longue durée-UE (étranger en France depuis 5 ans)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17359",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1765",
-      "title": "Espace Schengen : quelles sont les conditions d'entrée et de circulation ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1765",
-      "verified_before": "12 octobre 2025",
-      "verified_now": "12 octobre 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F17904",
-      "title": "Je prépare ma retraite",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17904",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "-Le compte retraite vous permet de prendre connaissance de toutes les informations concernant votre retraite et d'effectuer toutes les démarches nécessaires, quel que soient la ou les caisses de retraite auprès desquelles vous avez des droits.",
-        "+Le compte retraite vous permet de prendre connaissance de toutes les informations concernant votre retraite et d'effectuer toutes les démarches nécessaires, quelles que soient la ou les caisses de retraite auprès desquelles vous avez des droits.",
-        "-Pour accéder à vos informations personnelles, connectez vous à votre compte retraite :"
-      ]
-    },
-    {
-      "doc_id": "F19315",
-      "title": "Carte de séjour en tant que membre de famille d'un Européen",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19315",
-      "verified_before": "02 février 2024",
-      "verified_now": "02 février 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F21032",
-      "title": "Que doit faire un étranger en cas de perte de sa carte de séjour ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21032",
+      "doc_id": "F1280",
+      "title": "Allocation de logement sociale (ALS)",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1280",
       "verified_before": "01 juillet 2026",
       "verified_now": "01 juillet 2026",
       "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Accéder aux informations générales",
-        "+sans renseigner ma situation"
+        "-Les aides au logement pour les personnes âgées en Ehpad",
+        "+Les aides au logement en Ehpad"
       ]
     },
     {
-      "doc_id": "F21516",
-      "title": "Étranger en France : carte de séjour pluriannuelle - travailleur saisonnier",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21516",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
+      "doc_id": "F13519",
+      "title": "Un étudiant européen peut-il travailler en France ?",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13519",
+      "verified_before": "09 septembre 2022",
+      "verified_now": "18 novembre 2026",
       "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
+        "-Vous devez occuper votre emploi à titre accessoire (c'est-à-dire en complément de vos études).",
+        "-Vous pouvez travailler 964 heures maximum par an, soit",
+        "+Vous devez occuper votre emploi",
+        "+à titre accessoire",
+        "+(c'est-à-dire en complément de vos études).",
+        "+Vous pouvez travailler"
       ]
     },
     {
-      "doc_id": "F2190",
-      "title": "Refus d'entrée en France d'un étranger",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2190",
-      "verified_before": "23 avril 2024",
-      "verified_now": "23 avril 2024",
+      "doc_id": "F200",
+      "title": "Déroulement d'une hospitalisation et prise en charge par l'Assurance maladie",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F200",
+      "verified_before": "01 mars 2026",
+      "verified_now": "01 mars 2026",
       "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
+        "-Si vous en bénéficiez, il faudra également le justificatif des droits à",
+        "+Si vous en bénéficiez, il faudra également le justificatif des droits :",
+        "+À",
+        "-ou à la",
+        "+Ou à la",
+        "-Si vous êtes un étranger en situation irrégulière et si vous ne pouvez fournir aucun de ces justificatifs, votre caisse d'Assurance maladie peut établir, sous certaines conditions, une attestation d'admission en urgence à"
       ]
     },
     {
-      "doc_id": "F2191",
-      "title": "Attestation d'accueil",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2191",
-      "verified_before": "21 octobre 2025",
-      "verified_now": "21 octobre 2025",
+      "doc_id": "F358",
+      "title": "Impôt sur le revenu - Déclaration de revenus annuelle",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F358",
+      "verified_before": "05 juin 2026",
+      "verified_now": "20 novembre 2026",
       "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
+        "-Vous devez",
+        "-compléter ou modifier",
+        "-les éléments concernés de votre déclaration en ligne.",
+        "-La déclaration en ligne est obligatoire si vous êtes équipé d'un accès à internet.",
+        "+La déclaration en ligne est",
+        "+obligatoire"
       ]
     },
     {
-      "doc_id": "F21921",
-      "title": "Un étranger a-t-il besoin d'un visa pour venir en France ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21921",
-      "verified_before": "12 octobre 2025",
-      "verified_now": "12 octobre 2025",
+      "doc_id": "F725",
+      "title": "Séjour à l'hôpital",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F725",
+      "verified_before": "26 novembre 2025",
+      "verified_now": "20 novembre 2026",
       "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2208",
-      "title": "Carte de résident de 10 ans d'un étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
-      "verified_before": "01 juillet 2026",
-      "verified_now": "01 juillet 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2209",
-      "title": "Carte de séjour \"vie privée et familiale\" d'un étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2209",
-      "verified_before": "06 novembre 2026",
-      "verified_now": "06 novembre 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2215",
-      "title": "Certificat de résidence d'1 an pour Algérien",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2215",
-      "verified_before": "01 août 2026",
-      "verified_now": "01 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2231",
-      "title": "Étudiant étranger en France : visa de long séjour ou titre de séjour",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231",
-      "verified_before": "01 août 2026",
-      "verified_now": "01 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F22312",
-      "title": "Que doit faire un étranger en cas de vol de sa carte de séjour ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22312",
-      "verified_before": "01 juillet 2026",
-      "verified_now": "01 juillet 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2257",
-      "title": "Certificat de résidence de 10 ans - Personne de nationalité algérienne",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2257",
-      "verified_before": "01 octobre 2024",
-      "verified_now": "01 octobre 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2651",
-      "title": "Séjour de longue durée d'un Européen en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2651",
-      "verified_before": "01 avril 2026",
-      "verified_now": "01 avril 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2672",
-      "title": "Un étranger en transit en France doit-il demander un visa ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2672",
-      "verified_before": "12 octobre 2025",
-      "verified_now": "12 octobre 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2687",
-      "title": "Un enfant étranger non européen doit-il avoir un titre de séjour ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2687",
-      "verified_before": "08 février 2024",
-      "verified_now": "08 février 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F11167",
-      "title": "Une famille déjà en France peut-elle bénéficier d'un regroupement familial ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11167",
-      "verified_before": "12 janvier 2026",
-      "verified_now": "12 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1165",
-      "title": "Bail d'habitation : quelles différences entre logement vide et logement meublé ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1165",
-      "verified_before": "06 mars 2026",
-      "verified_now": "06 mars 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1168",
-      "title": "Préavis et formalités du congé donné par le locataire (bail d'habitation)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1168",
-      "verified_before": "16 avril 2026",
-      "verified_now": "16 avril 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1169",
-      "title": "Futur locataire d'un logement privé : justificatifs à donner au propriétaire",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1169",
-      "verified_before": "10 avril 2025",
-      "verified_now": "10 avril 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1213",
-      "title": "Loyers impayés et expulsion du locataire",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31272",
-      "verified_before": "06 août 2026",
-      "verified_now": "06 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1220",
-      "title": "Un mineur peut-il signer un bail d'habitation ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1220",
-      "verified_before": "28 mai 2026",
-      "verified_now": "28 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1223",
-      "title": "Séparation des parents : relations entre l'enfant et sa famille ou ses proches",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1223",
-      "verified_before": "22 juillet 2025",
-      "verified_now": "22 juillet 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1270",
-      "title": "Règles en matière d'héritage : défunt ayant eu des enfants",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1270",
-      "verified_before": "05 octobre 2026",
-      "verified_now": "05 octobre 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F13213",
-      "title": "Allocations familiales (famille de 2 enfants ou plus)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Accéder aux informations générales",
-        "+sans renseigner ma situation"
-      ]
-    },
-    {
-      "doc_id": "F16493",
-      "title": "Un salarié peut-il être dispensé de la visite médicale d'embauche ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16493",
-      "verified_before": "11 juin 2026",
-      "verified_now": "11 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F1764",
-      "title": "L'époux étranger d'un Français peut-il séjourner en France ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1764",
-      "verified_before": "04 août 2026",
-      "verified_now": "04 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2213",
-      "title": "Naturalisation française par décret",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
-      "verified_before": "16 juillet 2026",
-      "verified_now": "16 juillet 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2214",
-      "title": "Réintégration dans la nationalité française par décret",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2214",
-      "verified_before": "16 juillet 2026",
-      "verified_now": "16 juillet 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F22575",
-      "title": "Sortie ou voyage scolaires au collège et au lycée",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22575",
-      "verified_before": "17 février 2026",
-      "verified_now": "17 février 2026",
-      "sample_diff": [
-        "-Un voyage scolaire peut être financée par différents moyens (aides de l'État ou d'une collectivité territoriale, fonds propres de l'établissement...).",
-        "+Un voyage scolaire peut être financé par différents moyens (aides de l'État ou d'une collectivité territoriale, fonds propres de l'établissement...)."
-      ]
-    },
-    {
-      "doc_id": "F2338",
-      "title": "Un travailleur temporaire est-il suivi par la médecine du travail ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2338",
-      "verified_before": "16 juin 2026",
-      "verified_now": "16 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2653",
-      "title": "Séjour en France de la famille d'un citoyen européen",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2653",
-      "verified_before": "08 avril 2024",
-      "verified_now": "08 avril 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2713",
-      "title": "Un étudiant non européen peut-il travailler en France ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2713",
-      "verified_before": "07 octobre 2025",
-      "verified_now": "07 octobre 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2718",
-      "title": "Document de circulation pour étranger mineur (DCEM)",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2718",
-      "verified_before": "30 juillet 2024",
-      "verified_now": "30 juillet 2024",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2728",
-      "title": "Autorisation de travail d'un salarié étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2728",
-      "verified_before": "18 juin 2026",
-      "verified_now": "18 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2733",
-      "title": "Autorisation de travail d'un Algérien salarié en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2733",
-      "verified_before": "02 avril 2021",
-      "verified_now": "02 avril 2021",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F2871",
-      "title": "Un salarié doit-il passer une visite médicale après un arrêt de travail ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2871",
-      "verified_before": "31 août 2026",
-      "verified_now": "31 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F302",
-      "title": "Carte de séjour temporaire \"visiteur\" d'un étranger en France",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
-      "verified_before": "01 juin 2026",
-      "verified_now": "01 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F3100",
-      "title": "Salarié étranger : comment sont délivrées les autorisations de travail ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3100",
-      "verified_before": "18 juin 2026",
-      "verified_now": "18 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F31037",
-      "title": "Quel est le titre de séjour délivré à un mineur étranger isolé à sa majorité ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31037",
-      "verified_before": "13 mars 2025",
-      "verified_now": "13 mars 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F31039",
-      "title": "Quels liens privés et familiaux peut invoquer un étranger pour être admis au séjour en France ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31039",
-      "verified_before": "21 octobre 2025",
-      "verified_now": "21 octobre 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F31267",
-      "title": "Caution du locataire ou du colocataire dans un logement privé",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31267",
-      "verified_before": "10 avril 2025",
-      "verified_now": "10 avril 2025",
-      "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Veuillez patienter pendant le chargement de la page",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Veuillez patienter pendant le chargement de la page"
-      ]
-    },
-    {
-      "doc_id": "F31269",
-      "title": "Dépôt de garantie dans un bail d'habitation",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31269",
-      "verified_before": "09 juin 2026",
-      "verified_now": "09 juin 2026",
-      "sample_diff": [
-        "+Les règles applicables au dépôt de garantie sont différentes, selon que le logement est loué avec un bail de logement vide, ou avec un bail de logement meublé :",
-        "-Les règles applicables au dépôt de garantie sont différentes, selon que le logement est loué avec un bail de logement vide, ou avec un bail de logement meublé :",
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F3152",
-      "title": "Impôt sur le revenu - Comment sont imposées les indemnités d'arrêt de travail ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F3152",
-      "verified_before": "15 avril 2026",
-      "verified_now": "15 avril 2026",
-      "sample_diff": [
-        "-Quelle est votre situation ?",
-        "-Accéder aux informations générales",
-        "-sans renseigner ma situation",
-        "+Quelle est votre situation ?",
-        "+Accéder aux informations générales",
-        "+sans renseigner ma situation"
-      ]
-    },
-    {
-      "doc_id": "F33430",
-      "title": "Déclaration de nationalité française de l'ascendant d'un Français",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33430",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F34741",
-      "title": "Naturalisation française : quels justificatifs d'état civil et de nationalité ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34741",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F34745",
-      "title": "Naturalisation française : quels justificatifs de domicile fournir ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34745",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F34746",
-      "title": "Naturalisation française : quels justificatifs de revenus et d'impôts ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34746",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F34758",
-      "title": "Naturalisation française : quels justificatifs si l'on vit en couple ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34758",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F34764",
-      "title": "Naturalisation française : quels justificatifs pour les enfants mineurs ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34764",
-      "verified_before": "01 janvier 2026",
-      "verified_now": "01 janvier 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F35156",
-      "title": "Un étranger sans titre de séjour peut-il faire venir sa famille en France ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35156",
-      "verified_before": "26 juin 2026",
-      "verified_now": "26 juin 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F35799",
-      "title": "Carte de séjour pluriannuelle",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35799",
-      "verified_before": "01 mai 2026",
-      "verified_now": "01 mai 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F36290",
-      "title": "Qu'est-ce que la visite médicale de mi-carrière pour un salarié ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36290",
-      "verified_before": "11 août 2025",
-      "verified_now": "11 août 2025",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F38329",
-      "title": "Qu'est-ce que le contrat d'engagement à respecter les principes de la République ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F38329",
-      "verified_before": "04 août 2026",
-      "verified_now": "04 août 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F39",
-      "title": "Quels titres de séjour un ressortissant étranger doit-il avoir pour rester en France plus de 3 mois ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F39",
-      "verified_before": "08 juillet 2026",
-      "verified_now": "08 juillet 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
-      ]
-    },
-    {
-      "doc_id": "F935",
-      "title": "Comment adopter un enfant à l'étranger ?",
-      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F935",
-      "verified_before": "06 février 2026",
-      "verified_now": "06 février 2026",
-      "sample_diff": [
-        "-Fermeture exceptionnelle le mercredi 11 novembre"
+        "+Les règles varient selon la situation :",
+        "-Si vous en bénéficiez, il faudra également le justificatif des droits à",
+        "+Si vous en bénéficiez, il faudra également le justificatif des droits :",
+        "+À",
+        "-ou à la",
+        "+Ou à la"
       ]
     }
   ],
   "missing": [],
   "affected_items": [
     {
-      "item_id": "log-001",
+      "item_id": "trav-001",
       "pages": [
-        "F12006"
+        "F13519"
       ],
-      "question_en": "From when is APL housing benefit owed after I apply?"
+      "question_en": "How many hours per year can an EU student work in France?"
     },
     {
-      "item_id": "log-002",
+      "item_id": "arg-108",
       "pages": [
-        "F12006"
+        "F358"
       ],
-      "question_en": "How many months a year must I live in my accommodation to be eligible for APL?"
-    },
-    {
-      "item_id": "log-003",
-      "pages": [
-        "F12006"
-      ],
-      "question_en": "Can a foreign student receive housing benefit?"
+      "question_en": "I'm an international student with no taxable income but I need an avis d'impôt for paperwork. How do I get one?"
     }
   ],
-  "checked_at": "2026-11-16 15:51 UTC",
+  "checked_at": "2026-11-23 18:14 UTC",
   "auto": {
     "cleared": [
       {
-        "item_id": "sej-101",
-        "pages": [
-          "F12189"
-        ],
-        "question_en": "I'm waiting for my first titre de séjour and all I have is the application deposit attestation. If I fly home outside Schengen, can I get back into France?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-102",
-        "pages": [
-          "F12189"
-        ],
-        "question_en": "My student residence permit has expired but I have a renewal récépissé. Can I travel abroad and come back on it?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-103",
-        "pages": [
-          "F14128"
-        ],
-        "question_en": "I just moved flats. Do I have to update the address on my residence permit, and how long do I have to do it?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-105",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "What happens if I submit my student residence permit renewal late?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-106",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "The prefecture still hasn't answered my student permit renewal. When does the silence count as a refusal, and what can I do then?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-108",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "If I repeat a year at uni, can that block the renewal of my student titre de séjour?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-109",
-        "pages": [
-          "F11892"
-        ],
-        "question_en": "I was let go during my trial period. Can my 'salarié' residence permit be taken away because I'm now unemployed?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-110",
-        "pages": [
-          "F302"
-        ],
-        "question_en": "How long is a 'visiteur' carte de séjour valid for, and can I keep renewing it?",
-        "reasons": []
-      },
-      {
-        "item_id": "sej-113",
-        "pages": [
-          "F15763"
-        ],
-        "question_en": "What happens if my residence permit runs out before the prefecture has processed my renewal application?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-101",
-        "pages": [
-          "F16162"
-        ],
-        "question_en": "My long-stay student visa got refused. How do I appeal?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-102",
-        "pages": [
-          "F16162"
-        ],
-        "question_en": "I applied for a French long-stay visa and the consulate just hasn't answered. When does no reply count as a refusal?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-103",
-        "pages": [
-          "F1765",
-          "F21921"
-        ],
-        "question_en": "How much money do I need to show per day of my stay to enter France for a short stay?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-106",
-        "pages": [
-          "F1765"
-        ],
-        "question_en": "I have a French student residence permit. Do I need a Schengen visa to visit another Schengen country?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-107",
-        "pages": [
-          "F16189",
-          "F2231"
-        ],
-        "question_en": "I'm in France on a tourist visa. Can I switch to a student residence permit here, without going home to get a student visa?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-108",
-        "pages": [
-          "F16162",
-          "F302"
-        ],
-        "question_en": "On a long-stay visitor visa, am I allowed to earn money from an activity in France, say as an auto-entrepreneur?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-109",
-        "pages": [
-          "F16162"
-        ],
-        "question_en": "Can I switch from a working holiday visa to another residence permit, like 'vie privée et familiale' after a PACS?",
-        "reasons": []
-      },
-      {
-        "item_id": "visa-110",
-        "pages": [
-          "F16162",
-          "F39"
-        ],
-        "question_en": "My passport doesn't need a visa for short trips. Can I still stay in France for 7 months without one?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-101",
-        "pages": [
-          "F2713"
-        ],
-        "question_en": "Is the 964-hour work limit for international students counted per calendar year, or from some other date?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-102",
-        "pages": [
-          "F2713"
-        ],
-        "question_en": "What happens to my student residence permit if I go over the 964 hours of work allowed per year?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-103",
-        "pages": [
-          "F2713"
-        ],
-        "question_en": "I know a student visa lets me work 964 hours a year — does that also cover working as an independent contractor or freelancer?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-105",
-        "pages": [
-          "F2713"
-        ],
-        "question_en": "I'm an international student in my first year in France — can I sign an apprenticeship (alternance) contract?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-107",
-        "pages": [
-          "F17312"
-        ],
-        "question_en": "I've been offered a 2-month unpaid internship at a French lab. Can I come on a short-stay visa instead of a long-stay one?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-108",
-        "pages": [
-          "F17312"
-        ],
-        "question_en": "My internship in France has been extended past the end of my long-stay intern visa. What do I need to do to stay?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-110",
-        "pages": [
-          "F17319"
-        ],
-        "question_en": "I finished my master's in France but have since left the country. Can I still get the post-study job-seeking / business-creation permit to come back and look for work?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-111",
-        "pages": [
-          "F17319"
-        ],
-        "question_en": "For the post-graduation job-seeking / business-creation permit, do I apply for a residence card or a VLS-TS, and when?",
-        "reasons": []
-      },
-      {
-        "item_id": "trav-114",
-        "pages": [
-          "F15898"
-        ],
-        "question_en": "I'm an international student in France and I've landed a permanent job (CDI). How do I switch from a student permit to a salarié permit?",
-        "reasons": []
-      },
-      {
-        "item_id": "etu-102",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "If I switch to a different degree programme, could I lose my student residence permit?",
-        "reasons": []
-      },
-      {
-        "item_id": "etu-104",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "I'm in France without a residence permit. Can I enrol at university and apply for a student residence permit from inside France?",
-        "reasons": []
-      },
-      {
-        "item_id": "etu-105",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "I applied online to renew my student titre de séjour — do I get any proof of the application while I wait?",
-        "reasons": []
-      },
-      {
-        "item_id": "etu-106",
-        "pages": [
-          "F2231"
-        ],
-        "question_en": "What do I need to meet to renew my residence permit and stay on student status?",
-        "reasons": []
-      },
-      {
-        "item_id": "etu-107",
-        "pages": [
-          "F2213"
-        ],
-        "question_en": "If I graduate from a French university, does that shorten how long I have to live in France before applying for citizenship?",
-        "reasons": []
-      },
-      {
-        "item_id": "log-103",
-        "pages": [
-          "F1168"
-        ],
-        "question_en": "Does my furnished rental have to end at the end of a calendar month, or does the notice run from the day my letter is received?",
-        "reasons": []
-      },
-      {
-        "item_id": "log-106",
-        "pages": [
-          "F14128",
-          "F31269"
-        ],
-        "question_en": "How long does my landlord have to give back my deposit, and what happens if they're late?",
-        "reasons": []
-      },
-      {
-        "item_id": "log-108",
-        "pages": [
-          "F1169"
-        ],
-        "question_en": "When renting in France, what documents is a landlord actually allowed to ask for in my rental 'dossier'?",
-        "reasons": []
-      },
-      {
-        "item_id": "log-109",
-        "pages": [
-          "F1169",
-          "F31267"
-        ],
-        "question_en": "My guarantor lives abroad and doesn't pay tax in France. What proof of income can the landlord ask them for?",
-        "reasons": []
-      },
-      {
         "item_id": "log-110",
         "pages": [
-          "F12006"
+          "F12006",
+          "F1280"
         ],
         "question_en": "I'm a non-EU student on a student titre de séjour doing an alternance (work-study). Can I get APL?",
         "reasons": []
@@ -1164,47 +116,37 @@
     ],
     "flagged": [
       {
-        "item_id": "log-001",
+        "item_id": "trav-001",
         "pages": [
-          "F12006"
+          "F13519"
         ],
-        "question_en": "From when is APL housing benefit owed after I apply?",
+        "question_en": "How many hours per year can an EU student work in France?",
         "reasons": [
-          "F12006 changed and the item has no evidence quote to check"
+          "F13519 re-dated (official update)"
         ]
       },
       {
-        "item_id": "log-002",
+        "item_id": "arg-108",
         "pages": [
-          "F12006"
+          "F358"
         ],
-        "question_en": "How many months a year must I live in my accommodation to be eligible for APL?",
+        "question_en": "I'm an international student with no taxable income but I need an avis d'impôt for paperwork. How do I get one?",
         "reasons": [
-          "F12006 changed and the item has no evidence quote to check"
-        ]
-      },
-      {
-        "item_id": "log-003",
-        "pages": [
-          "F12006"
-        ],
-        "question_en": "Can a foreign student receive housing benefit?",
-        "reasons": [
-          "F12006 changed and the item has no evidence quote to check"
+          "F358 re-dated (official update)"
         ]
       }
     ],
     "eval_before": {
-      "en hit@1": 0.514,
-      "en recall@5": 0.747,
-      "fr hit@1": 0.486,
-      "fr recall@5": 0.795
-    },
-    "eval_after": {
       "en hit@1": 0.493,
       "en recall@5": 0.736,
       "fr hit@1": 0.478,
       "fr recall@5": 0.79
+    },
+    "eval_after": {
+      "en hit@1": 0.507,
+      "en recall@5": 0.743,
+      "fr hit@1": 0.493,
+      "fr recall@5": 0.799
     }
   }
 }
